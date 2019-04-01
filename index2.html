@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Module 2</title>
+	<link media="all" rel="stylesheet" href="assets/css/module.css">
+	<link media="all" rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="body-module" class="body-module">
+	<div class="container">
+		<div class="module-links">
+			<a href="#preloader">preloader</a>
+			<a href="#first-full-height">first-full-height</a>
+			<a href="#block-in-viewport">block-in-viewport</a>
+			<a href="#grid-flex-css">grid-flex-css</a>
+			<a href="#scroll-text">scroll-text</a>
+		</div>
+	</div>
+	<!-- module preloader start -->
+	<div id="preloader" class="container module-block">
+		<h2>Folder ./module/preloader</h2>
+		<div class="description-block">preloader для сайта - <strong>ОТКЛЮЧИЛ</strong></div>
+		// ../../../module/preloader/preloader.html
+	</div>
+	<!-- module preloader -->
+	<!-- module first-full-height start -->
+	<div id="first-full-height" class="container module-block">
+		<h2>Folder ./module/first-full-height</h2>
+		<div class="description-block">задает блоку минимальную высоту 100% высоту страницы</div>
+		<!-- Внутренняя обертка обязательна -->
+		<div class="full-height">
+			<div class="some-class">Lorem ipsum dolor sit amet</div>
+		</div>
+	</div>
+	<!-- module first-full-height -->
+	<!-- module block-in-viewport start -->
+	<div id="block-in-viewport" class="container module-block">
+		<h2>Folder ./module/block-in-viewport</h2>
+		<div class="description-block">
+			<p>не забудь подключить jquery-migrate-3.0.0.js так как ошибка с новой версией jquery возникает </p>
+			<p>Доступны следующие опции:</p>
+			<ul>
+				<li>activeClass – класс, который добавляется, когда блок появляется по вьюпорте (по умолчанию – “in-viewport”)</li>
+				<li>once – флаг, который определяет добавлять активный класс единожды или при каждом появлении блока во вьюпорте (по умолчанию – true)</li>
+				<li>holder – родительский блок, который скроллит виджеты. Можно не задавать – тогда скрипт привяжет виджет к скроллу окна (по умолчанию – окно)</li>
+				<li>visibleMode – опция, которая позволяет точно настроить момент, в который активный класс будет добавлен. Существует 4 настройки (По умолчанию – 1) <ul>
+						<li>1 – класс добавляется, когда блок полностью показывается по вьюпорте</li>
+						<li>2 – когда хотя бы половина блока во вьюпорте</li>
+						<li>3 – хотя бы пиксель блока во вьюпорте</li>
+						<li>NUMBER – любое другое число. Кастомная настройка в пикселях. Если поставить 20 – то как только блок показывается на 20 пикселей на экране – активный класс добавится</li>
+					</ul>
+				</li>
+				<li>Независимо от опции visibleMode активный класс будет добавлен, если блок своим низом или верхом достиг середины окна</li>
+			</ul>
+		</div>
+		<div class="section default">
+			<h1>Trig every time</h1>
+		</div>
+		<div class="section once">
+			<h1>Trig just once</h1>
+		</div>
+	</div>
+	<!-- module block-in-viewport -->
+	<!-- module grid-flex-css start -->
+	<div id="grid-flex-css" class="container module-block">
+		<h2>Folder ./module/grid-flex-css</h2>
+		<div class="description-block">Сетка через scss миксины - используются падинги</div>
+		<div class="row">
+			<div class="col-1">
+				<div class="row-inner">Lorem ipsum dolor </div>
+			</div>
+			<div class="col-2">
+				<div class="row-inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati voluptates asperiores, delectus iusto velit dignissimos reprehenderit, blanditiis dolorum pariatur.</div>
+			</div>
+			<div class="col-2">
+				<div class="row-inner">Lorem ipsum dolor sit amet,</div>
+			</div>
+			<div class="col-1">
+				<div class="row-inner">Lorem ipsum dolor sit amet,</div>
+			</div>
+			<div class="col-1">
+				<div class="row-inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+			</div>
+		</div>
+	</div>
+	<!-- module grid-flex-css -->
+	<!-- module scroll-text start -->
+	<div id="scroll-text" class="container module-block">
+		<h2>Folder ./module/scroll-text</h2>
+		<div class="description-block">
+			<p>Данный плагин позволяет реализовать циклическое прокручивание текста в пределах блока. Верстка под него очень похожа на верстку под карусель. Тоже есть маска и широкий блок, который содержит проскролливаемый текст (один или несколько абзацев).</p>
+			<p>HTML-структура:</p>
+			<pre class="html">
+	&lt;div class="line-box"&gt; &lt;!-- Родительский блок, к которому будет подключаться плагин (может быть одновременно и маской) --&gt;
+		&lt;div class="line-wrap"&gt; &lt;!-- Блок, который будет скроллится --&gt;
+					&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...&lt;/p&gt; &lt;!-- Контент бегущей строки --&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+		</pre>
+			<p>В плагине доступны следующие опции:</p>
+			<pre class="javascript">
+	jQuery('div.line-box').marquee({
+		mask: null,               // селектор маски (опционально, по умолчанию маской будет блок, к которому применён плагин)
+		line: 'div.line-wrap',    // селектор скроллящегося блока (по умолчанию прямой потомок маски)
+		items: '>*',              // селектор элементов в скроллящемся блоке (по умолчанию прямой потомок скролл.блока)
+		animSpeed: 50,            // скорость анимации (пикселей в секунду)
+		pauseOnHover: true,       // приостанавливать бегущую строку на ховер
+		hoverClass: 'hover',      // класс ховерного состояния бегущей строки
+		direction: 'left',        // направление движения "влево" или "вправо" ("left","right")
+		initialDelay: 0           // первоначальная задержка перед стартом бегущей строки (мсек)
+	});
+	</pre>
+		</div>
+		<h2>Примеры работы скрипта</h2>
+		<div class="live-example">
+			<h3>Обычный пример:</h3>
+			<div class="line-box example1">
+				<div class="line-wrap">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui neque, tempor in, fermentum vel, rutrum aliquam, mi. In quis massa adipiscing urna consequat mollis. Maecenas et leo. Suspendisse iaculis odio. In ac eros. Quisque elementum, justo non mattis pellentesque, odio nibh euismod dolor, quis scelerisque metus lacus consequat nisi. Sed nec turpis. Aenean ultrices purus dapibus orci. Fusce erat. Vivamus quis dolor vitae mi vulputate mollis. Sed tellus elit, tempus et, semper a, tincidunt in, <strong style="color: #f00">justo.</strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="live-example">
+			<h3>Пример в котором мало контента:</h3>
+			<div class="line-box example1">
+				<div class="line-wrap">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong style="color: #f00">Justo.</strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="live-example">
+			<h3>Обратный пример с первоначальной задержкой :</h3>
+			<div class="line-box example2">
+				<div class="line-wrap">
+					<p><strong style="color: #00f">Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Sed dui neque, tempor in, fermentum vel, rutrum aliquam, mi. In quis massa adipiscing urna consequat mollis. Maecenas et leo. Suspendisse iaculis odio. In ac eros. Quisque elementum, justo non mattis pellentesque, odio nibh euismod dolor, quis scelerisque metus lacus consequat nisi. Sed nec turpis. Aenean ultrices purus dapibus orci. Fusce erat. Vivamus quis dolor vitae mi vulputate mollis. Sed tellus elit, tempus et, semper a, tincidunt in, <strong style="color: #f00">justo.</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- module scroll-text -->
+	<!-- loading JS Start -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		window.jQuery || document.write('<script src="assets/js/jquery-3.2.1.min.js" defer><\/script>')
+</script>
+	<script src="assets/js/jquery.main.js" defer></script>
+	<script src="assets/js/module.js" defer></script>
+	<!-- loading JS End -->
+	<!--<Deject>-->
+	<!--Removing zone start -->
+	<link rel="stylesheet" href="assets/css/development.css">
+	<div class="dev-scripts-block">
+		<div class="responsive-breakpoint">
+			<div class="responsive-breakpoint-checkbox">
+				<input class="responsive-breakpoint-checkbox__checkbox" type="checkbox" id="responsive-breakpoint-checkbox__checkbox" />
+				<label class="responsive-breakpoint-checkbox__label" for="responsive-breakpoint-checkbox__checkbox"></label>
+			</div>
+			<!-- <div class="responsive-breakpoint__min">MOBILE FIRST</div> -->
+			<div class="responsive-breakpoint__max">breakpoint</div>
+			<div class="responsive-breakpoint__strictly"></div>
+			<div class="responsive-breakpoint__pixel-ratio"></div>
+		</div>
+		<div class="scroll-up-plugins">
+			<div class="scroll-up-plugins__button scroll-up-plugins__button--25"></div>
+			<div class="scroll-up-plugins__button scroll-up-plugins__button--50"></div>
+			<div class="scroll-up-plugins__button scroll-up-plugins__button--75"></div>
+		</div>
+		<div class="widget_wrap">
+			<div class="widget_list"></div>
+		</div>
+	</div>
+	<div class="button-all-off">
+		<div class="button-all-off button-all-off--aava">
+			<input id="button-all-off" type="checkbox" checked="checked">
+			<label for="button-all-off" data-on-text="On" data-off-text="Off"></label>
+		</div>
+	</div>
+	<script src="assets/js/development.js"></script>
+	<!--Removing zone end -->
+	<!--</Deject>-->
+</body>
+
+</html>
