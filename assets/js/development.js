@@ -2,7 +2,7 @@
 // connection occurs through the design //= folder-name/file-name.js
 
 //variable with an array of page names
-var fastNavigationPage = ["index", "index1", "trick-block", "scroll-spy-menu"];
+var fastNavigationPage = ["index", "index1", "trick-block", "fullPage", "scroll-spy-menu"];
 
 jQuery(document).ready(function() {
 	checkboxSave();

@@ -18,6 +18,14 @@
 			<a href="#grid-flex-css">grid-flex-css</a>
 			<a href="#scroll-text">scroll-text</a>
 			<a href="#slider-comparison">slider-comparison</a>
+			<a href="#scaled-proportional">scaled-proportional</a>
+			<a href="#nav-to-select">nav-to-select</a>
+			<a href="#open-close">open-close</a>
+			<a href="#count-up">count-up</a>
+			<a href="#circlebars">circlebars</a>
+			<a href="#loadingbars">loadingbars</a>
+			<a href="#tooltip-ui">tooltip-ui</a>
+			<a href="#dropdown-menu">dropdown-menu</a>
 		</div>
 	</div>
 	<!-- module preloader start -->
@@ -188,6 +196,204 @@
 		</div>
 	</div>
 	<!-- module slider-comparison -->
+	<!-- module scaled-proportional start -->
+	<div id="scaled-proportional" class="container module-block">
+		<h2>Folder ./module/scaled-proportional</h2>
+		<p>Some other blocks</p>
+		<div>
+			<div class="very-specific-design" id="very-specific-design">
+				<h1>I am designed just so.</h1>
+				<p>My design is intentional. I want to be scaled in such a way that scales the design. No reflows or anything, just straight up scaling. Kinda like SVG.</p>
+				<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/skull-and-crossbones.svg" alt="" />
+				<p class="bigred"> ✖ ✖ ✖ </p>
+			</div>
+		</div>
+		<p>Some other blocks</p>
+	</div>
+	<!-- module scaled-proportional -->
+	<!-- module nav-to-select start -->
+	<div id="nav-to-select" class="container module-block">
+		<h2>Folder ./module/nav-to-select</h2>
+		<ul id="nav-to-select" title="Main navigation">
+			<li><a href="index.html">Home</a></li>
+			<li>
+				<a href="#">Products</a>
+				<ul>
+					<li><a href="#">Product1</a></li>
+					<li>
+						<a href="#">Product2</a>
+						<ul>
+							<li><a href="#">Deep1</a></li>
+							<li><a class="nav-active" href="#">Deep2</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Product4</a>
+						<ul>
+							<li><a href="#">Deep1</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- module nav-to-select -->
+	<!-- module open-close start -->
+	<div id="open-close" class="container module-block">
+		<h2>Folder ./module/open-close</h2>
+		<div class="description-block">
+			<p>В скрипте доступны следующие опции:</p>
+			<pre class="javascript">
+			jQuery('div.toggle-block').openClose({
+				addClassBeforeAnimation: true,     // изменять класс "active" до навигации
+				activeClass:'active',              // активный класс при раскрытом состоянии
+				opener:'.opener',                  // селектор ссылки-опенера
+				slider:'.slide',                   // селектор блока-слайдера
+				animSpeed: 400,                    // длительность анимации (400мсек = 0,4сек)
+				effect:'fade',                     // эффект "fade", "slide" или "none"
+				event:'click'                      // при каком событии на opener должно происходить открытие опен-клоус
+				initcallback: function(){}         // вызов CallBack
+			});
+		</pre>
+		</div>
+		<div class="live-example">
+			<div class="toggle-block">
+				<a class="opener" href="#"><span>+ View More</span><em>- View Less</em></a>
+				<div class="toggle-slide">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui neque, tempor in, fermentum vel, rutrum aliquam, mi. In quis massa adipiscing urna consequat mollis. Maecenas et leo. Suspendisse iaculis odio. In ac eros. Quisque elementum, justo non mattis pellentesque, odio nibh euismod dolor, quis scelerisque metus lacus consequat nisi. Sed nec turpis. Aenean ultrices purus dapibus orci. Fusce erat. Vivamus quis dolor vitae mi vulputate mollis. Sed tellus elit, tempus et, semper a, tincidunt in, justo.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- module open-close -->
+	<!-- module count-up start -->
+	<div id="count-up" class="container module-block">
+		<h2>Folder ./module/count-up</h2>
+		<section class="block-count-up">
+			<div class="container">
+				<ul class="count-up-list">
+					<li class="item" data-count-from="0" data-count-to="116.71" data-count-type="2" data-count-duration="2.5" data-count-option='{"useEasing": "true", "useGrouping": "true", "separator": ".", "decimal": ".", "prefix": "$"}'>
+						<span class="count-up-digit" id='count-up-digit-0'></span>
+					</li>
+					<li class="item" data-count-from="0" data-count-to="999" data-count-type="2" data-count-duration="2.5" data-count-option='{"useEasing": "true", "useGrouping": "true", "separator": ".", "decimal": ".", "prefix": "&"}'>
+						<span class="count-up-digit" id='count-up-digit-1'></span>
+					</li>
+					<li class="item" data-count-from="0" data-count-to="3700" data-count-type="2" data-count-duration="2.5" data-count-option='{"useEasing": "true", "useGrouping": "true", "separator": ".", "decimal": ".", "prefix": "$"}'>
+						<span class="count-up-digit" id='count-up-digit-2'></span>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<!-- module count-up -->
+	<!-- module circlebars start -->
+	<div id="circlebars" class="container module-block">
+		<h2>Folder ./module/circlebars</h2>
+		<div class="description-block">Link on GitHub: <a href="https://github.com/itaditya/circlebars">https://github.com/itaditya/circlebars</a></div>
+		<div class="page">
+			<div class="circles-container">
+				<div id="circle-1" data-circle-dialWidth=10 data-circle-skin="yellow">
+					<div class="loader-bg">
+						<div class="text">00:00:00</div>
+					</div>
+				</div>
+				<div class="circle-2" data-circle-maxValue="75" data-circle-counter=1000 data-circle-size="300px">
+					<div class="loader-bg">
+						<div class="text">0%</div>
+					</div>
+				</div>
+				<div class="circlebar" data-circle-startTime=0 data-circle-dialWidth=20 data-circle-size="250px">
+					<div class="loader-bg">
+						<div class="text">00:00:00</div>
+					</div>
+				</div>
+				<div id="circle-3" data-circle-dialWidth=10 data-circle-skin="purple">
+					<div class="loader-bg">
+						<div class="text">00:00:00</div>
+					</div>
+				</div>
+				<div class="circlebar" data-circle-startTime=0 data-circle-maxValue="90" data-circle-dialWidth=10 data-circle-size="100px" data-circle-type="progress">
+					<div class="loader-bg">
+						<div class="text">00:00:00</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- module circlebars -->
+	<!-- module loadingbars start -->
+	<div id="loadingbars" class="container module-block">
+		<h2>Folder ./module/loadingbars</h2>
+		<div class="description-block">Link <a href="https://github.com/itaditya/circlebars">https://github.com/itaditya/circlebars</a></div>
+		<!-- так и не нашел способ включать анимацию через дата атрибуты - только в скрипте через добавление в set -->
+		<div class="ldBar myItem2" data-preset="line" data-duration="1" data-set="50" style="width:100%;height:50px;margin:auto"></div>
+		<div id="myItem1" class="myItem1" data-duration="10" style="width:100%;height:50px;margin:auto"></div>
+		<div class="ldBar label-center myItem3" style="width:10%;height:10%;margin:auto" data-value="250" data-min="0" data-max="1000" data-type="fill" data-preset="circle"></div>
+		<div class="ldBar label-center" style="width:10%;height:10%;margin:auto" data-value="10" data-min="0" data-max="100" data-preset="circle"></div>
+	</div>
+	<!-- module loadingbars -->
+	<!-- module tooltip-ui start -->
+	<div id="tooltip-ui" class="container module-block">
+		<h2>Folder ./module/tooltip-ui</h2>
+		<div class="tooltip-ui"><img src="http://placehold.it/200x200" data-title="Example tooltip" /></div>
+	</div>
+	<!-- module tooltip-ui -->
+	<!-- module dropdown-menu start -->
+	<div id="dropdown-menu" class="container module-block">
+		<h2>Folder ./module/dropdown-menu</h2>
+		<h3>Пример дропа с фейд-эффектом</h3>
+		<ul class="dropdown-nav fade-nav">
+			<li><a href="#">Home</a></li>
+			<li>
+				<a href="#">Products</a>
+				<ul class="dropdown-nav-sub">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Services</a>
+				<ul class="dropdown-nav-sub">
+					<li><a href="#">Service 1</a></li>
+					<li><a href="#">Service 2</a></li>
+					<li><a href="#">Service 3</a></li>
+					<li><a href="#">Service 4</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Company</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">About</a></li>
+		</ul>
+		<h3>Пример дропа с слайд-эффектом</h3>
+		<ul class="dropdown-nav slide-nav">
+			<li><a href="#">Home</a></li>
+			<li>
+				<a href="#">Products</a>
+				<ul class="dropdown-nav-sub">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+					<li><a href="#">Item 4</a></li>
+					<li><a href="#">Item 5</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Services</a>
+				<ul class="dropdown-nav-sub">
+					<li><a href="#">Service 1</a></li>
+					<li><a href="#">Service 2</a></li>
+					<li><a href="#">Service 3</a></li>
+					<li><a href="#">Service 4</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Company</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">About</a></li>
+		</ul>
+	</div>
+	<!-- module dropdown-menu -->
 	<!-- loading JS Start -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
