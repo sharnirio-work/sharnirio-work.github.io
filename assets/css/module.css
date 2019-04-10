@@ -376,6 +376,10 @@ h2.resp-tab-title:last-child {
   -webkit-tap-highlight-color: transparent;
 }
 
+.slick-slider .slick-slide:focus {
+  outline: none;
+}
+
 .slick-slider .slick-arrow {
   position: absolute;
   top: 50%;
@@ -512,6 +516,10 @@ h2.resp-tab-title:last-child {
   user-select: none;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
+}
+
+.slick-slider .slick-slide:focus {
+  outline: none;
 }
 
 .slick-list {
@@ -7240,6 +7248,71 @@ video {
 .parallax-window-not-js-innit {
   min-height: 500px;
   background: transparent;
+}
+
+.bg-stretch-block {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-stretch-block:before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 26.04%;
+}
+
+.bg-stretch-block > .no-class {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.bg-stretch-block .bg-stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bg-stretch-block .bg-stretch img {
+  object-fit: cover;
+  max-width: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.angle-block {
+  background-color: tomato;
+  padding: 140px 0px 140px;
+  position: relative;
+  z-index: 2;
+  min-height: 400px;
+}
+
+.bac-tr-b {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  height: 150px;
+  z-index: -1;
+  fill: #fff;
+}
+
+.bac-tr-t {
+  position: absolute;
+  top: -1px;
+  width: 100%;
+  height: 150px;
+  z-index: -1;
+  fill: #fff;
 }
 
 /*# sourceMappingURL=sourcemaps/module.css.map */

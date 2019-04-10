@@ -713,7 +713,7 @@ function slickInit() {
 	sliderClass.slick({
 		infinite: true,
 		slidesToShow: (sliderClassCount <= 3) ? 1 : 3,
-		slidesToScroll: 3,
+		slidesToScroll: 1,
 		arrows: true,
 		prevArrow: '<div class="slick-arrow slide-prev"></div>',
 		nextArrow: '<div class="slick-arrow slide-next"></div>',
@@ -15674,3 +15674,8 @@ jQuery('.parallax-window').parallax({
 		$('[data-parallax="scroll"]').parallax();
 	});
 }(jQuery, window, document));
+
+/* module bg-stretch-block */
+
+
+/* module angle-block */
