@@ -717,6 +717,10 @@ function slickInit() {
 		arrows: true,
 		prevArrow: '<div class="slick-arrow slide-prev"></div>',
 		nextArrow: '<div class="slick-arrow slide-next"></div>',
+		dots: true,
+		customPaging: function(slider, i) {
+			return '<div class="slick-dots-dots"></div>'
+		}
 	});
 }
 

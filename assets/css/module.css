@@ -508,6 +508,55 @@ h2.resp-tab-title:last-child {
   display: none;
 }
 
+.slick-dots {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-58px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .slick-dots {
+    bottom: -35px;
+    transform: translateX(-50%);
+  }
+}
+
+.slick-dots li:nth-child(n+2) {
+  margin-left: 5px;
+}
+
+.slick-dots .slick-dots-dots {
+  border-radius: 50%;
+  background-color: #cdcdcd;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.slick-dots .slick-active .slick-dots-dots {
+  background-color: #fff;
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #6b9d52;
+}
+
+.slick-dots .slick-active .slick-dots-dots:before {
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: #656565;
+}
+
 .slick-slider {
   position: relative;
   display: block;
@@ -5794,7 +5843,7 @@ a.ui-button:active,
 .separate:before, .separate:after {
   content: '';
   flex-grow: 1;
-  height: 1px;
+  height: 2px;
   background-color: #a9aba9;
 }
 
