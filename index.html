@@ -74,11 +74,15 @@
 			<span>grid-template-columns: 200px 1fr 25% auto; | </span>
 			<span>grid-template-columns: 200px 1fr 25% auto; | </span>
 			<br>
+			<span>grid-template-rows: minmax(200px, 1fr) minmax(auto, 1fr) minmax(min-content, 30%) min-content max-content;</span>
+			<br>
 			<span>grid-template-areas: "col2 col1" "col3 col4"; | </span>
 			<span>grid-area: col1; | </span>
 			<br>
 			<span>grid-row: 1/2; | </span>
 			<span>grid-column: 1/2; | </span>
+			<br>
+			<span>grid-column-start: span 3; (Ключевое слово span позволит растянуть элемент на несколько полос, отсчитывая их от фактического положения его начала.Где бы мы ни разместили этот класс в гриде, он заставит этот элемент растянуться на три полосы от его текущего положения.)</span>
 			<br>
 			<span>justify-items: start / end / center / stretch; | </span>
 			<span>justify-self: start / end / center / stretch; | </span>
@@ -86,7 +90,7 @@
 			<span>align-items: start / end / center / stretch; | </span>
 			<span>align-self: start / end / center / stretch; | </span>
 			<br>
-			<span>justify-content: start / end / center / stretch / space-around / space-between / space-evenly; | </span>
+			<span>justify-content: start / end / center / stretch / space-around / space-between / space-evenly (одинаковое расстояние); | </span>
 			<br>
 			<span>align-content: start / end / center / stretch / space-around / space-between / space-evenly; | </span>
 			<br>
