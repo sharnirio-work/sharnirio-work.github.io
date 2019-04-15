@@ -30,6 +30,8 @@
 			<a href="#video-back-of">video-back-of</a>
 			<a href="#parallax">parallax</a>
 			<a href="#parallax-simple">parallax-simple</a>
+			<a href="#c-scroll-bars">c-scroll-bars</a>
+			<a href="#load-more">load-more</a>
 		</div>
 	</div>
 	<!-- module preloader start -->
@@ -513,6 +515,82 @@
 	<div class=" parallax-window-not-js-innit" data-parallax="scroll" data-image-src="http://placehold.it/1920x900"></div>
 	</div>
 	<!-- module parallax-simple -->
+	<!-- module c-scroll-bars start -->
+	<div id="c-scroll-bars" class="container module-block">
+		<h2>Folder ./module/c-scroll-bars</h2>
+		<div class="description-block">
+			<p>Sometimes there were conflicts jcf.js custom scroll in tabs, and with this js there were no problems.</p>
+			<p>Used this plugin <a href="http://manos.malihu.gr/jquery-custom-content-scroller/">http://manos.malihu.gr/jquery-custom-content-scroller/</a></p>
+		</div>
+		<h3>Horizontal scroll</h3>
+		<div class="scroll-content " data-mcs-theme="dark"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto ducimus provident incidunt at ut voluptatum cumque repudiandae. Perspiciatis voluptatem ut impedit neque earum reprehenderit sapiente quia ipsum alias corporis magnam, dolores assumenda autem vitae minus molestiae, provident hic, modi voluptatum quasi. Perferendis amet eum nemo nam fuga tenetur numquam sit, voluptatibus quidem reprehenderit, odit sunt rem reiciendis. Veniam magnam voluptas dicta blanditiis aliquam fuga perspiciatis, esse sunt ad voluptates minus incidunt, quaerat dolor rerum placeat fugit, earum. Reiciendis ipsam quidem, maiores non ipsa quasi delectus quos deserunt, nihil illum impedit architecto doloremque tempora. Harum sed facilis voluptatibus dolor rerum repellendus nulla est cupiditate, nostrum debitis maiores ipsam placeat iure, iste fugit praesentium consequatur ducimus quod. Quae quam nemo nam itaque culpa perferendis doloribus earum eveniet vero nisi veritatis odit veniam ratione atque numquam, ab quas asperiores excepturi, dolores libero, iusto! Tempora rerum ratione ut repellat at eos rem hic similique corporis excepturi delectus voluptatem, deserunt fugit veritatis magni perspiciatis voluptatibus vitae ea officiis, impedit adipisci. Rem magni perferendis quos maxime nemo qui voluptates, culpa, totam esse laboriosam sequi! Architecto dolorum dolorem porro inventore quidem accusantium nulla, molestiae. Asperiores repudiandae sequi soluta, illo, cum impedit, nemo numquam nesciunt cumque possimus modi! </div>
+		<h3>Vertical scroll</h3>
+		<div class="scroll-content-v">
+			<img src="http://placehold.it/200x200" />
+			<img src="http://placehold.it/300x200" />
+			<img src="http://placehold.it/400x200" />
+			<img src="http://placehold.it/400x200" />
+			<img src="http://placehold.it/300x200" />
+			<img src="http://placehold.it/200x200" />
+		</div>
+	</div>
+	<!-- module c-scroll-bars -->
+	<!-- module load-more start -->
+	<div id="load-more" class="container module-block">
+		<h2>Folder ./module/load-more</h2>
+		<div>
+			<h1>Load more plugin</h1>
+			<div class="live-example">
+				<p>Модуль, который используется для подгрузки новых блоков на страницу. Здесь тоже есть небольшая анимация (плавное появление), и она тоже сделана на css3.</p>
+				<p>Работа этого модуля требует правильной структуры как основного холдера, так и загружаемых блоков.</p>
+				<ul class="just-example">
+					<li>
+						<p>Из основных параметров прошу обратить внимание на поле “Событие”</p>
+						<p><a href="http://screen.w3.ua/Dec15/1855125045.jpg">http://screen.w3.ua/Dec15/1855125045.jpg</a></p>
+						<p>Это поле устанавливает функциональность блока, по которой новые блоки будут загружаться.</p>
+						<p><b>click </b>- по клику на кнопку “Загрузить ещё”</p>
+						<p><b>scroll </b>- при доскраливании до низа блока (как в Facebook, к примеру)</p>
+						<p>Кстати, наличие ссылки обязательно для блока, тк из этой ссылки берется url для загрузки новых блоков. Т.е если ссылки нет по дизайну - она все-равно должна быть в разметке, хоть и скрыта стилями.</p>
+					</li>
+					<li>
+						<h2>Дополнительные параметры</h2>
+						<ul class="just-example">
+							<li>Селектор для новых блоков - селектор блока, в который вставляются свежезагруженные блоки. Если оставить null - блоки будут добавляться в основной холдер.</li>
+							<li>Класс блока в момент подгрузки - класс, который вешается на холдер в момент начала загрузки следующей пачки блоков и убирается, когда эта загрузка произошла. Эта настройка может понадобится, когда вам нужно к примеру затемнять холдер или вешать поверх всего холдера какой-то индикатор загрузки.</li>
+							<li>Класс для новых блоков - класс, который довешивается на новые блоки и снимается почти сразу. Что дает возможность проанимировать их появление. Чтобы лучше понять как работает эта опция - скачайте пример.</li>
+						</ul>
+					</li>
+				</ul>
+				<section class="column-load-more holder">
+					<h1>click</h1>
+					<div class="post-holder">
+						<article class="post-load-more ">
+							<h2>Bootstrap heading</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa obcaecati ipsum, quisquam deleniti explicabo. Officiis ab fugiat voluptatibus excepturi corporis repellat voluptas est, odit sit, quisquam ipsum voluptate libero possimus.</p>
+						</article>
+						<article class="post-load-more ">
+							<h2>Bootstrap heading</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odio animi, maxime, iste mollitia distinctio est aliquam, ratione sint molestias consectetur amet, impedit quod. Dolore fugiat recusandae doloremque, voluptatem fuga.</p>
+						</article>
+					</div>
+					<a class="load-more btn" href="./assets/otherCompile/load-more/compile-to-load-more/01.html">load more</a>
+				</section>
+				<section class="column-load-more frame">
+					<a class="load-more" href="./assets/otherCompile/load-more/compile-to-load-more/01.html"></a>
+					<h1>scroll</h1>
+					<article class="post-load-more ">
+						<h2>Bootstrap heading</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa obcaecati ipsum, quisquam deleniti explicabo. Officiis ab fugiat voluptatibus excepturi corporis repellat voluptas est, odit sit, quisquam ipsum voluptate libero possimus.</p>
+					</article>
+					<article class="post-load-more ">
+						<h2>Bootstrap heading</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores odio animi, maxime, iste mollitia distinctio est aliquam, ratione sint molestias consectetur amet, impedit quod. Dolore fugiat recusandae doloremque, voluptatem fuga.</p>
+					</article>
+				</section>
+			</div>
+		</div>
+	</div>
+	<!-- module load-more -->
 	<!-- loading JS Start -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
