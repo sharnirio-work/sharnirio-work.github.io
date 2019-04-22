@@ -34,6 +34,9 @@
 			<a href="#c-scroll-bars">c-scroll-bars</a>
 			<a href="#Isotope-filter">Isotope-filter</a>
 			<a href="#masonry">masonry</a>
+			<a href="#js-charts">js-charts</a>
+			<a href="#aos">aos</a>
+			<a href="#scrolldir">scrolldir</a>
 			<a href="#load-more">load-more</a>
 		</div>
 	</div>
@@ -300,9 +303,9 @@
 		<h2>Folder ./module/simple-count</h2>
 		<div class="description-block">Используется библиотека viewportChecker, так что если уже есть на проекте, не забыть удалить лишнюю копию</div>
 		<div class="count-block">
-			<span class="count-s" data-counts="10">0</span>
-			<span class="count-s" data-counts="9999">0</span>
-			<span class="count-s" data-counts="55.55">0</span>
+			<span class="count-s" data-count="10">0</span>
+			<span class="count-s" data-count="9999">0</span>
+			<span class="count-s" data-count="55.55">0</span>
 		</div>
 	</div>
 	<!-- module simple-count -->
@@ -728,6 +731,36 @@
 		</div>
 	</div>
 	<!-- module masonry -->
+	<!-- module js-charts start -->
+	<div id="js-charts" class="container module-block">
+		<h2>Folder ./module/js-charts</h2>
+		<h2>charts 1</h2>
+		<div class="charts-1">
+			<canvas id="myChart" width="400" height="200"></canvas>
+		</div>
+		<h2>charts 2</h2>
+		<div class="charts-2">
+			<canvas id="myChart2" width="400" height="200"></canvas>
+		</div>
+	</div>
+	<!-- module js-charts -->
+	<!-- module aos start -->
+	<div id="aos" class="container module-block">
+		<h2>Folder ./module/aos</h2>
+		<div class="description-block">Used this plugin <a href="https://michalsnik.github.io/aos/">https://michalsnik.github.io/aos/</a></div>
+		<div style="background: tomato; padding: 20px" data-aos="fade-up" data-aos-offset="0" data-aos-delay="0" data-aos-duration="1000" data-aos-easing="ease-in-out" data-aos-mirror="false" data-aos-once="false" data-aos-anchor-placement="top-center">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque dolores blanditiis est quis neque eos, dolor reiciendis quas ea dignissimos, cupiditate consequuntur ipsam itaque eum possimus explicabo! Non atque, suscipit.</div>
+		<div data-aos="fade-right" style="background: blue; padding: 20px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias!</div>
+	</div>
+	<!-- module aos -->
+	<!-- module scrolldir start -->
+	<div id="scrolldir" class="container module-block">
+		<h2>Folder ./module/scrolldir</h2>
+		<div class="description-block">Used this plugin <a href="https://github.com/dollarshaveclub/scrolldir">https://github.com/dollarshaveclub/scrolldir</a></div>
+		<h2 class="scrolling scrolling-down">Down</h2>
+		<h2 class="scrolling scrolling-up">Up</h2>
+	</div>
+	<!-- module scrolldir -->
 	<!-- module load-more start -->
 	<div id="load-more" class="container module-block">
 		<h2>Folder ./module/load-more</h2>
@@ -789,7 +822,6 @@
 	<script>
 		window.jQuery || document.write('<script src="assets/js/jquery-3.2.1.min.js" defer><\/script>')
 </script>
-	<script src="assets/js/jquery.main.js" defer></script>
 	<script src="assets/js/module.js" defer></script>
 	<!-- loading JS End -->
 	<!--<Deject>-->
