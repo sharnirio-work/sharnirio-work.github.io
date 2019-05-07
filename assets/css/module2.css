@@ -1,2 +1,274 @@
+.border-animation {
+  --border-width: 5px;
+  --animation-speed: 0.5s;
+  --color: tomato;
+  color: var(--color);
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  transform: scale(1, 0.8);
+  border: var(--border-width) solid transparent;
+}
+
+.border-animation .border-animation__inner {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 20px 10px;
+  background: #333;
+  z-index: 1;
+  border: solid var(--border-width) transparent;
+}
+
+.border-animation:before, .border-animation:after {
+  content: '';
+  position: absolute;
+  background: var(--color);
+}
+
+.border-animation:focus:before, .border-animation:hover:before {
+  animation: beforeBorders var(--animation-speed) forwards ease-in-out;
+}
+
+.border-animation:focus:after, .border-animation:hover:after {
+  animation: afterBorders var(--animation-speed) forwards ease-in-out;
+}
+
+.border-animation:focus, .border-animation:hover {
+  animation: borderColors var(--animation-speed) steps(1) forwards;
+  outline: none;
+}
+
+.border-animation:focus .border-animation__inner, .border-animation:hover .border-animation__inner {
+  animation: background calc(var(--animation-speed) / 5 * 3) forwards ease-in-out;
+  animation-delay: calc(var(--animation-speed) / 5 * 2);
+}
+
+@keyframes beforeBorders {
+  0% {
+    top: calc(var(--border-width) * -1);
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    width: 0;
+    height: var(--border-width);
+  }
+  33% {
+    top: calc(var(--border-width) * -1);
+    left: calc(var(--border-width) * -1);
+    bottom: auto;
+    right: auto;
+    width: calc(var(--border-width) + 50%);
+    height: var(--border-width);
+  }
+  66% {
+    top: calc(var(--border-width) * -1);
+    left: calc(var(--border-width) * -1);
+    bottom: auto;
+    right: auto;
+    width: var(--border-width);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+  100% {
+    top: auto;
+    left: calc(var(--border-width) * -1);
+    bottom: calc(var(--border-width) * -1);
+    right: auto;
+    width: calc(var(--border-width) + 50%);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+}
+
+@keyframes afterBorders {
+  0% {
+    top: calc(var(--border-width) * -1);
+    left: auto;
+    bottom: auto;
+    right: 50%;
+    width: 0;
+    height: var(--border-width);
+  }
+  33% {
+    top: calc(var(--border-width) * -1);
+    left: auto;
+    bottom: auto;
+    right: calc(var(--border-width) * -1);
+    width: calc(var(--border-width) + 50%);
+    height: var(--border-width);
+  }
+  66% {
+    top: calc(var(--border-width) * -1);
+    left: auto;
+    bottom: auto;
+    right: calc(var(--border-width) * -1);
+    width: var(--border-width);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+  100% {
+    top: auto;
+    left: auto;
+    bottom: calc(var(--border-width) * -1);
+    right: calc(var(--border-width) * -1);
+    width: calc(var(--border-width) + 50%);
+    height: calc((var(--border-width) * 2) + 100%);
+  }
+}
+
+@keyframes borderColors {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  33% {
+    border-top-color: var(--color);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  66% {
+    border-top-color: var(--color);
+    border-right-color: var(--color);
+    border-bottom-color: transparent;
+    border-left-color: var(--color);
+  }
+  100% {
+    border-top-color: var(--color);
+    border-right-color: var(--color);
+    border-bottom-color: var(--color);
+    border-left-color: var(--color);
+  }
+}
+
+@keyframes background {
+  to {
+    background: #555;
+  }
+}
+
+@media (min-width: 850px) {
+  body {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .border-animation {
+    font-size: 6em;
+    line-height: 1em;
+  }
+}
+
+.switches-1 {
+  transition: .25s ease-in-out;
+}
+
+.switches-1 *,
+.switches-1 *:before,
+.switches-1 *:after {
+  transition: inherit;
+}
+
+.switches-1 .checkbox-label {
+  display: block;
+  background: #fff;
+  height: 30px;
+  width: 60px;
+  border-radius: 30px;
+  margin: 50px auto;
+  position: relative;
+  box-shadow: 0 0 0 2px #ccc;
+}
+
+.switches-1 .checkbox-label .on {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  opacity: 1;
+  min-width: 300px;
+  line-height: 30px;
+  opacity: 0;
+  color: #13bf11;
+}
+
+.switches-1 .checkbox-label .off {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  right: 75px;
+  text-align: right;
+  opacity: 1;
+  min-width: 300px;
+  line-height: 30px;
+  opacity: 1;
+  color: tomato;
+}
+
+.switches-1 .checkbox-label:before {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  border-radius: 28px;
+  height: 28px;
+  width: 30px;
+  background: tomato;
+}
+
+.switches-1 .checkbox {
+  position: absolute;
+  left: -5000px;
+}
+
+.switches-1 .checkbox:checked + .checkbox-label .on {
+  left: 75px;
+  opacity: 1;
+}
+
+.switches-1 .checkbox:checked + .checkbox-label .off {
+  right: 0px;
+  opacity: 0;
+}
+
+.switches-1 .checkbox:checked + .checkbox-label:before {
+  left: 30px;
+  background: #13bf11;
+}
+
+#leaderline {
+  overflow: hidden;
+}
+
+#start1 {
+  background-color: tomato;
+  width: 50px;
+  height: 50px;
+}
+
+#end1 {
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  float: right;
+}
+
+#end2 {
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+}
+
+#start2 {
+  background-color: tomato;
+  width: 50px;
+  height: 50px;
+  float: right;
+}
 
 /*# sourceMappingURL=sourcemaps/module2.css.map */
