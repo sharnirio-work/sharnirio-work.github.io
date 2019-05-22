@@ -33737,3 +33737,303 @@ function swiperInit() {
 
 
 /* module raiting-stars */
+
+/* module xZoom */
+// function on
+jQuery(document).ready(function() {
+	xzoomInit();
+});
+
+// more options https://payalord.github.io/xZoom/docs/index.html#options
+// function init
+function xzoomInit() {
+	jQuery(".xzoom, .xzoom-gallery").xzoom({Xoffset: 25});
+}
+/*!-----------------------------------------------------
+ * xZoom v1.0.14
+ * (c) 2013 by Azat Ahmedov & Elman Guseynov
+ * https://github.com/payalord
+ * https://dribbble.com/elmanvebs
+ * Apache License 2.0
+ *------------------------------------------------------*/
+;window.requestAnimFrame=(function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,20)}})();function detect_old_ie(){if(/MSIE (\d+\.\d+);/.test(navigator.userAgent)){var a=new Number(RegExp.$1);if(a>=9){return false}else{if(a>=8){return true}else{if(a>=7){return true}else{if(a>=6){return true}else{if(a>=5){return true}}}}}}else{return false}}(function(b){b.fn.xon=b.fn.on||b.fn.bind;b.fn.xoff=b.fn.off||b.fn.bind;function a(ax,aG){this.xzoom=true;var E=this;var M;var aD={};var ad,ak,aa,aj,ac,ai,am,R,aF,x,ao,Z,X;var ay,o,P,T,S,ab,p=new Array();var F=new Array(),aC=0,y=0;var I,Q,l,k;var aq,aB,aw,au,O,n,aL,aJ,aA,az,W,U,ap,al=0;var h,ah;var aK,B=0,z=0,ag=0,ae=0,s=0,r=0,at=0,ar=0,H=0,G=0;var D=detect_old_ie(),A=/MSIE (\d+\.\d+);/.test(navigator.userAgent),Y,V;var K,j="",J,t;var aI,f,m,q,g,i,an,d;this.adaptive=function(){if(m==0||q==0){ax.css("width","");ax.css("height","");m=ax.width();q=ax.height()}aH();aI=b(window).width();f=b(window).height();g=ax.width();i=ax.height();var u=false;if(m>aI||q>f){u=true}if(g>m){g=m}if(i>q){i=q}if(u){ax.width("100%")}else{if(m!=0){ax.width(m)}}if(an!="fullscreen"){if(aE()){E.options.position=an}else{E.options.position=E.options.mposition}}if(!E.options.lensReverse){d=E.options.adaptiveReverse&&E.options.position==E.options.mposition}};function av(){var aM=document.documentElement;var v=(window.pageXOffset||aM.scrollLeft)-(aM.clientLeft||0);var u=(window.pageYOffset||aM.scrollTop)-(aM.clientTop||0);return{left:v,top:u}}function aE(){var u=ax.offset();if(E.options.zoomWidth=="auto"){aa=g}else{aa=E.options.zoomWidth}if(E.options.zoomHeight=="auto"){aj=i}else{aj=E.options.zoomHeight}if(E.options.position.substr(0,1)=="#"){aD=b(E.options.position)}else{aD.length=0}if(aD.length!=0){return true}switch(an){case"lens":case"inside":return true;break;case"top":ai=u.top;am=u.left;R=ai-aj;aF=am;break;case"left":ai=u.top;am=u.left;R=ai;aF=am-aa;break;case"bottom":ai=u.top;am=u.left;R=ai+i;aF=am;break;case"right":default:ai=u.top;am=u.left;R=ai;aF=am+g}if(aF+aa>aI||aF<0){return false}return true}this.xscroll=function(v){Z=v.pageX||v.originalEvent.pageX;X=v.pageY||v.originalEvent.pageY;v.preventDefault();if(v.xscale){al=v.xscale;L(Z,X)}else{var aN=-v.originalEvent.detail||v.originalEvent.wheelDelta||v.xdelta;var u=Z;var aM=X;if(D){u=Y;aM=V}if(aN>0){aN=-0.05}else{aN=0.05}al+=aN;L(u,aM)}};function w(){if(E.options.lensShape=="circle"&&E.options.position=="lens"){aq=aB=Math.max(aq,aB);var u=(aq+Math.max(n,O)*2)/2;l.css({"-moz-border-radius":u,"-webkit-border-radius":u,"border-radius":u})}}function C(u,aN,aM,v){if(E.options.position=="lens"){Q.css({top:-(aN-ai)*az+(aB/2),left:-(u-am)*aA+(aq/2)});if(E.options.bg){l.css({"background-image":"url("+Q.attr("src")+")","background-repeat":"no-repeat","background-position":(-(u-am)*aA+(aq/2))+"px "+(-(aN-ai)*az+(aB/2))+"px"});if(aM&&v){l.css({"background-size":aM+"px "+v+"px"})}}}else{Q.css({top:-au*az,left:-aw*aA})}}function L(u,aO){if(al<-1){al=-1}if(al>1){al=1}var aN,v,aM;if(W<U){aN=W-(W-1)*al;v=aa*aN;aM=v/ap}else{aN=U-(U-1)*al;aM=aj*aN;v=aM*ap}if(aK){B=u;z=aO;ag=v;ae=aM}else{if(!aK){s=ag=v;r=ae=aM}aA=v/ad;az=aM/ak;aq=aa/aA;aB=aj/az;w();e(u,aO);Q.width(v);Q.height(aM);l.width(aq);l.height(aB);l.css({top:au-n,left:aw-O});k.css({top:-au,left:-aw});C(u,aO,v,aM)}}function c(){var u=at;var aP=ar;var v=H;var aM=G;var aO=s;var aN=r;u+=(B-u)/E.options.smoothLensMove;aP+=(z-aP)/E.options.smoothLensMove;v+=(B-v)/E.options.smoothZoomMove;aM+=(z-aM)/E.options.smoothZoomMove;aO+=(ag-aO)/E.options.smoothScale;aN+=(ae-aN)/E.options.smoothScale;aA=aO/ad;az=aN/ak;aq=aa/aA;aB=aj/az;w();e(u,aP);Q.width(aO);Q.height(aN);l.width(aq);l.height(aB);l.css({top:au-n,left:aw-O});k.css({top:-au,left:-aw});e(v,aM);C(u,aP,aO,aN);at=u;ar=aP;H=v;G=aM;s=aO;r=aN;if(aK){requestAnimFrame(c)}}function e(u,v){u-=am;v-=ai;aw=u-(aq/2);au=v-(aB/2);if(E.options.position!="lens"&&E.options.lensCollision){if(aw<0){aw=0}if(ad>=aq&&aw>ad-aq){aw=ad-aq}if(ad<aq){aw=ad/2-aq/2}if(au<0){au=0}if(ak>=aB&&au>ak-aB){au=ak-aB}if(ak<aB){au=ak/2-aB/2}}}function aH(){if(typeof ay!="undefined"){ay.remove()}if(typeof P!="undefined"){P.remove()}if(typeof t!="undefined"){t.remove()}}function N(u,aM){if(E.options.position=="fullscreen"){ad=b(window).width();ak=b(window).height()}else{ad=ax.width();ak=ax.height()}T.css({top:ak/2-T.height()/2,left:ad/2-T.width()/2});if(E.options.rootOutput||E.options.position=="fullscreen"){ac=ax.offset()}else{ac=ax.position()}ac.top=Math.round(ac.top);ac.left=Math.round(ac.left);switch(E.options.position){case"fullscreen":ai=av().top;am=av().left;R=0;aF=0;break;case"inside":ai=ac.top;am=ac.left;R=0;aF=0;break;case"top":ai=ac.top;am=ac.left;R=ai-aj;aF=am;break;case"left":ai=ac.top;am=ac.left;R=ai;aF=am-aa;break;case"bottom":ai=ac.top;am=ac.left;R=ai+ak;aF=am;break;case"right":default:ai=ac.top;am=ac.left;R=ai;aF=am+ad}ai-=ay.outerHeight()/2;am-=ay.outerWidth()/2;if(E.options.position.substr(0,1)=="#"){aD=b(E.options.position)}else{aD.length=0}if(aD.length==0&&E.options.position!="inside"&&E.options.position!="fullscreen"){if(!E.options.adaptive||!m||!q){m=ad;q=ak}if(E.options.zoomWidth=="auto"){aa=ad}else{aa=E.options.zoomWidth}if(E.options.zoomHeight=="auto"){aj=ak}else{aj=E.options.zoomHeight}R+=E.options.Yoffset;aF+=E.options.Xoffset;P.css({width:aa+"px",height:aj+"px",top:R,left:aF});if(E.options.position!="lens"){M.append(P)}}else{if(E.options.position=="inside"||E.options.position=="fullscreen"){aa=ad;aj=ak;P.css({width:aa+"px",height:aj+"px"});ay.append(P)}else{aa=aD.width();aj=aD.height();if(E.options.rootOutput){R=aD.offset().top;aF=aD.offset().left;M.append(P)}else{R=aD.position().top;aF=aD.position().left;aD.parent().append(P)}R+=(aD.outerHeight()-aj-P.outerHeight())/2;aF+=(aD.outerWidth()-aa-P.outerWidth())/2;P.css({width:aa+"px",height:aj+"px",top:R,left:aF})}}if(E.options.title&&j!=""){if(E.options.position=="inside"||E.options.position=="lens"||E.options.position=="fullscreen"){x=R;ao=aF;ay.append(t)}else{x=R+(P.outerHeight()-aj)/2;ao=aF+(P.outerWidth()-aa)/2;M.append(t)}t.css({width:aa+"px",height:aj+"px",top:x,left:ao})}ay.css({width:ad+"px",height:ak+"px",top:ai,left:am});o.css({width:ad+"px",height:ak+"px"});if(E.options.tint&&(E.options.position!="inside"&&E.options.position!="fullscreen")){o.css("background-color",E.options.tint)}else{if(D){o.css({"background-image":"url("+ax.attr("src")+")","background-color":"#fff"})}}I=new Image();var v="";if(A){v="?r="+(new Date()).getTime()}I.src=ax.attr("xoriginal")+v;Q=b(I);Q.css("position","absolute");I=new Image();I.src=ax.attr("src");k=b(I);k.css("position","absolute");k.width(ad);switch(E.options.position){case"fullscreen":case"inside":P.append(Q);break;case"lens":l.append(Q);if(E.options.bg){Q.css({display:"none"})}break;default:P.append(Q);l.append(k)}}this.openzoom=function(u){Z=u.pageX;X=u.pageY;if(E.options.adaptive){E.adaptive()}al=E.options.defaultScale;aK=false;ay=b("<div></div>");if(E.options.sourceClass!=""){ay.addClass(E.options.sourceClass)}ay.css("position","absolute");T=b("<div></div>");if(E.options.loadingClass!=""){T.addClass(E.options.loadingClass)}T.css("position","absolute");o=b('<div style="position: absolute; top: 0; left: 0;"></div>');ay.append(T);P=b("<div></div>");if(E.options.zoomClass!=""&&E.options.position!="fullscreen"){P.addClass(E.options.zoomClass)}P.css({position:"absolute",overflow:"hidden",opacity:1});if(E.options.title&&j!=""){t=b("<div></div>");J=b("<div></div>");t.css({position:"absolute",opacity:1});if(E.options.titleClass){J.addClass(E.options.titleClass)}J.html("<span>"+j+"</span>");t.append(J);if(E.options.fadeIn){t.css({opacity:0})}}l=b("<div></div>");if(E.options.lensClass!=""){l.addClass(E.options.lensClass)}l.css({position:"absolute",overflow:"hidden"});if(E.options.lens){lenstint=b("<div></div>");lenstint.css({position:"absolute",background:E.options.lens,opacity:E.options.lensOpacity,width:"100%",height:"100%",top:0,left:0,"z-index":9999});l.append(lenstint)}N(Z,X);if(E.options.position!="inside"&&E.options.position!="fullscreen"){if(E.options.tint||D){ay.append(o)}if(E.options.fadeIn){o.css({opacity:0});l.css({opacity:0});P.css({opacity:0})}M.append(ay)}else{if(E.options.fadeIn){P.css({opacity:0})}M.append(ay)}E.eventmove(ay);E.eventleave(ay);switch(E.options.position){case"inside":R-=(P.outerHeight()-P.height())/2;aF-=(P.outerWidth()-P.width())/2;break;case"top":R-=P.outerHeight()-P.height();aF-=(P.outerWidth()-P.width())/2;break;case"left":R-=(P.outerHeight()-P.height())/2;aF-=P.outerWidth()-P.width();break;case"bottom":aF-=(P.outerWidth()-P.width())/2;break;case"right":R-=(P.outerHeight()-P.height())/2}P.css({top:R,left:aF});Q.xon("load",function(aN){T.remove();if(!E.options.openOnSmall&&(Q.width()<aa||Q.height()<aj)){E.closezoom();aN.preventDefault();return false}if(E.options.scroll){E.eventscroll(ay)}if(E.options.position!="inside"&&E.options.position!="fullscreen"){ay.append(l);if(E.options.fadeIn){o.fadeTo(300,E.options.tintOpacity);l.fadeTo(300,1);P.fadeTo(300,1)}else{o.css({opacity:E.options.tintOpacity});l.css({opacity:1});P.css({opacity:1})}}else{if(E.options.fadeIn){P.fadeTo(300,1)}else{P.css({opacity:1})}}if(E.options.title&&j!=""){if(E.options.fadeIn){t.fadeTo(300,1)}else{t.css({opacity:1})}}h=Q.width();ah=Q.height();if(E.options.adaptive){if(ad<m||ak<q){k.width(ad);k.height(ak);h=ad/m*h;ah=ak/q*ah;Q.width(h);Q.height(ah)}}s=ag=h;r=ae=ah;ap=h/ah;W=h/aa;U=ah/aj;var aM,aO=["padding-","border-"];n=O=0;for(var v=0;v<aO.length;v++){aM=parseFloat(l.css(aO[v]+"top-width"));n+=aM!==aM?0:aM;aM=parseFloat(l.css(aO[v]+"bottom-width"));n+=aM!==aM?0:aM;aM=parseFloat(l.css(aO[v]+"left-width"));O+=aM!==aM?0:aM;aM=parseFloat(l.css(aO[v]+"right-width"));O+=aM!==aM?0:aM}n/=2;O/=2;H=at=B=Z;G=ar=z=X;L(Z,X);if(E.options.smooth){aK=true;requestAnimFrame(c)}E.eventclick(ay)})};this.movezoom=function(v){Z=v.pageX;X=v.pageY;if(D){Y=Z;V=X}var u=Z-am;var aM=X-ai;if(d){v.pageX-=(u-ad/2)*2;v.pageY-=(aM-ak/2)*2}if(u<0||u>ad||aM<0||aM>ak){ay.trigger("mouseleave")}if(E.options.smooth){B=v.pageX;z=v.pageY}else{w();e(v.pageX,v.pageY);l.css({top:au-n,left:aw-O});k.css({top:-au,left:-aw});C(v.pageX,v.pageY,0,0)}};this.eventdefault=function(){E.eventopen=function(u){u.xon("mouseenter",E.openzoom)};E.eventleave=function(u){u.xon("mouseleave",E.closezoom)};E.eventmove=function(u){u.xon("mousemove",E.movezoom)};E.eventscroll=function(u){u.xon("mousewheel DOMMouseScroll",E.xscroll)};E.eventclick=function(u){u.xon("click",function(v){ax.trigger("click")})}};this.eventunbind=function(){ax.xoff("mouseenter");E.eventopen=function(u){};E.eventleave=function(u){};E.eventmove=function(u){};E.eventscroll=function(u){};E.eventclick=function(u){}};this.init=function(u){E.options=b.extend({},b.fn.xzoom.defaults,u);if(E.options.rootOutput){M=b("body")}else{M=ax.parent()}an=E.options.position;d=E.options.lensReverse&&E.options.position=="inside";if(E.options.smoothZoomMove<1){E.options.smoothZoomMove=1}if(E.options.smoothLensMove<1){E.options.smoothLensMove=1}if(E.options.smoothScale<1){E.options.smoothScale=1}if(E.options.adaptive){b(window).xon("load",function(){m=ax.width();q=ax.height();E.adaptive();b(window).resize(E.adaptive)})}E.eventdefault();E.eventopen(ax)};this.destroy=function(){E.eventunbind()};this.closezoom=function(){aK=false;if(E.options.fadeOut){if(E.options.title&&j!=""){t.fadeOut(299)}if(E.options.position!="inside"||E.options.position!="fullscreen"){P.fadeOut(299);ay.fadeOut(300,function(){aH()})}else{ay.fadeOut(300,function(){aH()})}}else{aH()}};this.gallery=function(){var aM=new Array();var v,u=0;for(v=y;v<F.length;v++){aM[u]=F[v];u++}for(v=0;v<y;v++){aM[u]=F[v];u++}return{index:y,ogallery:F,cgallery:aM}};function af(u){var aM=u.attr("title");var v=u.attr("xtitle");if(v){return v}else{if(aM){return aM}else{return""}}}this.xappend=function(u){var v=u.parent();F[aC]=v.attr("href");v.data("xindex",aC);if(aC==0&&E.options.activeClass){K=u;K.addClass(E.options.activeClass)}if(aC==0&&E.options.title){j=af(u)}aC++;function aM(aO){aH();aO.preventDefault();if(E.options.activeClass){K.removeClass(E.options.activeClass);K=u;K.addClass(E.options.activeClass)}y=b(this).data("xindex");if(E.options.fadeTrans){ab=new Image();ab.src=ax.attr("src");S=b(ab);S.css({position:"absolute",top:ax.offset().top,left:ax.offset().left,width:ax.width(),height:ax.height()});b(document.body).append(S);S.fadeOut(200,function(){S.remove()})}var aP=v.attr("href");var aN=u.attr("xpreview")||u.attr("src");j=af(u);if(u.attr("title")){ax.attr("title",u.attr("title"))}ax.attr("xoriginal",aP);ax.removeAttr("style");ax.attr("src",aN);if(E.options.adaptive){m=ax.width();q=ax.height()}}if(E.options.hover){v.xon("mouseenter",v,aM)}v.xon("click",v,aM)};this.init(aG)}b.fn.xzoom=function(e){var c;var d;if(this.selector){var g=this.selector.split(",");for(var f in g){g[f]=b.trim(g[f])}this.each(function(h){if(g.length==1){if(h==0){c=b(this);if(typeof(c.data("xzoom"))!=="undefined"){return c.data("xzoom")}c.x=new a(c,e)}else{if(typeof(c.x)!=="undefined"){d=b(this);c.x.xappend(d)}}}else{if(b(this).is(g[0])&&h==0){c=b(this);if(typeof(c.data("xzoom"))!=="undefined"){return c.data("xzoom")}c.x=new a(c,e)}else{if(typeof(c.x)!=="undefined"&&!b(this).is(g[0])){d=b(this);c.x.xappend(d)}}}})}else{this.each(function(h){if(h==0){c=b(this);if(typeof(c.data("xzoom"))!=="undefined"){return c.data("xzoom")}c.x=new a(c,e)}else{if(typeof(c.x)!=="undefined"){d=b(this);c.x.xappend(d)}}})}if(typeof(c)==="undefined"){return false}c.data("xzoom",c.x);b(c).trigger("xzoom_ready");return c.x};b.fn.xzoom.defaults={position:"right",mposition:"inside",rootOutput:true,Xoffset:0,Yoffset:0,fadeIn:true,fadeTrans:true,fadeOut:false,smooth:true,smoothZoomMove:3,smoothLensMove:1,smoothScale:6,defaultScale:0,scroll:true,tint:false,tintOpacity:0.5,lens:false,lensOpacity:0.5,lensShape:"box",lensCollision:true,lensReverse:false,openOnSmall:true,zoomWidth:"auto",zoomHeight:"auto",sourceClass:"xzoom-source",loadingClass:"xzoom-loading",lensClass:"xzoom-lens",zoomClass:"xzoom-preview",activeClass:"xactive",hover:false,adaptive:true,adaptiveReverse:false,title:false,titleClass:"xzoom-caption",bg:false}})(jQuery);
+
+/* module hqy-lazyload */
+// function on
+jQuery(document).ready(function() {
+	hqyLazyloadInit();
+});
+
+// more options https://rockcookies.github.io/hqy-lazyload/documentation.html
+// function init
+function hqyLazyloadInit() {
+	var hqyLazy = new HqyLazyload({
+		offset: 10
+	}
+	);
+}
+
+/* hqy-lazyload@v1.0.1 | https://github.com/Rockcookies/hqy-lazyload | A fast lightweight pure JavaScript script for lazy loading and multi-serving images, iframes, videos and more. */
+!function(){function t(e){var o=n[e];return"object"==typeof o?o:(o.exports||(o.exports={},o.exports=o.call(o.exports,t,o.exports,o)||o.exports),o.exports)}function e(t,e){n[t]=e}var n={};e("./defaults.js",function(t,e,n){n.exports={root:document,container:!1,elements:".hqy-lazy",success:!1,error:!1,offset:2,separator:",",loadingClass:"hqy-loading",successClass:"hqy-loaded",errorClass:"hqy-error",breakpoints:!1,loadInvisible:!1,validateDelay:25,saveViewportOffsetDelay:50,srcset:"data-srcset",src:"data-src"}}),e("./dom.js",function(t,e,n){var o=t("./utils.js"),i=e.setAttr=function(t,e,n){t.setAttribute(e,n)},s=e.getAttr=function(t,e){return t.getAttribute(e)},r=(e.removeAttr=function(t,e){t.removeAttribute(e)},{}),a=e.hasClass=function(t,e){return r[e]||(r[e]=new RegExp("(\\s|^)"+e+"(\\s|$)")),r[e].test(s(t,"class")||"")&&r[e]};e.addClass=function(t,e){a(t,e)||i(t,"class",o.trim(s(t,"class")||"")+" "+e)},e.removeClass=function(t,e){var n;(n=a(t,e))&&i(t,"class",(s(t,"class")||"").replace(n," "))},e.toElements=function(t){if(o.isString(t))return e.querySelectorAll(t);if(t&&t.length){for(var n=[],i=t.length;i--;n.unshift(t[i]));return n}return t?[t]:[]},e.querySelectorAll=function(t,e){if(document.querySelectorAll)e=document.querySelectorAll(t);else{var n=document,o=n.styleSheets[0]||n.createStyleSheet();o.addRule(t,"f:b");for(var i=n.all,s=0,r=[],a=i.length;s<a;s++)i[s].currentStyle.f&&r.push(i[s]);o.removeRule(0),e=r}return e},e.contains=function(t,e,n){if(t==e)return!0;if(!e||!e.nodeType||1!=e.nodeType)return!1;if(t.contains)return t.contains(e);if(t.compareDocumentPosition)return!!(16&t.compareDocumentPosition(e));for(var o=e.parentNode;o&&o!=n;){if(o==t)return!0;o=o.parentNode}return!1},e.equal=function(t,e){return t.nodeName.toLowerCase()===e},e.bindEvent=function(t,e,n){t.attachEvent?t.attachEvent&&t.attachEvent("on"+e,n):t.addEventListener(e,n,{capture:!1,passive:!0})},e.unbindEvent=function(t,e,n){t.detachEvent?t.detachEvent&&t.detachEvent("on"+e,n):t.removeEventListener(e,n,{capture:!1,passive:!0})}}),e("./index.js",function(t,e,n){function o(t){this.init(t)}var i=t("./utils.js"),s=t("./defaults.js"),r=t("./dom.js"),a=t("./loadElement.js");n.exports=o;var l=(window.devicePixelRatio||window.screen.deviceXDPI/window.screen.logicalXDPI)>1,c=function(t,e){t.bottom=(window.innerHeight||document.documentElement.clientHeight)+e,t.right=(window.innerWidth||document.documentElement.clientWidth)+e};i.assign(o.prototype,a,{init:function(t){t=t||{},this.options={};for(var e in s)this.options[e]=t[e]||s[e];this.initContext(),this.render()},initContext:function(){var t=this.options,e=this.context={attrSrc:"src",attrSrcset:"srcset",source:t.src,elements:[],container:r.toElements(t.container)[0]||!1,destroyed:!0,isRetina:l,viewport:{top:0-t.offset,left:0-t.offset},validateT:i.throttle(function(){this.validate()},t.validateDelay,this),saveViewportOffsetT:i.throttle(function(){c(e.viewport,t.offset)},t.validateDelay,this)};c(e.viewport,t.offset),i.each(t.breakpoints,function(t){if(t.width>=window.screen.width)return e.source=t.src,!1})},render:function(){var t=this.options,e=this.context;e.elements=r.toElements(t.elements),e.destroyed&&(e.destroyed=!1,e.container&&r.bindEvent(e.container,"scroll",e.validateT),r.bindEvent(window,"resize",e.saveViewportOffsetT),r.bindEvent(window,"resize",e.validateT),r.bindEvent(window,"scroll",e.validateT)),this.validate()},destroy:function(){this.options;var t=this.context;t.container&&r.unbindEvent(t.container,"scroll",t.validateT),r.unbindEvent(window,"scroll",t.validateT),r.unbindEvent(window,"resize",t.validateT),r.unbindEvent(window,"resize",t.saveViewportOffsetT),t.elements=[],t.destroyed=!0},validate:function(){var t=this.options,e=this.context,n=e.elements,o=n.length;i.each(n,function(n){if(!(r.hasClass(n,e.loadingClass)||r.hasClass(n,t.successClass)||r.hasClass(n,t.errorClass)))return this.elementInView(n)?(this.loadElement(n),void o--):void 0;o--},this),o<=0&&this.destroy()},elementInView:function(t){var e=this.options,n=this.context,o=n.viewport,s=n.container,a=t.getBoundingClientRect();if(r.container&&r.contains(s,t)){var l=s.getBoundingClientRect();if(inView(l,o)){var c=l.top-e.offset,d=l.right+e.offset,u=l.bottom+e.offset,f=l.left-e.offset,h={top:c>o.top?c:o.top,right:d<o.right?d:o.right,bottom:u<o.bottom?u:o.bottom,left:f>o.left?f:o.left};return i.inView(a,h)}return!1}return i.inView(a,o)},load:function(t,e){this.context.elements=r.toElements(t),i.each(t,function(t){this.loadElement(element,e)},this)}})}),e("./loadElement.js",function(t,e,n){function o(t,e,n,o){var r=this,a=s.equal(t,"img"),l=e.split(n.separator),c=l[o.isRetina&&l.length>1?1:0],d=s.getAttr(t,n.srcset),u=t.parentNode,f=u&&s.equal(u,"picture");if(!a&&!i.isUndefined(t.src))return t.src=c,void this.loadElementSuccess(t);var h=new Image,v=function(){r.loadElementError(t,"invalid"),s.unbindEvent(h,"error",v),s.unbindEvent(h,"load",m)},m=function(){a?f||r.handleSrcsetElement(t,c,d):t.style.backgroundImage='url("'+c+'")',r.loadElementSuccess(t),s.unbindEvent(h,"error",v),s.unbindEvent(h,"load",m)};f&&(h=t,i.each(u.getElementsByTagName("source"),function(t){this.handleSourceElement(t,o.attrSrcset,n.srcset)},this)),s.addClass(t,n.loadingClass),s.bindEvent(h,"error",v),s.bindEvent(h,"load",m),this.handleSrcsetElement(h,c,d)}var i=t("./utils.js"),s=t("./dom.js");n.exports={handleSourceElement:function(t,e,n){var o=s.getAttr(t,n);o&&s.setAttr(t,e,o)},handleSrcsetElement:function(t,e,n){n&&s.setAttr(t,this.context.attrSrcset,n),t.src=e},loadElementSuccess:function(t){var e=this.options;s.addClass(t,e.successClass),s.removeClass(t,e.loadingClass),e.success&&e.success(t)},loadElementError:function(t,e){var n=this.options;n.error&&n.error(t,e),s.addClass(t,n.errorClass),s.removeClass(t,n.loadingClass)},loadElement:function(t,e){var n=this.options,r=this.context;if(e||n.loadInvisible||t.offsetWidth>0&&t.offsetHeight>0){var a=s.getAttr(t,r.source)||s.getAttr(t,n.src);a?o.call(this,t,a,n,r):(s.addClass(t,n.loadingClass),s.equal(t,"video")?(i.each(t.getElementsByTagName("source"),function(t){this.handleSourceElement(t,r.attrSrc,n.src)},this),t.load(),this.loadElementSuccess(t)):this.loadElementError(t,"missing"))}}}}),e("./utils.js",function(t,e,n){var o=e.hasOwnProperty=Object.prototype.hasOwnProperty,i=e.toString=Object.prototype.toString,s=e.each=function(t,e,n){if(t&&e)for(var o=t.length,i=0;i<o&&!1!==e.call(n,t[i],i);i++);};e.trim=function(t){return t.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,"")},e.assign=function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];if(null!=n)for(var i in n)o.call(n,i)&&(t[i]=n[i])}return t},e.isUndefined=function(t){return void 0===t},s(["Arguments","Function","String","Number","Date","RegExp","Error"],function(t){e["is"+t]=function(e){return i.call(e)==="[object "+t+"]"}}),e.throttle=function(t,e,n){var o=0;return function(){var i=+new Date;i-o<e||(o=i,t.apply(n,arguments))}},e.inView=function(t,e){return t.right>=e.left&&t.bottom>=e.top&&t.left<=e.right&&t.top<=e.bottom}}),"function"==typeof define&&define.amd?define(t("./index.js")):"object"==typeof exports?module.exports=t("./index.js"):window.HqyLazyload=t("./index.js")}();
+
+/* module photogrid */
+// function on
+jQuery(document).ready(function() {
+	photoGridInit();
+});
+
+// more info https://www.jqueryscript.net/gallery/jQuery-Responsive-Justified-Image-Gallery-Plugin-Photogrid-js.html
+// function init
+function photoGridInit() {
+	jQuery('.photoGrid').photoGrid({
+    itemSelector: ".item", // item selecor ;-)
+    resize: true, // automatic reload grid on window size change
+    rowHeight: jQuery(window).height() / 2, // looks best, but needs highres thumbs
+    callback: function() {} // fires when layouting grid is done
+  });
+}
+
+/*!
+ * jQuery photoGrid v1.0.0
+ * Justified Grid like Flickr or Google+ and Google Imagesearch
+ * by Marco Krage
+ * MIT License (see http://marco.mit-license.org)
+ */
+(function($) {
+	$.fn.photoGrid = function(options) {
+		var settings = $.extend({
+			itemSelector: ".item",
+			resize: true,
+			rowHeight: $(window).height() / 2,
+			callback: function() {}
+		}, options);
+		// Private Functions
+		_layout = function($container, itemSelector, callback) {
+			// Based on http://www.crispymtn.com/stories/the-algorithm-for-a-perfectly-balanced-photo-gallery
+			var ideal_height, index, partition, row_buffer, rows, summed_width, containerWidth, weights;
+			var photos = $container.find(itemSelector).toArray();
+			containerWidth = $container.width();
+			ideal_height = parseInt(settings.rowHeight);
+			summed_width = photos.reduce((function(sum, p) {
+				return sum += aspect_ratio(p) * ideal_height;
+			}), 0);
+			rows = Math.round(summed_width / containerWidth);
+			if (rows < 1) {
+				width = parseInt(ideal_height * aspect_ratio(photos));
+				height = ideal_height;
+				$(photos).css({
+					width: width - parseInt($(photos).css('marginLeft')) * 2,
+					height: height - parseInt($(photos).css('marginTop')) * 2
+				});
+			} else {
+				weights = photos.map(function(p) {
+					return parseInt(aspect_ratio(p) * 100);
+				});
+				partition = linear_partition(weights, rows);
+				index = 0;
+				row_buffer = [];
+				$.each(partition, function(i, row) {
+					var summed_ratios;
+					row_buffer = [];
+					$.each(row, function() {
+						return row_buffer.push(photos[index++]);
+					});
+					summed_ratios = row_buffer.reduce((function(sum, p) {
+						return sum += aspect_ratio(p);
+					}), 0);
+					return $.each(row_buffer, function(index, photo) {
+						width = parseInt(containerWidth / summed_ratios * aspect_ratio(photo));
+						height = parseInt(containerWidth / summed_ratios);
+						$(photo).css({
+							width: width - parseInt($(photo).css('marginLeft')) * 2,
+							height: height - parseInt($(photo).css('marginTop')) * 2
+						});
+					});
+				});
+			}
+			callback && callback();
+		}
+		aspect_ratio = function(p) {
+			// aspect ratio incl. margins
+			return $(p).outerWidth(true) / $(p).outerHeight(true);
+		}
+		// Source https://github.com/crispymtn/linear-partition
+		// Modified by Marco Krage to remove underscore.js dependency
+		linear_partition = function(seq, k) {
+			// underscore.js dependencys
+			var nativeIsArray = Array.isArray;
+			var nativeForEach = Array.prototype.forEach;
+			var _ = {};
+			var each = _.each = _.forEach = function(obj, iterator, context) {
+				if (obj == null) return obj;
+				if (nativeForEach && obj.forEach === nativeForEach) {
+					obj.forEach(iterator, context);
+				} else if (obj.length === +obj.length) {
+					for (var i = 0, length = obj.length; i < length; i++) {
+						if (iterator.call(context, obj[i], i, obj) === breaker) return;
+					}
+				} else {
+					var keys = _.keys(obj);
+					for (var i = 0, length = keys.length; i < length; i++) {
+						if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
+					}
+				}
+				return obj;
+			};
+			_.isArray = nativeIsArray || function(obj) {
+				return toString.call(obj) == '[object Array]';
+			};
+			_.max = function(obj, iterator, context) {
+				var result = -Infinity,
+					lastComputed = -Infinity,
+					value, computed;
+				if (!iterator && _.isArray(obj)) {
+					for (var i = 0, length = obj.length; i < length; i++) {
+						value = obj[i];
+						if (value > result) {
+							result = value;
+						}
+					}
+				} else {
+					each(obj, function(value, index, list) {
+						computed = iterator ? iterator.call(context, value, index, list) : value;
+						if (computed > lastComputed) {
+							result = value;
+							lastComputed = computed;
+						}
+					});
+				}
+				return result;
+			};
+			_.min = function(obj, iterator, context) {
+				var result = Infinity,
+					lastComputed = Infinity,
+					value, computed;
+				if (!iterator && _.isArray(obj)) {
+					for (var i = 0, length = obj.length; i < length; i++) {
+						value = obj[i];
+						if (value < result) {
+							result = value;
+						}
+					}
+				} else {
+					each(obj, function(value, index, list) {
+						computed = iterator ? iterator.call(context, value, index, list) : value;
+						if (computed < lastComputed) {
+							result = value;
+							lastComputed = computed;
+						}
+					});
+				}
+				return result;
+			};
+			// END: underscore.js dependencys
+			var ans, i, j, m, n, solution, table, x, y, _i, _j, _k, _l;
+			n = seq.length;
+			if (k <= 0) {
+				return [];
+			}
+			if (k > n) {
+				return seq.map(function(x) {
+					return [x];
+				});
+			}
+			table = (function() {
+				var _i, _results;
+				_results = [];
+				for (y = _i = 0; 0 <= n ? _i < n : _i > n; y = 0 <= n ? ++_i : --_i) {
+					_results.push((function() {
+						var _j, _results1;
+						_results1 = [];
+						for (x = _j = 0; 0 <= k ? _j < k : _j > k; x = 0 <= k ? ++_j : --_j) {
+							_results1.push(0);
+						}
+						return _results1;
+					})());
+				}
+				return _results;
+			})();
+			solution = (function() {
+				var _i, _ref, _results;
+				_results = [];
+				for (y = _i = 0, _ref = n - 1; 0 <= _ref ? _i < _ref : _i > _ref; y = 0 <= _ref ? ++_i : --_i) {
+					_results.push((function() {
+						var _j, _ref1, _results1;
+						_results1 = [];
+						for (x = _j = 0, _ref1 = k - 1; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; x = 0 <= _ref1 ? ++_j : --_j) {
+							_results1.push(0);
+						}
+						return _results1;
+					})());
+				}
+				return _results;
+			})();
+			for (i = _i = 0; 0 <= n ? _i < n : _i > n; i = 0 <= n ? ++_i : --_i) {
+				table[i][0] = seq[i] + (i ? table[i - 1][0] : 0);
+			}
+			for (j = _j = 0; 0 <= k ? _j < k : _j > k; j = 0 <= k ? ++_j : --_j) {
+				table[0][j] = seq[0];
+			}
+			for (i = _k = 1; 1 <= n ? _k < n : _k > n; i = 1 <= n ? ++_k : --_k) {
+				for (j = _l = 1; 1 <= k ? _l < k : _l > k; j = 1 <= k ? ++_l : --_l) {
+					m = _.min((function() {
+						var _m, _results;
+						_results = [];
+						for (x = _m = 0; 0 <= i ? _m < i : _m > i; x = 0 <= i ? ++_m : --_m) {
+							_results.push([_.max([table[x][j - 1], table[i][0] - table[x][0]]), x]);
+						}
+						return _results;
+					})(), function(o) {
+						return o[0];
+					});
+					table[i][j] = m[0];
+					solution[i - 1][j - 1] = m[1];
+				}
+			}
+			n = n - 1;
+			k = k - 2;
+			ans = [];
+			while (k >= 0) {
+				ans = [
+					(function() {
+						var _m, _ref, _ref1, _results;
+						_results = [];
+						for (i = _m = _ref = solution[n - 1][k] + 1, _ref1 = n + 1; _ref <= _ref1 ? _m < _ref1 : _m > _ref1; i = _ref <= _ref1 ? ++_m : --_m) {
+							_results.push(seq[i]);
+						}
+						return _results;
+					})()
+				].concat(ans);
+				n = solution[n - 1][k];
+				k = k - 1;
+			}
+			return [
+				(function() {
+					var _m, _ref, _results;
+					_results = [];
+					for (i = _m = 0, _ref = n + 1; 0 <= _ref ? _m < _ref : _m > _ref; i = 0 <= _ref ? ++_m : --_m) {
+						_results.push(seq[i]);
+					}
+					return _results;
+				})()
+			].concat(ans);
+		}
+		return this.each(function() {
+			$container = $(this);
+			// Start grid layout
+			_layout($container, settings.itemSelector, settings.callback);
+			// Window resize event
+			if (settings.resize) {
+				var resizeTimer;
+
+				function resizeFunction() {
+					_layout($container, settings.itemSelector);
+				};
+				$(window).resize(function() {
+					clearTimeout(resizeTimer);
+					resizeTimer = setTimeout(resizeFunction, 250);
+				});
+			}
+		});
+	};
+}(jQuery));
