@@ -34402,16 +34402,17 @@ function outsideElementInit(classOutsideElement) {
 jQuery(document).ready(function() {
 	arForBlockInit();
 });
-
 // more options http://michael.verhov.com/ru/post/canvas_arrows_for_div
 // function init
 function arForBlockInit() {
-	//Определим «общего родителя», на котором будут рисоваться стрелки (создаваться холст – canvas)
-	var arrowsDrawer1 = $cArrows('#ex1-common-parent');
-	//Рисуем стрелки .arrow(from, to)
-	arrowsDrawer1.arrow('.central-icon', '.icon');
+	// запуск только на странице где есть этот элемент (иначе в консоль кидает ошибку)
+	if (jQuery('#ex1-common-parent').length > 0) {
+		//Определим «общего родителя», на котором будут рисоваться стрелки (создаваться холст – canvas)
+		var arrowsDrawer1 = $cArrows('#ex1-common-parent');
+		//Рисуем стрелки .arrow(from, to)
+		arrowsDrawer1.arrow('.central-icon', '.icon');
+	}
 }
-
 /*********************************************************************************************************************
 	JavaScript | canvas arrows v.1.0 | updated: 25.10.2013 | author: michael verhov | http://michael.verhov.com | License: GNU GPL
 **********************************************************************************************************************/
