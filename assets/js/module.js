@@ -34037,3 +34037,702 @@ function photoGridInit() {
 		});
 	};
 }(jQuery));
+
+/* module matchHeight */
+// function on
+jQuery(document).ready(function() {
+	matchHeightInit();
+});
+
+// more options https://github.com/liabru/jquery-match-height
+// function init
+function matchHeightInit() {
+	jQuery('.item').matchHeight({
+		byRow: true,
+		property: 'height',
+		target: null,
+		remove: false
+	});
+}
+/**
+ * jquery-match-height master by @liabru
+ * http://brm.io/jquery-match-height/
+ * License: MIT
+ */
+;
+(function(factory) { // eslint-disable-line no-extra-semi
+	'use strict';
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define(['jquery'], factory);
+	} else if (typeof module !== 'undefined' && module.exports) {
+		// CommonJS
+		module.exports = factory(require('jquery'));
+	} else {
+		// Global
+		factory(jQuery);
+	}
+})(function($) {
+	/*
+	 *  internal
+	 */
+	var _previousResizeWidth = -1,
+		_updateTimeout = -1;
+	/*
+	 *  _parse
+	 *  value parse utility function
+	 */
+	var _parse = function(value) {
+		// parse value and convert NaN to 0
+		return parseFloat(value) || 0;
+	};
+	/*
+	 *  _rows
+	 *  utility function returns array of jQuery selections representing each row
+	 *  (as displayed after float wrapping applied by browser)
+	 */
+	var _rows = function(elements) {
+		var tolerance = 1,
+			$elements = $(elements),
+			lastTop = null,
+			rows = [];
+		// group elements by their top position
+		$elements.each(function() {
+			var $that = $(this),
+				top = $that.offset().top - _parse($that.css('margin-top')),
+				lastRow = rows.length > 0 ? rows[rows.length - 1] : null;
+			if (lastRow === null) {
+				// first item on the row, so just push it
+				rows.push($that);
+			} else {
+				// if the row top is the same, add to the row group
+				if (Math.floor(Math.abs(lastTop - top)) <= tolerance) {
+					rows[rows.length - 1] = lastRow.add($that);
+				} else {
+					// otherwise start a new row group
+					rows.push($that);
+				}
+			}
+			// keep track of the last row top
+			lastTop = top;
+		});
+		return rows;
+	};
+	/*
+	 *  _parseOptions
+	 *  handle plugin options
+	 */
+	var _parseOptions = function(options) {
+		var opts = {
+			byRow: true,
+			property: 'height',
+			target: null,
+			remove: false
+		};
+		if (typeof options === 'object') {
+			return $.extend(opts, options);
+		}
+		if (typeof options === 'boolean') {
+			opts.byRow = options;
+		} else if (options === 'remove') {
+			opts.remove = true;
+		}
+		return opts;
+	};
+	/*
+	 *  matchHeight
+	 *  plugin definition
+	 */
+	var matchHeight = $.fn.matchHeight = function(options) {
+		var opts = _parseOptions(options);
+		// handle remove
+		if (opts.remove) {
+			var that = this;
+			// remove fixed height from all selected elements
+			this.css(opts.property, '');
+			// remove selected elements from all groups
+			$.each(matchHeight._groups, function(key, group) {
+				group.elements = group.elements.not(that);
+			});
+			// TODO: cleanup empty groups
+			return this;
+		}
+		if (this.length <= 1 && !opts.target) {
+			return this;
+		}
+		// keep track of this group so we can re-apply later on load and resize events
+		matchHeight._groups.push({
+			elements: this,
+			options: opts
+		});
+		// match each element's height to the tallest element in the selection
+		matchHeight._apply(this, opts);
+		return this;
+	};
+	/*
+	 *  plugin global options
+	 */
+	matchHeight.version = 'master';
+	matchHeight._groups = [];
+	matchHeight._throttle = 80;
+	matchHeight._maintainScroll = false;
+	matchHeight._beforeUpdate = null;
+	matchHeight._afterUpdate = null;
+	matchHeight._rows = _rows;
+	matchHeight._parse = _parse;
+	matchHeight._parseOptions = _parseOptions;
+	/*
+	 *  matchHeight._apply
+	 *  apply matchHeight to given elements
+	 */
+	matchHeight._apply = function(elements, options) {
+		var opts = _parseOptions(options),
+			$elements = $(elements),
+			rows = [$elements];
+		// take note of scroll position
+		var scrollTop = $(window).scrollTop(),
+			htmlHeight = $('html').outerHeight(true);
+		// get hidden parents
+		var $hiddenParents = $elements.parents().filter(':hidden');
+		// cache the original inline style
+		$hiddenParents.each(function() {
+			var $that = $(this);
+			$that.data('style-cache', $that.attr('style'));
+		});
+		// temporarily must force hidden parents visible
+		$hiddenParents.css('display', 'block');
+		// get rows if using byRow, otherwise assume one row
+		if (opts.byRow && !opts.target) {
+			// must first force an arbitrary equal height so floating elements break evenly
+			$elements.each(function() {
+				var $that = $(this),
+					display = $that.css('display');
+				// temporarily force a usable display value
+				if (display !== 'inline-block' && display !== 'flex' && display !== 'inline-flex') {
+					display = 'block';
+				}
+				// cache the original inline style
+				$that.data('style-cache', $that.attr('style'));
+				$that.css({
+					'display': display,
+					'padding-top': '0',
+					'padding-bottom': '0',
+					'margin-top': '0',
+					'margin-bottom': '0',
+					'border-top-width': '0',
+					'border-bottom-width': '0',
+					'height': '100px',
+					'overflow': 'hidden'
+				});
+			});
+			// get the array of rows (based on element top position)
+			rows = _rows($elements);
+			// revert original inline styles
+			$elements.each(function() {
+				var $that = $(this);
+				$that.attr('style', $that.data('style-cache') || '');
+			});
+		}
+		$.each(rows, function(key, row) {
+			var $row = $(row),
+				targetHeight = 0;
+			if (!opts.target) {
+				// skip apply to rows with only one item
+				if (opts.byRow && $row.length <= 1) {
+					$row.css(opts.property, '');
+					return;
+				}
+				// iterate the row and find the max height
+				$row.each(function() {
+					var $that = $(this),
+						style = $that.attr('style'),
+						display = $that.css('display');
+					// temporarily force a usable display value
+					if (display !== 'inline-block' && display !== 'flex' && display !== 'inline-flex') {
+						display = 'block';
+					}
+					// ensure we get the correct actual height (and not a previously set height value)
+					var css = { 'display': display };
+					css[opts.property] = '';
+					$that.css(css);
+					// find the max height (including padding, but not margin)
+					if ($that.outerHeight(false) > targetHeight) {
+						targetHeight = $that.outerHeight(false);
+					}
+					// revert styles
+					if (style) {
+						$that.attr('style', style);
+					} else {
+						$that.css('display', '');
+					}
+				});
+			} else {
+				// if target set, use the height of the target element
+				targetHeight = opts.target.outerHeight(false);
+			}
+			// iterate the row and apply the height to all elements
+			$row.each(function() {
+				var $that = $(this),
+					verticalPadding = 0;
+				// don't apply to a target
+				if (opts.target && $that.is(opts.target)) {
+					return;
+				}
+				// handle padding and border correctly (required when not using border-box)
+				if ($that.css('box-sizing') !== 'border-box') {
+					verticalPadding += _parse($that.css('border-top-width')) + _parse($that.css('border-bottom-width'));
+					verticalPadding += _parse($that.css('padding-top')) + _parse($that.css('padding-bottom'));
+				}
+				// set the height (accounting for padding and border)
+				$that.css(opts.property, (targetHeight - verticalPadding) + 'px');
+			});
+		});
+		// revert hidden parents
+		$hiddenParents.each(function() {
+			var $that = $(this);
+			$that.attr('style', $that.data('style-cache') || null);
+		});
+		// restore scroll position if enabled
+		if (matchHeight._maintainScroll) {
+			$(window).scrollTop((scrollTop / htmlHeight) * $('html').outerHeight(true));
+		}
+		return this;
+	};
+	/*
+	 *  matchHeight._applyDataApi
+	 *  applies matchHeight to all elements with a data-match-height attribute
+	 */
+	matchHeight._applyDataApi = function() {
+		var groups = {};
+		// generate groups by their groupId set by elements using data-match-height
+		$('[data-match-height], [data-mh]').each(function() {
+			var $this = $(this),
+				groupId = $this.attr('data-mh') || $this.attr('data-match-height');
+			if (groupId in groups) {
+				groups[groupId] = groups[groupId].add($this);
+			} else {
+				groups[groupId] = $this;
+			}
+		});
+		// apply matchHeight to each group
+		$.each(groups, function() {
+			this.matchHeight(true);
+		});
+	};
+	/*
+	 *  matchHeight._update
+	 *  updates matchHeight on all current groups with their correct options
+	 */
+	var _update = function(event) {
+		if (matchHeight._beforeUpdate) {
+			matchHeight._beforeUpdate(event, matchHeight._groups);
+		}
+		$.each(matchHeight._groups, function() {
+			matchHeight._apply(this.elements, this.options);
+		});
+		if (matchHeight._afterUpdate) {
+			matchHeight._afterUpdate(event, matchHeight._groups);
+		}
+	};
+	matchHeight._update = function(throttle, event) {
+		// prevent update if fired from a resize event
+		// where the viewport width hasn't actually changed
+		// fixes an event looping bug in IE8
+		if (event && event.type === 'resize') {
+			var windowWidth = $(window).width();
+			if (windowWidth === _previousResizeWidth) {
+				return;
+			}
+			_previousResizeWidth = windowWidth;
+		}
+		// throttle updates
+		if (!throttle) {
+			_update(event);
+		} else if (_updateTimeout === -1) {
+			_updateTimeout = setTimeout(function() {
+				_update(event);
+				_updateTimeout = -1;
+			}, matchHeight._throttle);
+		}
+	};
+	/*
+	 *  bind events
+	 */
+	// apply on DOM ready event
+	$(matchHeight._applyDataApi);
+	// use on or bind where supported
+	var on = $.fn.on ? 'on' : 'bind';
+	// update heights on load and resize events
+	$(window)[on]('load', function(event) {
+		matchHeight._update(false, event);
+	});
+	// throttled update heights on resize events
+	$(window)[on]('resize orientationchange', function(event) {
+		matchHeight._update(true, event);
+	});
+});
+/* module outside-element */
+// function on
+jQuery(document).ready(function() {
+	outsideElementInit(".oe-inner");
+});
+
+// просто функция для генерации рандомного цвета - можно удалить
+function getRndColor() {
+	return 'hsl(' + (360 * Math.random()) + ',50%,50%)'; // H,S,L
+}
+
+// function init
+function outsideElementInit(classOutsideElement) {
+	jQuery(document).mouseup(function(e) { // событие клика по веб-документу
+		var div = jQuery(classOutsideElement);
+		if (!div.is(e.target) // если клик был не по нашему блоку
+			&& div.has(e.target).length === 0) { // и не по его дочерним элементам
+			// что делать с елементом
+			// div.hide(); // скрываем его
+			var getRndColorVar = getRndColor();
+			var getRndColorFull = "color:" + getRndColorVar;
+			div.attr("style", getRndColorFull) // меняем цвет текста на рандомный
+		}
+	});
+}
+
+/* module arrows-for-blocks */
+// function on
+jQuery(document).ready(function() {
+	arForBlockInit();
+});
+
+// more options http://michael.verhov.com/ru/post/canvas_arrows_for_div
+// function init
+function arForBlockInit() {
+	//Определим «общего родителя», на котором будут рисоваться стрелки (создаваться холст – canvas)
+	var arrowsDrawer1 = $cArrows('#ex1-common-parent');
+	//Рисуем стрелки .arrow(from, to)
+	arrowsDrawer1.arrow('.central-icon', '.icon');
+}
+
+/*********************************************************************************************************************
+	JavaScript | canvas arrows v.1.0 | updated: 25.10.2013 | author: michael verhov | http://michael.verhov.com | License: GNU GPL
+**********************************************************************************************************************/
+(function(window, undefined) {
+	var $cArrows = function(commonParent, genrealOptions) {
+		if (window === this) {
+			return new $cArrows(commonParent, genrealOptions);
+		}
+		// default options
+		this.options = {
+			base: {
+				canvasZIndex: -10,
+				alertErrors: true,
+				putToContainer: true
+				// + : canvasClass, canvasId    n.r.: ~lazy = false
+				// n.r.: redraw-recreate then rescale
+			},
+			arrow: {
+				connectionType: 'rectangleAuto', // : [rectangleAuto,center,ellipseAuto,side,rectangleAngle,ellipseAngle]  n.r.: ~point, ~centerOffset
+				arrowType: 'arrow', // : [arrow,line,] n.r.: ~line(or empty), ~bilateralArrow, ~fillArrow
+				arrowSize: 9
+			},
+			render: {
+				lineWidth: 2,
+				strokeStyle: '#2D6CA2'
+				// + : another canvas options e.g.: shadowColor: 'rgba(0, 0, 0, 0)', shadowBlur: 0, lineJoin: 'round',
+			}
+		};
+		this.CanvasStorage = [
+			[],
+			[],
+			[]
+		]; // stack for: [0] - for common nodes; [1] - for canvas; [2] - for drawn arrows [from, to, options]
+		// get common parent nodes
+		if (typeof commonParent === 'string') {
+			var commonParentResult = document.querySelectorAll(commonParent);
+		} else this.trowException('common parent must be specified');
+		if (commonParentResult.length > 0) {
+			for (var i = 0; i < commonParentResult.length; i++) {
+				this.CanvasStorage[0][i] = commonParentResult[i];
+			}
+			this.CanvasStorage[0].length = commonParentResult.length;
+		} else this.trowException('common parent not found');
+		// extend options
+		if (genrealOptions !== undefined) {
+			if (genrealOptions.base !== undefined) extend(this.options.base, genrealOptions.base);
+			if (genrealOptions.render !== undefined) extend(this.options.render, genrealOptions.render);
+			if (genrealOptions.arrow !== undefined) extend(this.options.arrow, genrealOptions.arrow);
+		}
+		// set up canvas for each node
+		for (iParent in this.CanvasStorage[0]) {
+			this.CanvasStorage[0][iParent].style.position = 'relative';
+			var canvas = document.createElement('canvas');
+			canvas.innerHTML = "";
+			canvas.style.position = 'absolute';
+			canvas.style.left = '0px';
+			canvas.style.top = '0px';
+			canvas.style.zIndex = this.options.base.canvasZIndex;
+			canvas.width = this.CanvasStorage[0][iParent].scrollWidth;
+			canvas.height = this.CanvasStorage[0][iParent].scrollHeight;
+			// set identifier, if necessary
+			if (this.options['canvasId'] !== undefined) { // && commonParentResult.length === 1
+				canvas.id = this.options['canvasId'];
+			}
+			if (this.options['canvasClass'] !== undefined) {
+				canvas.className = this.options['canvasClass'];
+			}
+			this.CanvasStorage[0][iParent].insertBefore(canvas, this.CanvasStorage[0][iParent].firstChild);
+			this.CanvasStorage[1].push(canvas);
+		}
+		return this;
+	};
+
+	function extend(target, source) {
+		if (target != null && source != null) {
+			for (name in source) {
+				if (source[name] !== undefined) {
+					target[name] = source[name];
+				}
+			}
+		}
+		return target;
+	}
+
+	function getOffset(canvas, childrenEl) {
+		var canv = canvas.getBoundingClientRect(),
+			box = childrenEl.getBoundingClientRect();
+		return {
+			top: box.top - canv.top,
+			left: box.left - canv.left,
+			width: childrenEl.offsetWidth,
+			height: childrenEl.offsetHeight
+		};
+	}
+
+	function DegToRad(deg) {
+		return deg * (Math.PI / 180);
+	}
+
+	function RadToDeg(deg) {
+		return deg * (180 / Math.PI);
+	}
+
+	function getSideCoord(coods, side) {
+		var x = 0,
+			y = 0;
+		switch (side) {
+			case 'top':
+				x = coods.left + (coods.width / 2);
+				y = coods.top;
+				break;
+			case 'right':
+				x = coods.left + coods.width;
+				y = coods.top + (coods.height / 2);
+				break;
+			case 'bottom':
+				x = coods.left + (coods.width / 2);
+				y = coods.top + coods.height;
+				break;
+			case 'left':
+				x = coods.left;
+				y = coods.top + (coods.height / 2);
+				break;
+			default: // def: bottom
+				x = coods.left + (coods.width / 2);
+				y = coods.top + coods.height;
+				break;
+		}
+		return { x: x, y: y }
+	}
+
+	function getCenterCoord(coods) {
+		return {
+			x: coods.left + coods.width / 2,
+			y: coods.top + (coods.height / 2)
+		}
+	}
+
+	function getAngleCoord(r, c, angle) {
+		var x, y,
+			rAngle = Math.acos(Math.sqrt(Math.pow(r.left + r.width - c.x, 2)) / Math.sqrt(Math.pow(r.left + r.width - c.x, 2) + Math.pow(r.top - c.y, 2)));
+		if (angle >= 2 * Math.PI - rAngle || angle < rAngle) {
+			x = r.left + r.width;
+			y = c.y + Math.tan(angle) * (r.left + r.width - c.x);
+		} else
+		if (angle >= rAngle && angle < Math.PI - rAngle) {
+			x = c.x - ((r.top - c.y) / Math.tan(angle));
+			y = r.top + r.height;
+		} else
+		if (angle >= Math.PI - rAngle && angle < Math.PI + rAngle) {
+			x = r.left;
+			y = c.y - Math.tan(angle) * (r.left + r.width - c.x);
+		} else
+		if (angle >= Math.PI + rAngle) {
+			x = c.x + ((r.top - c.y) / Math.tan(angle));
+			y = r.top;
+		}
+		return {
+			x: x,
+			y: y
+		};
+	}
+
+	function getEllipseCoord(r, c, angle) {
+		return {
+			x: c.x + (r.width / 2) * Math.cos(angle),
+			y: c.y + (r.height / 2) * Math.sin(angle)
+		};
+	}
+
+	function canvasDraw(context, p1, p2, otp) { //fromx, fromy, tox, toy
+		var headlen = otp.arrowSize;
+		var angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+		context.beginPath();
+		context.moveTo(p1.x, p1.y);
+		context.lineTo(p2.x, p2.y);
+		switch (otp.arrowType) {
+			case 'arrow':
+				context.moveTo(p2.x - headlen * Math.cos(angle - Math.PI / 6), p2.y - headlen * Math.sin(angle - Math.PI / 6));
+				context.lineTo(p2.x, p2.y);
+				context.lineTo(p2.x - headlen * Math.cos(angle + Math.PI / 6), p2.y - headlen * Math.sin(angle + Math.PI / 6));
+				break;
+			case 'line':
+				// line already exist
+				break;
+			case 'double-headed':
+				// start
+				context.moveTo(p1.x + headlen * Math.cos(angle - Math.PI / 6), p1.y + headlen * Math.sin(angle - Math.PI / 6));
+				context.lineTo(p1.x, p1.y);
+				context.lineTo(p1.x + headlen * Math.cos(angle + Math.PI / 6), p1.y + headlen * Math.sin(angle + Math.PI / 6));
+				// end
+				context.moveTo(p2.x - headlen * Math.cos(angle - Math.PI / 6), p2.y - headlen * Math.sin(angle - Math.PI / 6));
+				context.lineTo(p2.x, p2.y);
+				context.lineTo(p2.x - headlen * Math.cos(angle + Math.PI / 6), p2.y - headlen * Math.sin(angle + Math.PI / 6));
+				break;
+			default:
+				break;
+		}
+		context.stroke();
+	}
+
+	function drawArrow(canvas, div1, div2, gRenderOptions, customOptions) { //, color, lineWidth, shadowColor, shadowBlur , div1side, div2side
+		var context = canvas.getContext('2d'),
+			arrowOpt = {},
+			dot1 = getOffset(canvas, div1),
+			dot2 = getOffset(canvas, div2);
+		// extend here with custom
+		extend(arrowOpt, gRenderOptions.arrow);
+		extend(context, gRenderOptions.render);
+		if (customOptions !== undefined) {
+			if (customOptions.render !== undefined) extend(context, customOptions.render);
+			if (customOptions.arrow !== undefined) extend(arrowOpt, customOptions.arrow);
+		}
+		switch (arrowOpt.connectionType) {
+			case 'rectangleAuto':
+				var c1 = getCenterCoord(dot1),
+					c2 = getCenterCoord(dot2);
+				dot1 = getAngleCoord(dot1, c1, Math.atan2(c1.y - c2.y, c1.x - c2.x) + Math.PI);
+				dot2 = getAngleCoord(dot2, c2, Math.atan2(c2.y - c1.y, c2.x - c1.x) + Math.PI);
+				break;
+			case 'center':
+				dot1 = getCenterCoord(dot1);
+				dot2 = getCenterCoord(dot2);
+				break;
+			case 'ellipseAuto':
+				var c1 = getCenterCoord(dot1),
+					c2 = getCenterCoord(dot2);
+				dot1 = getEllipseCoord(dot1, c1, Math.atan2(c2.y - c1.y, c2.x - c1.x));
+				dot2 = getEllipseCoord(dot2, c2, Math.atan2(c1.y - c2.y, c1.x - c2.x));
+				break;
+			case 'side':
+				dot1 = getSideCoord(dot1, arrowOpt.sideFrom);
+				dot2 = getSideCoord(dot2, arrowOpt.sideTo);
+				break;
+			case 'rectangleAngle':
+				dot1 = getAngleCoord(dot1, getCenterCoord(dot1), DegToRad(arrowOpt.angleFrom));
+				dot2 = getAngleCoord(dot2, getCenterCoord(dot2), DegToRad(arrowOpt.angleTo));
+				break;
+			case 'ellipseAngle':
+				dot1 = getEllipseCoord(dot1, getCenterCoord(dot1), DegToRad(arrowOpt.angleFrom));
+				dot2 = getEllipseCoord(dot2, getCenterCoord(dot2), DegToRad(arrowOpt.angleTo));
+				break;
+			default:
+				break;
+		}
+		canvasDraw(context, dot1, dot2, arrowOpt); // - put type of arrow here
+	}
+	$cArrows.fn = $cArrows.prototype = {
+		trowException: function(ex) {
+			if (this.options.base.alertErrors === true) alert('CanvasArrows error: ' + ex);
+			throw new Error(ex);
+		},
+		arrow: function(from, to, customOptions) {
+			for (iParent in this.CanvasStorage[0]) {
+				var fromChildrens = this.CanvasStorage[0][iParent].querySelectorAll(from);
+				var toChildrens = this.CanvasStorage[0][iParent].querySelectorAll(to);
+				for (var fi = 0; fi < fromChildrens.length; fi++) {
+					for (var ti = 0; ti < toChildrens.length; ti++) {
+						drawArrow(this.CanvasStorage[1][iParent], fromChildrens[fi], toChildrens[ti], this.options, customOptions);
+					}
+					if (this.options.base.putToContainer === true) this.CanvasStorage[2].push([from, to, customOptions]);
+				}
+			}
+			return this;
+		},
+		arrows: function(arrowsArr) {
+			for (var i = 0; i < arrowsArr.length; i++) {
+				this.arrow(arrowsArr[i][0], arrowsArr[i][1], arrowsArr[i][2]);
+			}
+			return this;
+		},
+		clear: function() {
+			for (iCanvas in this.CanvasStorage[1]) {
+				var canvas = this.CanvasStorage[1][iCanvas];
+				var context = canvas.getContext('2d');
+				context.clearRect(0, 0, canvas.width, canvas.height);
+			}
+			return this;
+		},
+		draw: function() {
+			var putToContainer = this.options.base.putToContainer;
+			this.options.base.putToContainer = false;
+			for (iArrow in this.CanvasStorage[2]) {
+				this.arrow(this.CanvasStorage[2][iArrow][0], this.CanvasStorage[2][iArrow][1], this.CanvasStorage[2][iArrow][2]);
+			}
+			this.options.base.putToContainer = putToContainer;
+			return this;
+		},
+		redraw: function() {
+			return this.clear().draw();
+		},
+		updateOptions: function(options) {
+			if (options.base !== undefined) extend(this.options.base, options.base);
+			if (options.render !== undefined) extend(this.options.render, options.render);
+			if (options.arrow !== undefined) extend(this.options.arrow, options.arrow);
+			return this;
+		}
+	};
+	window.$cArrows = $cArrows;
+})(window);
+
+/* module slip-hover */
+// function on
+jQuery(document).ready(function() {
+	sliphoverInit();
+});
+
+// more options http://wayou.github.io/SlipHover/#quick-start
+// function init
+function sliphoverInit() {
+	jQuery(".slip-container").sliphover({
+			duration: 100,
+			backgroundColor: 'rgba(0,0,0,.8)',
+	});
+}
+
+/**
+ * sliphover v2.0.6
+ * require jquery 1.7+
+ * wayou June 24, 2014,
+ * MIT License
+ * for more info pls visit :https://github.com/wayou/SlipHover
+ */
+!function(e,t){function i(t,i){this.element=t,this.settings=e.extend({},r,i),this._defaults=r,this._name=o,this.version="v2.0.5",this.init()}var o="sliphover",r={target:"img",caption:"title",duration:"fast",fontColor:"#fff",textAlign:"center",verticalMiddle:!0,backgroundColor:"rgba(0,0,0,.7)",backgroundColorAttr:null,reverse:!1,height:"100%",withLink:!0};i.prototype={init:function(){if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){var t=this,i=this.settings.target;e(this.element).off("mouseenter.sliphover",i).on("mouseenter.sliphover",i,function(){var i=e(this),o=t.createContainer(i);o.off("mouseenter.sliphover mouseleave.sliphover").on("mouseenter.sliphover mouseleave.sliphover",function(r){var n=t.getDirection(e(this),r);if(n=t.settings.reverse?n=(n+2)%4:n,"mouseenter"===r.type){var s=o.find(".sliphover-overlay");s.length||(s=t.createOverlay(t,n,i),e(this).html(s)),t.slideIn(t,s)}else t.removeOverlay(t,e(this),n)})})}},createContainer:function(t){var i=t.offset().top,o=t.offset().left,r=t.outerWidth(),n=t.outerHeight();zIndex=t.css("z-index");var s=e("<div>",{"class":"sliphover-container"}).css({pointerEvent:"none",width:r,height:n,position:"absolute",overflow:"hidden",top:i,left:o,borderRadius:t.css("border-radius"),zIndex:zIndex==+zIndex?zIndex+1:999});return e("body").append(s),s},createOverlay:function(i,o,r){var n,s,a,l,h,c;switch(o){case 0:s=0,n="100%";break;case 1:s="100%",n=0;break;case 2:s=0,n="-100%";break;case 3:s="-100%",n=0;break;default:t.console.error("error when get direction of the mouse")}if(h=i.settings.verticalMiddle?e("<div>").css({display:"table-cell",verticalAlign:"middle"}).html(r.attr(i.settings.caption)):r.attr(i.settings.caption),c=r.parent("a"),c.length&&i.settings.withLink){var d=c.attr("href"),f=c.attr("target");a=e("<a>",{"class":"sliphover-overlay",href:d||"#",target:f||"_self"}).css({textDecoration:"none"})}else a=e("<div>",{"class":"sliphover-overlay"});return l=i.settings.backgroundColorAttr?r.attr(i.settings.backgroundColorAttr):i.settings.backgroundColor,a.css({width:"100%",height:i.settings.height,position:"absolute",left:s,bottom:n,display:i.settings.verticalMiddle?"table":"inline",textAlign:i.settings.textAlign,color:i.settings.fontColor,backgroundColor:l}).html(h),a},slideIn:function(e,t){t.stop().animate({left:0,bottom:0},e.settings.duration)},removeOverlay:function(e,i,o){var r,n=i.find(".sliphover-overlay");switch(o){case 0:r={bottom:"100%",left:0};break;case 1:r={bottom:0,left:"100%"};break;case 2:r={bottom:"-100%",left:0};break;case 3:r={bottom:0,left:"-100%"};break;default:t.console.error("error when get direction of the mouse")}n.stop().animate(r,e.settings.duration,function(){i.remove()})},getDirection:function(e,t){var i=e.width(),o=e.height(),r=(t.pageX-e.offset().left-i/2)*(i>o?o/i:1),n=(t.pageY-e.offset().top-o/2)*(o>i?i/o:1),s=Math.round((Math.atan2(n,r)*(180/Math.PI)+180)/90+3)%4;return s}},e.fn[o]=function(t){return this.each(function(){e.data(this,"plugin_"+o)||e.data(this,"plugin_"+o,new i(this,t))}),this}}(jQuery,window,document);

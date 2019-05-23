@@ -5,7 +5,7 @@
   list-style: none;
 }
 
-.clearfix:after {
+.clearfix:after, .mh-row:after, .item-wrapper:after {
   content: '';
   display: block;
   clear: both;
@@ -11039,6 +11039,264 @@ button.swiper-pagination-bullet {
   width: 100%;
   max-width: 100%;
   max-height: 100%;
+}
+
+.multiscroll .ms-section {
+  text-align: center;
+  font-size: 40px;
+  color: #000;
+}
+
+.just-link {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+  color: red;
+  font-size: 20px;
+}
+
+.just-link a {
+  color: #b30000;
+}
+
+#multiscroll-nav ul li:before {
+  display: none;
+}
+
+.ms-section {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ms-section.ms-table {
+  display: table;
+  width: 100%;
+}
+
+.ms-tableCell {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+
+.ms-easing {
+  transition: all 0.7s ease-out;
+}
+
+#multiscroll-nav {
+  position: fixed;
+  z-index: 100;
+  margin-top: -32px;
+  top: 50%;
+  opacity: 1;
+}
+
+#multiscroll-nav.right {
+  right: 17px;
+}
+
+#multiscroll-nav.left {
+  left: 17px;
+}
+
+#multiscroll-nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+#multiscroll-nav li {
+  display: block;
+  width: 14px;
+  height: 13px;
+  margin: 7px;
+  position: relative;
+}
+
+#multiscroll-nav li a {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#multiscroll-nav li .active span {
+  background: #333;
+}
+
+#multiscroll-nav span {
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #000;
+  background: rgba(0, 0, 0, 0);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+}
+
+.multiscroll-tooltip {
+  position: absolute;
+  color: #fff;
+  font-size: 14px;
+  font-family: arial, helvetica, sans-serif;
+  top: -2px;
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+.multiscroll-tooltip.right {
+  right: 20px;
+}
+
+.multiscroll-tooltip.left {
+  left: 20px;
+}
+
+.ms-responsive .ms-hide {
+  display: none;
+}
+
+.ms-scrollable {
+  overflow: hidden;
+  position: relative;
+}
+
+.ms-scroller {
+  overflow: hidden;
+}
+
+.iScrollIndicator {
+  border: 0 !important;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  z-index: 70;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#menu li {
+  display: inline-block;
+  margin: 10px;
+  color: #000;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#menu li.active {
+  background: #666;
+  background: white;
+  color: #000;
+}
+
+#menu li.active a {
+  color: #000;
+}
+
+#menu li.active a:hover {
+  color: #000;
+}
+
+#menu li a {
+  text-decoration: none;
+  color: #000;
+}
+
+#menu li:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+#menu li a,
+#menu li.active a {
+  padding: 9px 18px;
+  display: block;
+}
+
+.mh-row, .item-wrapper {
+  margin-top: 20px;
+}
+
+.mh-row > div, .item-wrapper > div {
+  float: left;
+  padding: 20px;
+  background-color: tomato;
+  width: 25%;
+}
+
+.oe-inner {
+  color: tomato;
+  font-size: 40px;
+}
+
+.arrows-for-blocks {
+  height: 400px;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.arrows-for-blocks li {
+  position: absolute;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.arrows-for-blocks li:nth-of-type(1) {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.arrows-for-blocks li:nth-of-type(2) {
+  top: 0%;
+  left: 0%;
+}
+
+.arrows-for-blocks li:nth-of-type(3) {
+  top: 0%;
+  right: 0%;
+}
+
+.arrows-for-blocks li:nth-of-type(4) {
+  bottom: 0%;
+  left: 0%;
+}
+
+.arrows-for-blocks li:nth-of-type(5) {
+  bottom: 0%;
+  right: 0%;
+}
+
+.slip-container li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+.slip-container li img {
+  height: 200px;
+  border: 5px solid #999;
 }
 
 /*# sourceMappingURL=sourcemaps/module.css.map */

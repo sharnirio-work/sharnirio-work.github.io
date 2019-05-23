@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Module 2</title>
+	<link media="all" rel="stylesheet" href="assets/css/module.css">
+	<link media="all" rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="body-module" class="body-module">
+	<!-- module multiscroll start -->
+	<div id="multiscroll-wrapper">
+		<h2 class="just-link">
+			<p>Link to project <a href="https://github.com/alvarotrigo/multiscroll.js#usage">https://github.com/alvarotrigo/multiscroll.js#usage</a></p>
+			<p>Folder ./module/multiscroll</p>
+		</h2>
+		<ul id="menu" class="multiscroll-menu">
+			<li data-menuanchor="first" class="active"><a href="#first">First section</a></li>
+			<li data-menuanchor="second"><a href="#second">Second section</a></li>
+			<li data-menuanchor="third"><a href="#third">Third section</a></li>
+		</ul>
+		<div id="multiscroll" class="multiscroll">
+			<div class="ms-left">
+				<div class="ms-section section1" data-anchor="first">Some section11</div>
+				<div class="ms-section section2" data-anchor="second">Some section21</div>
+				<div class="ms-section section3" data-anchor="third">Some section31</div>
+			</div>
+			<div class="ms-right">
+				<div class="ms-section section1" data-anchor="first">Some section12</div>
+				<div class="ms-section section2" data-anchor="second">Some section22</div>
+				<div class="ms-section section3" data-anchor="third">Some section32</div>
+			</div>
+		</div>
+	</div>
+	<!-- module multiscroll -->
+	<!-- loading JS Start -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		window.jQuery || document.write('<script src="assets/js/jquery-3.2.1.min.js" defer><\/script>')
+</script>
+	<script src="assets/js/module-multiscroll.js" defer></script>
+	<!-- loading JS End -->
+	<!--<Deject>-->
+	<!--Removing zone start -->
+	<link rel="stylesheet" href="assets/css/development.css">
+	<div class="dev-scripts-block">
+		<div class="responsive-breakpoint">
+			<div class="responsive-breakpoint-checkbox">
+				<input class="responsive-breakpoint-checkbox__checkbox" type="checkbox" id="responsive-breakpoint-checkbox__checkbox" />
+				<label class="responsive-breakpoint-checkbox__label" for="responsive-breakpoint-checkbox__checkbox"></label>
+			</div>
+			<!-- <div class="responsive-breakpoint__min">MOBILE FIRST</div> -->
+			<div class="responsive-breakpoint__max">breakpoint</div>
+			<div class="responsive-breakpoint__strictly"></div>
+			<div class="responsive-breakpoint__pixel-ratio"></div>
+		</div>
+		<div class="scroll-up-plugins">
+			<div class="scroll-up-plugins__button scroll-up-plugins__button--25"></div>
+			<div class="scroll-up-plugins__button scroll-up-plugins__button--50"></div>
+			<div class="scroll-up-plugins__button scroll-up-plugins__button--75"></div>
+		</div>
+		<div class="widget_wrap">
+			<div class="widget_list"></div>
+		</div>
+	</div>
+	<div class="button-all-off">
+		<div class="button-all-off button-all-off--aava">
+			<input id="button-all-off" type="checkbox" checked="checked">
+			<label for="button-all-off" data-on-text="On" data-off-text="Off"></label>
+		</div>
+	</div>
+	<script src="assets/js/development.js"></script>
+	<!--Removing zone end -->
+	<!--</Deject>-->
+</body>
+
+</html>
