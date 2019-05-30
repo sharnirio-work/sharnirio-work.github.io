@@ -15,16 +15,117 @@
 			<a href="#many-buttons">many-buttons</a>
 			<a href="#switches">switches</a>
 			<a href="#leaderline">leaderline</a>
+			<a href="#jquery-scroolly">jquery-scroolly</a>
 			<a href="#greensock">greensock</a>
 		</div>
 	</div>
 	<!-- module many-buttons start -->
 	<div id="many-buttons" class="container module-block">
 		<h2>Folder ./module/many-buttons</h2>
+		<h3>Border animation button</h3>
 		<div class="button-1">
 			<a class="border-animation" href="#">
 				<span class="border-animation__inner">Border animation</span>
 			</a>
+		</div>
+		<h3>Animate text</h3>
+		<div class="button-2">
+			<p>
+				<span class="button-text-annimate-wrap">
+					<button aria-label='Thanks' class='button-text-annimate' data-text='Hover me' href='#'>
+						<span>T</span>
+						<span>h</span>
+						<span>a</span>
+						<span>n</span>
+						<span>k</span>
+						<span>s</span>
+					</button>
+				</span>
+			</p>
+		</div>
+		<h3>Animate button with gradient</h3>
+		<div class="button-3">
+			<a href="#" class="btn-grad">
+				<svg width="277" height="62">
+					<defs>
+						<linearGradient id="grad1">
+							<stop offset="0%" stop-color="#FF8282" />
+							<stop offset="100%" stop-color="#E178ED" />
+						</linearGradient>
+					</defs>
+					<rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
+				</svg>
+				<span>Welcome in my world</span>
+			</a>
+		</div>
+		<h3>Animate button with atom effect at hover</h3>
+		<div class="button-4">
+			<div class="btn-atom">
+				<span>Atom</span>
+				<div class="dot"></div>
+			</div>
+		</div>
+		<h3>Material Button Hover</h3>
+		<div class="button-5">
+			<div class="btn-mat">
+				<a class="btnTwo" href="#">
+					<span class="btnText2">X</span>
+				</a>
+				<span class="btnText">CANCEL</span>
+			</div>
+		</div>
+		<h3>Beautifully animation button, input</h3>
+		<div class="button-group1">
+			<p>
+				<button class="button-bubble1">Bubble</button>
+				<button class="button-bubble2">Bubble</button>
+				<button class="button-bubble3">Bubble</button>
+				<button class="button-pulse">Pulse</button>
+				<button class="button-slide1">Slide</button>
+				<button class="button-slide2">Slide</button>
+				<span class="button-cross-wrap">
+					<button class="button-cross"><span></span><span></span><span></span><span></span>Button</button>
+				</span>
+			</p>
+			<p>
+				<div class="input-outline">
+					<input type="text" placeholder="Input Outline">
+					<span class="bottom"></span>
+					<span class="right"></span>
+					<span class="top"></span>
+					<span class="left"></span>
+				</div>
+				<div class="input-trace">
+					<input type="text" placeholder="Input Trace">
+					<span class="bottom"></span>
+					<span class="right"></span>
+					<span class="top"></span>
+					<span class="left"></span>
+				</div>
+				<div class="input-underline">
+					<input type="text" placeholder="Input Underline">
+					<span></span>
+				</div>
+			</p>
+		</div>
+		<div class="button-group2">
+			<h3>Ripple effect using CSS Variables (effect for click)</h3>
+			<button anim="ripple">Button</button>
+			<button class="button2" anim="ripple">Link</button>
+			<button class="button2 rainbow" anim="ripple">Rainbow</button>
+			<!-- need use this script -->
+			<script>
+				[].map.call(document.querySelectorAll('[anim="ripple"]'), function(el) {
+			el.addEventListener('click', function(e) {
+				e = e.touches ? e.touches[0] : e;
+				var r = el.getBoundingClientRect(),
+					d = Math.sqrt(Math.pow(r.width, 2) + Math.pow(r.height, 2)) * 2;
+				el.style.cssText = "--s: 0; --o: 1;";
+				el.offsetTop;
+				el.style.cssText = "--t: 1; --o: 0; --d: " + d + "; --x:" + (e.clientX - r.left) + "; --y:" + (e.clientY - r.top) + ";";
+			});
+		});
+		</script>
 		</div>
 	</div>
 	<!-- module many-buttons -->
@@ -57,6 +158,70 @@
 		<div id="end1">end</div>
 	</div>
 	<!-- module leaderline -->
+	<!-- module jquery-scroolly start -->
+	<div id="jquery-scroolly" class="container module-block">
+		<h2>Folder ./module/jquery-scroolly</h2>
+		<div class="description-block">Used this plugin <a href="http://leafo.net/sticky-kit/">http://leafo.net/sticky-kit/</a></div>
+		<div id="content-scrolly">
+			<div id="aside1-scrolly">
+				<div class="ad-box">Advertisement</div>
+				<div id="fixed-example1">
+					<h2>Sidebar <span>(fixed)</span></h2>
+					<ul class="sample-nav">
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+						<li><a href="#">Item 4</a></li>
+						<li><a href="#">Item 5</a></li>
+						<li><a href="#">Item 6</a></li>
+						<li><a href="#">Item 7</a></li>
+						<li><a href="#">Item 8</a></li>
+						<li><a href="#">Item 9</a></li>
+						<li><a href="#">Item 10</a></li>
+						<li><a href="#">Item 11</a></li>
+						<li><a href="#">Item 12</a></li>
+						<li><a href="#">Item 13</a></li>
+						<li><a href="#">Item 14</a></li>
+						<li><a href="#">Item 15</a></li>
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+						<li><a href="#">Item 4</a></li>
+						<li><a href="#">Item 5</a></li>
+					</ul>
+				</div>
+				<div class="ad-box">Advertisement</div>
+			</div>
+			<div id="aside2-scrolly">
+				<div class="ad-box">Advertisement Advertisement Advertisement Advertisement Advertisement</div>
+				<div id="fixed-example2">
+					<h2>Sidebar <span>(fixed)</span></h2>
+					<ul class="sample-nav">
+						<li><a href="#">Item 1</a></li>
+						<li><a href="#">Item 2</a></li>
+						<li><a href="#">Item 3</a></li>
+						<li><a href="#">Item 4</a></li>
+						<li><a href="#">Item 5</a></li>
+					</ul>
+				</div>
+				<div class="ad-box">Advertisement</div>
+			</div>
+			<div id="column-scrolly">
+				<h2>Content</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui neque, tempor in, fermentum vel, rutrum aliquam, mi. In quis massa adipiscing urna consequat mollis. Maecenas et leo. Suspendisse iaculis odio. In ac eros. Quisque elementum, justo non mattis pellentesque, odio nibh euismod dolor, quis scelerisque metus lacus consequat nisi. Sed nec turpis. Aenean ultrices purus dapibus orci. Fusce erat. Vivamus quis dolor vitae mi vulputate mollis. Sed tellus elit, tempus et, semper a, tincidunt in, justo.</p>
+				<p>Vestibulum tincidunt turpis eget enim porta volutpat. Ut dapibus pulvinar erat. Sed eget libero nec leo consequat egestas. Etiam tempus ante eu urna. Phasellus egestas varius est. Nulla venenatis faucibus quam. Nunc purus ipsum, pharetra vel, cursus nec, rutrum in, turpis. Nam ornare dolor eget nisl. Aliquam erat volutpat. Curabitur et dolor vitae magna porttitor bibendum. Proin ipsum elit, molestie eget, pellentesque at, eleifend non, erat. Donec pede. Donec arcu nibh, vulputate et, dictum in, convallis at, nulla. Curabitur et elit. Praesent urna elit, facilisis et, dignissim in, imperdiet et, metus. Nullam magna dui, viverra non, feugiat eget, convallis non, massa.</p>
+				<p>Proin tincidunt, orci eu consectetur interdum, enim tellus imperdiet odio, id porttitor enim pede sit amet erat. Aenean vitae dolor in nisi pharetra facilisis. Aenean laoreet eros ac tellus condimentum porttitor. Nam pretium vehicula mi. Phasellus ornare mi et tortor. Fusce commodo sapien. Donec ac massa ut lorem luctus vulputate. Nulla eu tellus placerat mi vulputate tempus. Etiam lectus. Pellentesque pharetra libero et dui. Integer sem urna, dapibus ac, cursus eget, hendrerit ut, mauris. In sed lorem. Sed ac ligula. Sed in lorem ac lectus porttitor sodales. Maecenas lacinia. Donec bibendum sagittis metus. Sed tincidunt tortor ac quam. Quisque a magna. In iaculis venenatis leo.</p>
+				<p>Maecenas gravida ligula et magna. Donec ligula. Vivamus vel massa a sem aliquet imperdiet. Duis dapibus, tellus vitae auctor pretium, nisl nulla facilisis metus, a tempor dolor augue id nibh. Cras leo. Phasellus vehicula, augue et pellentesque condimentum, nisi nisi suscipit augue, condimentum convallis odio quam sed tortor. Sed sollicitudin. Phasellus consequat fermentum dolor. Quisque velit nibh, bibendum ut, placerat ac, scelerisque nec, neque. Pellentesque tristique metus nec pede sagittis adipiscing. Morbi hendrerit eleifend ligula. Maecenas erat lacus, facilisis a, hendrerit non, euismod a, magna. Mauris iaculis venenatis ante. Donec fermentum. Vestibulum non erat. Cras fringilla, neque et posuere condimentum, nibh metus ullamcorper dui, eu rhoncus ligula felis eget risus. Phasellus sit amet tellus. Maecenas eu sapien.</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui neque, tempor in, fermentum vel, rutrum aliquam, mi. In quis massa adipiscing urna consequat mollis. Maecenas et leo. Suspendisse iaculis odio. In ac eros. Quisque elementum, justo non mattis pellentesque, odio nibh euismod dolor, quis scelerisque metus lacus consequat nisi. Sed nec turpis. Aenean ultrices purus dapibus orci. Fusce erat. Vivamus quis dolor vitae mi vulputate mollis. Sed tellus elit, tempus et, semper a, tincidunt in, justo.</p>
+				<p>Vestibulum tincidunt turpis eget enim porta volutpat. Ut dapibus pulvinar erat. Sed eget libero nec leo consequat egestas. Etiam tempus ante eu urna. Phasellus egestas varius est. Nulla venenatis faucibus quam. Nunc purus ipsum, pharetra vel, cursus nec, rutrum in, turpis. Nam ornare dolor eget nisl. Aliquam erat volutpat. Curabitur et dolor vitae magna porttitor bibendum. Proin ipsum elit, molestie eget, pellentesque at, eleifend non, erat. Donec pede. Donec arcu nibh, vulputate et, dictum in, convallis at, nulla. Curabitur et elit. Praesent urna elit, facilisis et, dignissim in, imperdiet et, metus. Nullam magna dui, viverra non, feugiat eget, convallis non, massa.</p>
+				<p>Proin tincidunt, orci eu consectetur interdum, enim tellus imperdiet odio, id porttitor enim pede sit amet erat. Aenean vitae dolor in nisi pharetra facilisis. Aenean laoreet eros ac tellus condimentum porttitor. Nam pretium vehicula mi. Phasellus ornare mi et tortor. Fusce commodo sapien. Donec ac massa ut lorem luctus vulputate. Nulla eu tellus placerat mi vulputate tempus. Etiam lectus. Pellentesque pharetra libero et dui. Integer sem urna, dapibus ac, cursus eget, hendrerit ut, mauris. In sed lorem. Sed ac ligula. Sed in lorem ac lectus porttitor sodales. Maecenas lacinia. Donec bibendum sagittis metus. Sed tincidunt tortor ac quam. Quisque a magna. In iaculis venenatis leo.</p>
+				<p>Maecenas gravida ligula et magna. Donec ligula. Vivamus vel massa a sem aliquet imperdiet. Duis dapibus, tellus vitae auctor pretium, nisl nulla facilisis metus, a tempor dolor augue id nibh. Cras leo. Phasellus vehicula, augue et pellentesque condimentum, nisi nisi suscipit augue, condimentum convallis odio quam sed tortor. Sed sollicitudin. Phasellus consequat fermentum dolor. Quisque velit nibh, bibendum ut, placerat ac, scelerisque nec, neque. Pellentesque tristique metus nec pede sagittis adipiscing. Morbi hendrerit eleifend ligula. Maecenas erat lacus, facilisis a, hendrerit non, euismod a, magna. Mauris iaculis venenatis ante. Donec fermentum. Vestibulum non erat. Cras fringilla, neque et posuere condimentum, nibh metus ullamcorper dui, eu rhoncus ligula felis eget risus. Phasellus sit amet tellus. Maecenas eu sapien.</p>
+				<p>Maecenas gravida ligula et magna. Donec ligula. Vivamus vel massa a sem aliquet imperdiet. Duis dapibus, tellus vitae auctor pretium, nisl nulla facilisis metus, a tempor dolor augue id nibh. Cras leo. Phasellus vehicula, augue et pellentesque condimentum, nisi nisi suscipit augue, condimentum convallis odio quam sed tortor. Sed sollicitudin. Phasellus consequat fermentum dolor. Quisque velit nibh, bibendum ut, placerat ac, scelerisque nec, neque. Pellentesque tristique metus nec pede sagittis adipiscing. Morbi hendrerit eleifend ligula. Maecenas erat lacus, facilisis a, hendrerit non, euismod a, magna. Mauris iaculis venenatis ante. Donec fermentum. Vestibulum non erat. Cras fringilla, neque et posuere condimentum, nibh metus ullamcorper dui, eu rhoncus ligula felis eget risus. Phasellus sit amet tellus. Maecenas eu sapien.</p>
+				<p>Maecenas gravida ligula et magna. Donec ligula. Vivamus vel massa a sem aliquet imperdiet. Duis dapibus, tellus vitae auctor pretium, nisl nulla facilisis metus, a tempor dolor augue id nibh. Cras leo. Phasellus vehicula, augue et pellentesque condimentum, nisi nisi suscipit augue, condimentum convallis odio quam sed tortor. Sed sollicitudin. Phasellus consequat fermentum dolor. Quisque velit nibh, bibendum ut, placerat ac, scelerisque nec, neque. Pellentesque tristique metus nec pede sagittis adipiscing. Morbi hendrerit eleifend ligula. Maecenas erat lacus, facilisis a, hendrerit non, euismod a, magna. Mauris iaculis venenatis ante. Donec fermentum. Vestibulum non erat. Cras fringilla, neque et posuere condimentum, nibh metus ullamcorper dui, eu rhoncus ligula felis eget risus. Phasellus sit amet tellus. Maecenas eu sapien.</p>
+			</div>
+		</div>
+	</div>
+	<!-- module jquery-scroolly -->
 	<!-- module greensock start -->
 	<div id="greensock" class="container module-block">
 		<h2>Folder ./module/greensock</h2>
