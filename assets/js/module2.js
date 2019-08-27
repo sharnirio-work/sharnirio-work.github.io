@@ -292,153 +292,142 @@ function followLinksInit(whatSelector) {
 
 /* module smartmenus */
 jQuery(function() {
-  initSmartMenu();
-  initMobileNav();
+	initSmartMenu();
+	initMobileNav();
 });
 
-
-function initSmartMenu(){
-  jQuery('.header-menu').smartmenus({
-    collapsibleBehavior: 'accordion'
-    // showOnClick: true
-  });
+function initSmartMenu() {
+	jQuery('.header-menu').smartmenus({
+		collapsibleBehavior: 'accordion'
+		// showOnClick: true
+	});
 }
-
 // mobile menu init
 function initMobileNav() {
-  jQuery('body').mobileNav({
-    menuActiveClass: 'nav-active',
-    menuOpener: '.nav-opener',
-    hideOnClickOutside: true,
-    menuDrop: '.nav-drop'
-  });
-  if(!('ontouchstart' in document.documentElement)){
-    jQuery(window).on('resize orientationchange', function(){
-      jQuery('body').removeClass('nav-active');
-      $.SmartMenus.hideAll();
-    });
-  };
+	jQuery('body').mobileNav({
+		menuActiveClass: 'nav-active',
+		menuOpener: '.nav-opener',
+		hideOnClickOutside: true,
+		menuDrop: '.nav-drop'
+	});
+	if (!('ontouchstart' in document.documentElement)) {
+		jQuery(window).on('resize orientationchange', function() {
+			jQuery('body').removeClass('nav-active');
+			$.SmartMenus.hideAll();
+		});
+	};
 }
-
 /*
-* Simple Mobile Navigation
-*/
-;(function($) {
-  function MobileNav(options) {
-    this.options = $.extend({
-      container: null,
-      hideOnClickOutside: false,
-      menuActiveClass: 'nav-active',
-      menuOpener: '.nav-opener',
-      menuDrop: '.nav-drop',
-      toggleEvent: 'click',
-      outsideClickEvent: 'click touchstart pointerdown MSPointerDown'
-    }, options);
-    this.initStructure();
-    this.attachEvents();
-  }
-  MobileNav.prototype = {
-    initStructure: function() {
-      this.page = $('html');
-      this.container = $(this.options.container);
-      this.opener = this.container.find(this.options.menuOpener);
-      this.drop = this.container.find(this.options.menuDrop);
-    },
-    attachEvents: function() {
-      var self = this;
-
-      if(activateResizeHandler) {
-        activateResizeHandler();
-        activateResizeHandler = null;
-      }
-
-      this.outsideClickHandler = function(e) {
-        if(self.isOpened()) {
-          var target = $(e.target);
-          if(!target.closest(self.opener).length && !target.closest(self.drop).length) {
-            self.hide();
-          }
-        }
-      };
-
-      this.openerClickHandler = function(e) {
-        e.preventDefault();
-        self.toggle();
-      };
-
-      this.opener.on(this.options.toggleEvent, this.openerClickHandler);
-    },
-    isOpened: function() {
-      return this.container.hasClass(this.options.menuActiveClass);
-    },
-    show: function() {
-      this.container.addClass(this.options.menuActiveClass);
-      if(this.options.hideOnClickOutside) {
-        this.page.on(this.options.outsideClickEvent, this.outsideClickHandler);
-      }
-    },
-    hide: function() {
-      this.container.removeClass(this.options.menuActiveClass);
-      if(this.options.hideOnClickOutside) {
-        this.page.off(this.options.outsideClickEvent, this.outsideClickHandler);
-      }
-    },
-    toggle: function() {
-      if(this.isOpened()) {
-        this.hide();
-      } else {
-        this.show();
-      }
-    },
-    destroy: function() {
-      this.container.removeClass(this.options.menuActiveClass);
-      this.opener.off(this.options.toggleEvent, this.clickHandler);
-      this.page.off(this.options.outsideClickEvent, this.outsideClickHandler);
-    }
-  };
-
-  var activateResizeHandler = function() {
-    var win = $(window),
-    doc = $('html'),
-    resizeClass = 'resize-active',
-    flag, timer;
-    var removeClassHandler = function() {
-      flag = false;
-      doc.removeClass(resizeClass);
-    };
-    var resizeHandler = function() {
-      if(!flag) {
-        flag = true;
-        doc.addClass(resizeClass);
-      }
-      clearTimeout(timer);
-      timer = setTimeout(removeClassHandler, 500);
-    };
-    win.on('resize orientationchange', resizeHandler);
-  };
-
-  $.fn.mobileNav = function(opt) {
-    var args = Array.prototype.slice.call(arguments);
-    var method = args[0];
-
-    return this.each(function() {
-      var $container = jQuery(this);
-      var instance = $container.data('MobileNav');
-
-      if (typeof opt === 'object' || typeof opt === 'undefined') {
-        $container.data('MobileNav', new MobileNav($.extend({
-          container: this
-        }, opt)));
-      } else if (typeof method === 'string' && instance) {
-        if (typeof instance[method] === 'function') {
-          args.shift();
-          instance[method].apply(instance, args);
-        }
-      }
-    });
-  };
+ * Simple Mobile Navigation
+ */
+;
+(function($) {
+	function MobileNav(options) {
+		this.options = $.extend({
+			container: null,
+			hideOnClickOutside: false,
+			menuActiveClass: 'nav-active',
+			menuOpener: '.nav-opener',
+			menuDrop: '.nav-drop',
+			toggleEvent: 'click',
+			outsideClickEvent: 'click touchstart pointerdown MSPointerDown'
+		}, options);
+		this.initStructure();
+		this.attachEvents();
+	}
+	MobileNav.prototype = {
+		initStructure: function() {
+			this.page = $('html');
+			this.container = $(this.options.container);
+			this.opener = this.container.find(this.options.menuOpener);
+			this.drop = this.container.find(this.options.menuDrop);
+		},
+		attachEvents: function() {
+			var self = this;
+			if (activateResizeHandler) {
+				activateResizeHandler();
+				activateResizeHandler = null;
+			}
+			this.outsideClickHandler = function(e) {
+				if (self.isOpened()) {
+					var target = $(e.target);
+					if (!target.closest(self.opener).length && !target.closest(self.drop).length) {
+						self.hide();
+					}
+				}
+			};
+			this.openerClickHandler = function(e) {
+				e.preventDefault();
+				self.toggle();
+			};
+			this.opener.on(this.options.toggleEvent, this.openerClickHandler);
+		},
+		isOpened: function() {
+			return this.container.hasClass(this.options.menuActiveClass);
+		},
+		show: function() {
+			this.container.addClass(this.options.menuActiveClass);
+			if (this.options.hideOnClickOutside) {
+				this.page.on(this.options.outsideClickEvent, this.outsideClickHandler);
+			}
+		},
+		hide: function() {
+			this.container.removeClass(this.options.menuActiveClass);
+			if (this.options.hideOnClickOutside) {
+				this.page.off(this.options.outsideClickEvent, this.outsideClickHandler);
+			}
+		},
+		toggle: function() {
+			if (this.isOpened()) {
+				this.hide();
+			} else {
+				this.show();
+			}
+		},
+		destroy: function() {
+			this.container.removeClass(this.options.menuActiveClass);
+			this.opener.off(this.options.toggleEvent, this.clickHandler);
+			this.page.off(this.options.outsideClickEvent, this.outsideClickHandler);
+		}
+	};
+	var activateResizeHandler = function() {
+		var win = $(window),
+			doc = $('html'),
+			resizeClass = 'resize-active',
+			flag, timer;
+		var removeClassHandler = function() {
+			flag = false;
+			doc.removeClass(resizeClass);
+		};
+		var resizeHandler = function() {
+			if (!flag) {
+				flag = true;
+				doc.addClass(resizeClass);
+			}
+			clearTimeout(timer);
+			timer = setTimeout(removeClassHandler, 500);
+		};
+		win.on('resize orientationchange', resizeHandler);
+	};
+	$.fn.mobileNav = function(opt) {
+		var args = Array.prototype.slice.call(arguments);
+		var method = args[0];
+		return this.each(function() {
+			var $container = jQuery(this);
+			var instance = $container.data('MobileNav');
+			if (typeof opt === 'object' || typeof opt === 'undefined') {
+				$container.data('MobileNav', new MobileNav($.extend({
+					container: this
+				}, opt)));
+			} else if (typeof method === 'string' && instance) {
+				if (typeof instance[method] === 'function') {
+					args.shift();
+					instance[method].apply(instance, args);
+				}
+			}
+		});
+	};
 }(jQuery));
-
 /*
  * SmartMenus jQuery v1.1.0+
  * http://www.smartmenus.org/
@@ -449,7 +438,6 @@ function initMobileNav() {
  * Released under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
-
 (function(factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD
@@ -461,8 +449,7 @@ function initMobileNav() {
 		// Global jQuery
 		factory(jQuery);
 	}
-} (function($) {
-
+}(function($) {
 	var menuTrees = [],
 		mouse = false, // optimize for touch by default - we will detect for mouse input
 		touchEvents = 'ontouchstart' in window, // we use this just to choose between toucn and pointer events, not for touch screen detection
@@ -470,7 +457,6 @@ function initMobileNav() {
 		requestAnimationFrame = window.requestAnimationFrame || function(callback) { return setTimeout(callback, 1000 / 60); },
 		cancelAnimationFrame = window.cancelAnimationFrame || function(id) { clearTimeout(id); },
 		canAnimate = !!$.fn.animate;
-
 	// Handle detection for mouse input (i.e. desktop browsers, tablets with a mouse, etc.)
 	function initMouseDetection(disable) {
 		var eNS = '.smartmenus_mouse';
@@ -485,7 +471,7 @@ function initMobileNav() {
 						if (lastMove) {
 							var deltaX = Math.abs(lastMove.x - thisMove.x),
 								deltaY = Math.abs(lastMove.y - thisMove.y);
-		 					if ((deltaX > 0 || deltaY > 0) && deltaX <= 2 && deltaY <= 2 && thisMove.timeStamp - lastMove.timeStamp <= 300) {
+							if ((deltaX > 0 || deltaY > 0) && deltaX <= 2 && deltaY <= 2 && thisMove.timeStamp - lastMove.timeStamp <= 300) {
 								mouse = true;
 								// if this is the first check after page load, check if we are not over some item by chance and call the mouseenter handler if yes
 								if (firstTime) {
@@ -521,7 +507,6 @@ function initMobileNav() {
 	function isTouchEvent(e) {
 		return !/^(4|mouse)$/.test(e.pointerType);
 	}
-
 	// returns a jQuery on() ready object
 	function getEventsNS(events, eNS) {
 		if (!eNS) {
@@ -533,7 +518,6 @@ function initMobileNav() {
 		}
 		return eventsNS;
 	}
-
 	$.SmartMenus = function(elm, options) {
 		this.$root = $(elm);
 		this.opts = options;
@@ -558,7 +542,6 @@ function initMobileNav() {
 		this.wasCollapsible = false;
 		this.init();
 	};
-
 	$.extend($.SmartMenus, {
 		hideAll: function() {
 			$.each(menuTrees, function() {
@@ -574,37 +557,27 @@ function initMobileNav() {
 		prototype: {
 			init: function(refresh) {
 				var self = this;
-
 				if (!refresh) {
 					menuTrees.push(this);
-
 					this.rootId = (new Date().getTime() + Math.random() + '').replace(/\D/g, '');
 					this.accessIdPrefix = 'sm-' + this.rootId + '-';
-
 					if (this.$root.hasClass('sm-rtl')) {
 						this.opts.rightToLeftSubMenus = true;
 					}
-
 					// init root (main menu)
 					var eNS = '.smartmenus';
-					this.$root
-						.data('smartmenus', this)
-						.attr('data-smartmenus-id', this.rootId)
-						.dataSM('level', 1)
-						.on(getEventsNS({
-							'mouseover focusin': $.proxy(this.rootOver, this),
-							'mouseout focusout': $.proxy(this.rootOut, this),
-							'keydown': $.proxy(this.rootKeyDown, this)
-						}, eNS))
-						.on(getEventsNS({
-							'mouseenter': $.proxy(this.itemEnter, this),
-							'mouseleave': $.proxy(this.itemLeave, this),
-							'mousedown': $.proxy(this.itemDown, this),
-							'focus': $.proxy(this.itemFocus, this),
-							'blur': $.proxy(this.itemBlur, this),
-							'click': $.proxy(this.itemClick, this)
-						}, eNS), 'a');
-
+					this.$root.data('smartmenus', this).attr('data-smartmenus-id', this.rootId).dataSM('level', 1).on(getEventsNS({
+						'mouseover focusin': $.proxy(this.rootOver, this),
+						'mouseout focusout': $.proxy(this.rootOut, this),
+						'keydown': $.proxy(this.rootKeyDown, this)
+					}, eNS)).on(getEventsNS({
+						'mouseenter': $.proxy(this.itemEnter, this),
+						'mouseleave': $.proxy(this.itemLeave, this),
+						'mousedown': $.proxy(this.itemDown, this),
+						'focus': $.proxy(this.itemFocus, this),
+						'blur': $.proxy(this.itemBlur, this),
+						'click': $.proxy(this.itemClick, this)
+					}, eNS), 'a');
 					// hide menus on tap or click outside the root UL
 					eNS += this.rootId;
 					if (this.opts.hideOnClick) {
@@ -618,23 +591,18 @@ function initMobileNav() {
 					}
 					// hide sub menus on resize
 					$(window).on(getEventsNS({ 'resize orientationchange': $.proxy(this.winResize, this) }, eNS));
-
 					if (this.opts.subIndicators) {
 						this.$subArrow = $('<span/>').addClass('sub-arrow');
 						if (this.opts.subIndicatorsText) {
 							this.$subArrow.html(this.opts.subIndicatorsText);
 						}
 					}
-
 					// make sure mouse detection is enabled
 					initMouseDetection();
 				}
-
 				// init sub menus
 				this.$firstSub = this.$root.find('ul').each(function() { self.menuInit($(this)); }).eq(0);
-
 				this.$firstLink = this.$root.find('a').eq(0);
-
 				// find current item
 				if (this.opts.markCurrentItem) {
 					var reDefaultDoc = /(index|default)\.[^#\?\/]*/i,
@@ -654,18 +622,13 @@ function initMobileNav() {
 						}
 					});
 				}
-
 				// save initial state
 				this.wasCollapsible = this.isCollapsible();
 			},
 			destroy: function(refresh) {
 				if (!refresh) {
 					var eNS = '.smartmenus';
-					this.$root
-						.removeData('smartmenus')
-						.removeAttr('data-smartmenus-id')
-						.removeDataSM('level')
-						.off(eNS);
+					this.$root.removeData('smartmenus').removeAttr('data-smartmenus-id').removeDataSM('level').off(eNS);
 					eNS += this.rootId;
 					$(document).off(eNS);
 					$(window).off(eNS);
@@ -676,45 +639,29 @@ function initMobileNav() {
 				this.menuHideAll();
 				var self = this;
 				this.$root.find('ul').each(function() {
-						var $this = $(this);
+					var $this = $(this);
+					if ($this.dataSM('scroll-arrows')) {
+						$this.dataSM('scroll-arrows').remove();
+					}
+					if ($this.dataSM('shown-before')) {
+						if (self.opts.subMenusMinWidth || self.opts.subMenusMaxWidth) {
+							$this.css({ width: '', minWidth: '', maxWidth: '' }).removeClass('sm-nowrap');
+						}
 						if ($this.dataSM('scroll-arrows')) {
 							$this.dataSM('scroll-arrows').remove();
 						}
-						if ($this.dataSM('shown-before')) {
-							if (self.opts.subMenusMinWidth || self.opts.subMenusMaxWidth) {
-								$this.css({ width: '', minWidth: '', maxWidth: '' }).removeClass('sm-nowrap');
-							}
-							if ($this.dataSM('scroll-arrows')) {
-								$this.dataSM('scroll-arrows').remove();
-							}
-							$this.css({ zIndex: '', top: '', left: '', marginLeft: '', marginTop: '', display: '' });
-						}
-						if (($this.attr('id') || '').indexOf(self.accessIdPrefix) == 0) {
-							$this.removeAttr('id');
-						}
-					})
-					.removeDataSM('in-mega')
-					.removeDataSM('shown-before')
-					.removeDataSM('scroll-arrows')
-					.removeDataSM('parent-a')
-					.removeDataSM('level')
-					.removeDataSM('beforefirstshowfired')
-					.removeAttr('role')
-					.removeAttr('aria-hidden')
-					.removeAttr('aria-labelledby')
-					.removeAttr('aria-expanded');
+						$this.css({ zIndex: '', top: '', left: '', marginLeft: '', marginTop: '', display: '' });
+					}
+					if (($this.attr('id') || '').indexOf(self.accessIdPrefix) == 0) {
+						$this.removeAttr('id');
+					}
+				}).removeDataSM('in-mega').removeDataSM('shown-before').removeDataSM('scroll-arrows').removeDataSM('parent-a').removeDataSM('level').removeDataSM('beforefirstshowfired').removeAttr('role').removeAttr('aria-hidden').removeAttr('aria-labelledby').removeAttr('aria-expanded');
 				this.$root.find('a.has-submenu').each(function() {
-						var $this = $(this);
-						if ($this.attr('id').indexOf(self.accessIdPrefix) == 0) {
-							$this.removeAttr('id');
-						}
-					})
-					.removeClass('has-submenu')
-					.removeDataSM('sub')
-					.removeAttr('aria-haspopup')
-					.removeAttr('aria-controls')
-					.removeAttr('aria-expanded')
-					.closest('li').removeDataSM('sub');
+					var $this = $(this);
+					if ($this.attr('id').indexOf(self.accessIdPrefix) == 0) {
+						$this.removeAttr('id');
+					}
+				}).removeClass('has-submenu').removeDataSM('sub').removeAttr('aria-haspopup').removeAttr('aria-controls').removeAttr('aria-expanded').closest('li').removeDataSM('sub');
 				if (this.opts.subIndicators) {
 					this.$root.find('span.sub-arrow').remove();
 				}
@@ -950,7 +897,7 @@ function initMobileNav() {
 								return false;
 							}
 						}
-					// if the sub is visible and we are in collapsible mode
+						// if the sub is visible and we are in collapsible mode
 					} else if (collapsible && (behaviorToggle || subArrowClicked)) {
 						this.itemActivate($a, behaviorAccordion);
 						this.menuHide($sub);
@@ -1041,8 +988,7 @@ function initMobileNav() {
 					// deactivate scrolling if it is activated for this sub
 					if ($sub.dataSM('scroll')) {
 						this.menuScrollStop($sub);
-						$sub.css({ 'touch-action': '', '-ms-touch-action': '', '-webkit-transform': '', transform: '' })
-							.off('.smartmenus_scroll').removeDataSM('scroll').dataSM('scroll-arrows').hide();
+						$sub.css({ 'touch-action': '', '-ms-touch-action': '', '-webkit-transform': '', transform: '' }).off('.smartmenus_scroll').removeDataSM('scroll').dataSM('scroll-arrows').hide();
 					}
 					// unhighlight parent item + accessibility
 					$sub.dataSM('parent-a').removeClass('highlighted').attr('aria-expanded', 'false');
@@ -1115,9 +1061,7 @@ function initMobileNav() {
 						$a = $ul.prevAll().find('a').eq(-1);
 					}
 					$a.addClass('has-submenu').dataSM('sub', $ul);
-					$ul.dataSM('parent-a', $a)
-						.dataSM('level', level)
-						.parent().dataSM('sub', $ul);
+					$ul.dataSM('parent-a', $a).dataSM('level', level).parent().dataSM('sub', $ul);
 					// accessibility
 					var aId = $a.attr('id') || this.accessIdPrefix + (++this.idInc),
 						ulId = $ul.attr('id') || this.accessIdPrefix + (++this.idInc);
@@ -1189,38 +1133,32 @@ function initMobileNav() {
 					if (horizontalParent && (absY + subH > winY + winH + 0.49 || absY < winY) || !horizontalParent && subH > winH + 0.49) {
 						var self = this;
 						if (!$sub.dataSM('scroll-arrows')) {
-							$sub.dataSM('scroll-arrows', $([$('<span class="scroll-up"><span class="scroll-up-arrow"></span></span>')[0], $('<span class="scroll-down"><span class="scroll-down-arrow"></span></span>')[0]])
-								.on({
-									mouseenter: function() {
-										$sub.dataSM('scroll').up = $(this).hasClass('scroll-up');
-										self.menuScroll($sub);
-									},
-									mouseleave: function(e) {
-										self.menuScrollStop($sub);
-										self.menuScrollOut($sub, e);
-									},
-									'mousewheel DOMMouseScroll': function(e) { e.preventDefault(); }
-								})
-								.insertAfter($sub)
-							);
+							$sub.dataSM('scroll-arrows', $([$('<span class="scroll-up"><span class="scroll-up-arrow"></span></span>')[0], $('<span class="scroll-down"><span class="scroll-down-arrow"></span></span>')[0]]).on({
+								mouseenter: function() {
+									$sub.dataSM('scroll').up = $(this).hasClass('scroll-up');
+									self.menuScroll($sub);
+								},
+								mouseleave: function(e) {
+									self.menuScrollStop($sub);
+									self.menuScrollOut($sub, e);
+								},
+								'mousewheel DOMMouseScroll': function(e) { e.preventDefault(); }
+							}).insertAfter($sub));
 						}
 						// bind scroll events and save scroll data for this sub
 						var eNS = '.smartmenus_scroll';
 						$sub.dataSM('scroll', {
-								y: this.cssTransforms3d ? 0 : y - itemH,
-								step: 1,
-								// cache stuff for faster recalcs later
-								itemH: itemH,
-								subH: subH,
-								arrowDownH: this.getHeight($sub.dataSM('scroll-arrows').eq(1))
-							})
-							.on(getEventsNS({
-								'mouseover': function(e) { self.menuScrollOver($sub, e); },
-								'mouseout': function(e) { self.menuScrollOut($sub, e); },
-								'mousewheel DOMMouseScroll': function(e) { self.menuScrollMousewheel($sub, e); }
-							}, eNS))
-							.dataSM('scroll-arrows').css({ top: 'auto', left: '0', marginLeft: x + (parseInt($sub.css('border-left-width')) || 0), width: subW - (parseInt($sub.css('border-left-width')) || 0) - (parseInt($sub.css('border-right-width')) || 0), zIndex: $sub.css('z-index') })
-								.eq(horizontalParent && this.opts.bottomToTopSubMenus ? 0 : 1).show();
+							y: this.cssTransforms3d ? 0 : y - itemH,
+							step: 1,
+							// cache stuff for faster recalcs later
+							itemH: itemH,
+							subH: subH,
+							arrowDownH: this.getHeight($sub.dataSM('scroll-arrows').eq(1))
+						}).on(getEventsNS({
+							'mouseover': function(e) { self.menuScrollOver($sub, e); },
+							'mouseout': function(e) { self.menuScrollOut($sub, e); },
+							'mousewheel DOMMouseScroll': function(e) { self.menuScrollMousewheel($sub, e); }
+						}, eNS)).dataSM('scroll-arrows').css({ top: 'auto', left: '0', marginLeft: x + (parseInt($sub.css('border-left-width')) || 0), width: subW - (parseInt($sub.css('border-left-width')) || 0) - (parseInt($sub.css('border-right-width')) || 0), zIndex: $sub.css('z-index') }).eq(horizontalParent && this.opts.bottomToTopSubMenus ? 0 : 1).show();
 						// when a menu tree is fixed positioned we allow scrolling via touch too
 						// since there is no other way to access such long sub menus if no mouse is present
 						if (this.isFixed()) {
@@ -1298,9 +1236,7 @@ function initMobileNav() {
 						this.menuScrollRefreshData($sub);
 						var data = $sub.dataSM('scroll'),
 							upEnd = $(window).scrollTop() - $sub.dataSM('parent-a').offset().top - data.itemH;
-						$sub.dataSM('scroll-arrows').eq(0).css('margin-top', upEnd).end()
-							.eq(1).css('margin-top', upEnd + this.getViewportHeight() - data.arrowDownH).end()
-							.css('visibility', 'visible');
+						$sub.dataSM('scroll-arrows').eq(0).css('margin-top', upEnd).end().eq(1).css('margin-top', upEnd + this.getViewportHeight() - data.arrowDownH).end().css('visibility', 'visible');
 					}
 				}
 			},
@@ -1407,11 +1343,11 @@ function initMobileNav() {
 						if (this.opts.subMenusMinWidth || this.opts.subMenusMaxWidth) {
 							$sub.css({ width: 'auto', minWidth: '', maxWidth: '' }).addClass('sm-nowrap');
 							if (this.opts.subMenusMinWidth) {
-							 	$sub.css('min-width', this.opts.subMenusMinWidth);
+								$sub.css('min-width', this.opts.subMenusMinWidth);
 							}
 							if (this.opts.subMenusMaxWidth) {
-							 	var noMaxWidth = this.getWidth($sub);
-							 	$sub.css('max-width', this.opts.subMenusMaxWidth);
+								var noMaxWidth = this.getWidth($sub);
+								$sub.css('max-width', this.opts.subMenusMaxWidth);
 								if (noMaxWidth > this.getWidth($sub)) {
 									$sub.removeClass('sm-nowrap').css('width', this.opts.subMenusMaxWidth);
 								}
@@ -1545,7 +1481,7 @@ function initMobileNav() {
 					// we still need to resize the disable overlay if it's visible
 					if (this.$disableOverlay) {
 						var pos = this.$root.offset();
-	 					this.$disableOverlay.css({
+						this.$disableOverlay.css({
 							top: pos.top,
 							left: pos.left,
 							width: this.$root.outerWidth(),
@@ -1569,18 +1505,15 @@ function initMobileNav() {
 			}
 		}
 	});
-
 	$.fn.dataSM = function(key, val) {
 		if (val) {
 			return this.data(key + '_smartmenus', val);
 		}
 		return this.data(key + '_smartmenus');
 	};
-
 	$.fn.removeDataSM = function(key) {
 		return this.removeData(key + '_smartmenus');
 	};
-
 	$.fn.smartmenus = function(options) {
 		if (typeof options == 'string') {
 			var args = arguments,
@@ -1599,7 +1532,7 @@ function initMobileNav() {
 			if (dataOpts) {
 				try {
 					dataOpts = eval('(' + dataOpts + ')');
-				} catch(e) {
+				} catch (e) {
 					dataOpts = null;
 					alert('ERROR\n\nSmartMenus jQuery init:\nInvalid "data-sm-options" attribute value syntax.');
 				};
@@ -1607,55 +1540,53 @@ function initMobileNav() {
 			new $.SmartMenus(this, $.extend({}, $.fn.smartmenus.defaults, options, dataOpts));
 		});
 	};
-
 	// default settings
 	$.fn.smartmenus.defaults = {
-		isPopup:		false,		// is this a popup menu (can be shown via the popupShow/popupHide methods) or a permanent menu bar
-		mainMenuSubOffsetX:	0,		// pixels offset from default position
-		mainMenuSubOffsetY:	0,		// pixels offset from default position
-		subMenusSubOffsetX:	0,		// pixels offset from default position
-		subMenusSubOffsetY:	0,		// pixels offset from default position
-		subMenusMinWidth:	'10em',		// min-width for the sub menus (any CSS unit) - if set, the fixed width set in CSS will be ignored
-		subMenusMaxWidth:	'20em',		// max-width for the sub menus (any CSS unit) - if set, the fixed width set in CSS will be ignored
-		subIndicators: 		true,		// create sub menu indicators - creates a SPAN and inserts it in the A
-		subIndicatorsPos: 	'append',	// position of the SPAN relative to the menu item content ('append', 'prepend')
-		subIndicatorsText:	'',		// [optionally] add text in the SPAN (e.g. '+') (you may want to check the CSS for the sub indicators too)
-		scrollStep: 		30,		// pixels step when scrolling long sub menus that do not fit in the viewport height
-		scrollAccelerate:	true,		// accelerate scrolling or use a fixed step
-		showTimeout:		250,		// timeout before showing the sub menus
-		hideTimeout:		500,		// timeout before hiding the sub menus
-		showDuration:		0,		// duration for show animation - set to 0 for no animation - matters only if showFunction:null
-		showFunction:		null,		// custom function to use when showing a sub menu (the default is the jQuery 'show')
-							// don't forget to call complete() at the end of whatever you do
-							// e.g.: function($ul, complete) { $ul.fadeIn(250, complete); }
-		hideDuration:		0,		// duration for hide animation - set to 0 for no animation - matters only if hideFunction:null
-		hideFunction:		function($ul, complete) { $ul.fadeOut(200, complete); },	// custom function to use when hiding a sub menu (the default is the jQuery 'hide')
-							// don't forget to call complete() at the end of whatever you do
-							// e.g.: function($ul, complete) { $ul.fadeOut(250, complete); }
-		collapsibleShowDuration:0,		// duration for show animation for collapsible sub menus - matters only if collapsibleShowFunction:null
-		collapsibleShowFunction:function($ul, complete) { $ul.slideDown(200, complete); },	// custom function to use when showing a collapsible sub menu
-							// (i.e. when mobile styles are used to make the sub menus collapsible)
-		collapsibleHideDuration:0,		// duration for hide animation for collapsible sub menus - matters only if collapsibleHideFunction:null
-		collapsibleHideFunction:function($ul, complete) { $ul.slideUp(200, complete); },	// custom function to use when hiding a collapsible sub menu
-							// (i.e. when mobile styles are used to make the sub menus collapsible)
-		showOnClick:		false,		// show the first-level sub menus onclick instead of onmouseover (i.e. mimic desktop app menus) (matters only for mouse input)
-		hideOnClick:		true,		// hide the sub menus on click/tap anywhere on the page
-		noMouseOver:		false,		// disable sub menus activation onmouseover (i.e. behave like in touch mode - use just mouse clicks) (matters only for mouse input)
-		keepInViewport:		true,		// reposition the sub menus if needed to make sure they always appear inside the viewport
-		keepHighlighted:	true,		// keep all ancestor items of the current sub menu highlighted (adds the 'highlighted' class to the A's)
-		markCurrentItem:	false,		// automatically add the 'current' class to the A element of the item linking to the current URL
-		markCurrentTree:	true,		// add the 'current' class also to the A elements of all ancestor items of the current item
-		rightToLeftSubMenus:	false,		// right to left display of the sub menus (check the CSS for the sub indicators' position)
-		bottomToTopSubMenus:	false,		// bottom to top display of the sub menus
-		collapsibleBehavior:	'default'	// parent items behavior in collapsible (mobile) view ('default', 'toggle', 'link', 'accordion', 'accordion-toggle', 'accordion-link')
-							// 'default' - first tap on parent item expands sub, second tap loads its link
-							// 'toggle' - the whole parent item acts just as a toggle button for its sub menu (expands/collapses on each tap)
-							// 'link' - the parent item acts as a regular item (first tap loads its link), the sub menu can be expanded only via the +/- button
-							// 'accordion' - like 'default' but on expand also resets any visible sub menus from deeper levels or other branches
-							// 'accordion-toggle' - like 'toggle' but on expand also resets any visible sub menus from deeper levels or other branches
-							// 'accordion-link' - like 'link' but on expand also resets any visible sub menus from deeper levels or other branches
+		isPopup: false, // is this a popup menu (can be shown via the popupShow/popupHide methods) or a permanent menu bar
+		mainMenuSubOffsetX: 0, // pixels offset from default position
+		mainMenuSubOffsetY: 0, // pixels offset from default position
+		subMenusSubOffsetX: 0, // pixels offset from default position
+		subMenusSubOffsetY: 0, // pixels offset from default position
+		subMenusMinWidth: '10em', // min-width for the sub menus (any CSS unit) - if set, the fixed width set in CSS will be ignored
+		subMenusMaxWidth: '20em', // max-width for the sub menus (any CSS unit) - if set, the fixed width set in CSS will be ignored
+		subIndicators: true, // create sub menu indicators - creates a SPAN and inserts it in the A
+		subIndicatorsPos: 'append', // position of the SPAN relative to the menu item content ('append', 'prepend')
+		subIndicatorsText: '', // [optionally] add text in the SPAN (e.g. '+') (you may want to check the CSS for the sub indicators too)
+		scrollStep: 30, // pixels step when scrolling long sub menus that do not fit in the viewport height
+		scrollAccelerate: true, // accelerate scrolling or use a fixed step
+		showTimeout: 250, // timeout before showing the sub menus
+		hideTimeout: 500, // timeout before hiding the sub menus
+		showDuration: 0, // duration for show animation - set to 0 for no animation - matters only if showFunction:null
+		showFunction: null, // custom function to use when showing a sub menu (the default is the jQuery 'show')
+		// don't forget to call complete() at the end of whatever you do
+		// e.g.: function($ul, complete) { $ul.fadeIn(250, complete); }
+		hideDuration: 0, // duration for hide animation - set to 0 for no animation - matters only if hideFunction:null
+		hideFunction: function($ul, complete) { $ul.fadeOut(200, complete); }, // custom function to use when hiding a sub menu (the default is the jQuery 'hide')
+		// don't forget to call complete() at the end of whatever you do
+		// e.g.: function($ul, complete) { $ul.fadeOut(250, complete); }
+		collapsibleShowDuration: 0, // duration for show animation for collapsible sub menus - matters only if collapsibleShowFunction:null
+		collapsibleShowFunction: function($ul, complete) { $ul.slideDown(200, complete); }, // custom function to use when showing a collapsible sub menu
+		// (i.e. when mobile styles are used to make the sub menus collapsible)
+		collapsibleHideDuration: 0, // duration for hide animation for collapsible sub menus - matters only if collapsibleHideFunction:null
+		collapsibleHideFunction: function($ul, complete) { $ul.slideUp(200, complete); }, // custom function to use when hiding a collapsible sub menu
+		// (i.e. when mobile styles are used to make the sub menus collapsible)
+		showOnClick: false, // show the first-level sub menus onclick instead of onmouseover (i.e. mimic desktop app menus) (matters only for mouse input)
+		hideOnClick: true, // hide the sub menus on click/tap anywhere on the page
+		noMouseOver: false, // disable sub menus activation onmouseover (i.e. behave like in touch mode - use just mouse clicks) (matters only for mouse input)
+		keepInViewport: true, // reposition the sub menus if needed to make sure they always appear inside the viewport
+		keepHighlighted: true, // keep all ancestor items of the current sub menu highlighted (adds the 'highlighted' class to the A's)
+		markCurrentItem: false, // automatically add the 'current' class to the A element of the item linking to the current URL
+		markCurrentTree: true, // add the 'current' class also to the A elements of all ancestor items of the current item
+		rightToLeftSubMenus: false, // right to left display of the sub menus (check the CSS for the sub indicators' position)
+		bottomToTopSubMenus: false, // bottom to top display of the sub menus
+		collapsibleBehavior: 'default' // parent items behavior in collapsible (mobile) view ('default', 'toggle', 'link', 'accordion', 'accordion-toggle', 'accordion-link')
+		// 'default' - first tap on parent item expands sub, second tap loads its link
+		// 'toggle' - the whole parent item acts just as a toggle button for its sub menu (expands/collapses on each tap)
+		// 'link' - the parent item acts as a regular item (first tap loads its link), the sub menu can be expanded only via the +/- button
+		// 'accordion' - like 'default' but on expand also resets any visible sub menus from deeper levels or other branches
+		// 'accordion-toggle' - like 'toggle' but on expand also resets any visible sub menus from deeper levels or other branches
+		// 'accordion-link' - like 'link' but on expand also resets any visible sub menus from deeper levels or other branches
 	};
-
 	return $;
 }));
 
@@ -2006,3 +1937,251 @@ function slider3dInit() {
 		};
 
 })(jQuery);
+
+/* module m-zoom */
+// function on
+jQuery(document).ready(function() {
+	mediumZoomInit();
+});
+
+// more options https://github.com/francoischalifour/medium-zoom
+// function init
+function mediumZoomInit() {
+	mediumZoom('[data-zoomable]', {
+		margin: 24,
+		background: '#BADA55',
+		scrollOffset: 0,
+	})
+}
+
+/*! medium-zoom 1.0.4 | MIT License | https://github.com/francoischalifour/medium-zoom */
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):e.mediumZoom=t()}(this,function(){"use strict";var H=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var o=arguments[t];for(var n in o)Object.prototype.hasOwnProperty.call(o,n)&&(e[n]=o[n])}return e},o=function(e){return"IMG"===e.tagName},C=function(e){return e&&1===e.nodeType},O=function(e){return".svg"===(e.currentSrc||e.src).substr(-4).toLowerCase()},c=function(e){try{return Array.isArray(e)?e.filter(o):(t=e,NodeList.prototype.isPrototypeOf(t)?[].slice.call(e).filter(o):C(e)?[e].filter(o):"string"==typeof e?[].slice.call(document.querySelectorAll(e)).filter(o):[])}catch(e){throw new TypeError("The provided selector is invalid.\nExpects a CSS selector, a Node element, a NodeList or an array.\nSee: https://github.com/francoischalifour/medium-zoom")}var t},x=function(e,t){var o=H({bubbles:!1,cancelable:!1,detail:void 0},t);if("function"==typeof window.CustomEvent)return new CustomEvent(e,o);var n=document.createEvent("CustomEvent");return n.initCustomEvent(e,o.bubbles,o.cancelable,o.detail),n};return function(e,t){void 0===t&&(t={});var o=t.insertAt;if(e&&"undefined"!=typeof document){var n=document.head||document.getElementsByTagName("head")[0],i=document.createElement("style");i.type="text/css","top"===o&&n.firstChild?n.insertBefore(i,n.firstChild):n.appendChild(i),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(document.createTextNode(e))}}(".medium-zoom-overlay{position:fixed;top:0;right:0;bottom:0;left:0;opacity:0;transition:opacity .3s;will-change:opacity}.medium-zoom--opened .medium-zoom-overlay{cursor:pointer;cursor:zoom-out;opacity:1}.medium-zoom-image{cursor:pointer;cursor:zoom-in;transition:transform .3s cubic-bezier(.2,0,.2,1)}.medium-zoom-image--hidden{visibility:hidden}.medium-zoom-image--opened{position:relative;cursor:pointer;cursor:zoom-out;will-change:transform}"),function t(e){var o=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},n=window.Promise||function(e){function t(){}e(t,t)},i=function(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];var i=t.reduce(function(e,t){return[].concat(e,c(t))},[]);return i.filter(function(e){return-1===v.indexOf(e)}).forEach(function(e){v.push(e),e.classList.add("medium-zoom-image")}),m.forEach(function(e){var t=e.type,o=e.listener,n=e.options;i.forEach(function(e){e.addEventListener(t,o,n)})}),L},d=function(){var p=(0<arguments.length&&void 0!==arguments[0]?arguments[0]:{}).target,g=function(){var e={width:document.documentElement.clientWidth,height:document.documentElement.clientHeight,left:0,top:0,right:0,bottom:0},t=void 0,o=void 0;if(b.container)if(b.container instanceof Object)t=(e=H({},e,b.container)).width-e.left-e.right-2*b.margin,o=e.height-e.top-e.bottom-2*b.margin;else{var n=(C(b.container)?b.container:document.querySelector(b.container)).getBoundingClientRect(),i=n.width,d=n.height,r=n.left,m=n.top;e=H({},e,{width:i,height:d,left:r,top:m})}t=t||e.width-2*b.margin,o=o||e.height-2*b.margin;var a=E.zoomedHd||E.original,l=O(a)?t:a.naturalWidth||t,c=O(a)?o:a.naturalHeight||o,u=a.getBoundingClientRect(),s=u.top,f=u.left,p=u.width,g=u.height,h=Math.min(l,t)/p,v=Math.min(c,o)/g,z=Math.min(h,v),y="scale("+z+") translate3d("+((t-p)/2-f+b.margin+e.left)/z+"px, "+((o-g)/2-s+b.margin+e.top)/z+"px, 0)";E.zoomed.style.transform=y,E.zoomedHd&&(E.zoomedHd.style.transform=y)};return new n(function(t){if(p&&-1===v.indexOf(p))t(L);else if(E.zoomed)t(L);else{if(p)E.original=p;else{if(!(0<v.length))return void t(L);var e=v;E.original=e[0]}var o,n,i,d,r,m,a,l,c;if(E.original.dispatchEvent(x("medium-zoom:open",{detail:{zoom:L}})),y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,z=!0,E.zoomed=(o=E.original,n=o.getBoundingClientRect(),i=n.top,d=n.left,r=n.width,m=n.height,a=o.cloneNode(),l=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0,c=window.pageXOffset||document.documentElement.scrollLeft||document.body.scrollLeft||0,a.removeAttribute("id"),a.style.position="absolute",a.style.top=i+l+"px",a.style.left=d+c+"px",a.style.width=r+"px",a.style.height=m+"px",a.style.transform="",a),document.body.appendChild(w),b.template){var u=C(b.template)?b.template:document.querySelector(b.template);E.template=document.createElement("div"),E.template.appendChild(u.content.cloneNode(!0)),document.body.appendChild(E.template)}if(document.body.appendChild(E.zoomed),window.requestAnimationFrame(function(){document.body.classList.add("medium-zoom--opened")}),E.original.classList.add("medium-zoom-image--hidden"),E.zoomed.classList.add("medium-zoom-image--opened"),E.zoomed.addEventListener("click",h),E.zoomed.addEventListener("transitionend",function e(){z=!1,E.zoomed.removeEventListener("transitionend",e),E.original.dispatchEvent(x("medium-zoom:opened",{detail:{zoom:L}})),t(L)}),E.original.getAttribute("data-zoom-src")){E.zoomedHd=E.zoomed.cloneNode(),E.zoomedHd.removeAttribute("srcset"),E.zoomedHd.removeAttribute("sizes"),E.zoomedHd.src=E.zoomed.getAttribute("data-zoom-src"),E.zoomedHd.onerror=function(){clearInterval(s),console.warn("Unable to reach the zoom image target "+E.zoomedHd.src),E.zoomedHd=null,g()};var s=setInterval(function(){E.zoomedHd.complete&&(clearInterval(s),E.zoomedHd.classList.add("medium-zoom-image--opened"),E.zoomedHd.addEventListener("click",h),document.body.appendChild(E.zoomedHd),g())},10)}else if(E.original.hasAttribute("srcset")){E.zoomedHd=E.zoomed.cloneNode(),E.zoomedHd.removeAttribute("sizes");var f=E.zoomedHd.addEventListener("load",function(){E.zoomedHd.removeEventListener("load",f),E.zoomedHd.classList.add("medium-zoom-image--opened"),E.zoomedHd.addEventListener("click",h),document.body.appendChild(E.zoomedHd),g()})}else g()}})},h=function(){return new n(function(t){!z&&E.original?(z=!0,document.body.classList.remove("medium-zoom--opened"),E.zoomed.style.transform="",E.zoomedHd&&(E.zoomedHd.style.transform=""),E.template&&(E.template.style.transition="opacity 150ms",E.template.style.opacity=0),E.original.dispatchEvent(x("medium-zoom:close",{detail:{zoom:L}})),E.zoomed.addEventListener("transitionend",function e(){E.original.classList.remove("medium-zoom-image--hidden"),document.body.removeChild(E.zoomed),E.zoomedHd&&document.body.removeChild(E.zoomedHd),document.body.removeChild(w),E.zoomed.classList.remove("medium-zoom-image--opened"),E.template&&document.body.removeChild(E.template),z=!1,E.zoomed.removeEventListener("transitionend",e),E.original.dispatchEvent(x("medium-zoom:closed",{detail:{zoom:L}})),E.original=null,E.zoomed=null,E.zoomedHd=null,E.template=null,t(L)})):t(L)})},r=function(){var e=(0<arguments.length&&void 0!==arguments[0]?arguments[0]:{}).target;return E.original?h():d({target:e})},v=[],m=[],z=!1,y=0,b=o,E={original:null,zoomed:null,zoomedHd:null,template:null};"[object Object]"===Object.prototype.toString.call(e)?b=e:(e||"string"==typeof e)&&i(e),b=H({margin:0,background:"#fff",scrollOffset:40,container:null,template:null},b);var a,l,w=(a=b.background,(l=document.createElement("div")).classList.add("medium-zoom-overlay"),l.style.background=a,l);document.addEventListener("click",function(e){var t=e.target;t!==w?-1!==v.indexOf(t)&&r({target:t}):h()}),document.addEventListener("keyup",function(e){27===(e.keyCode||e.which)&&h()}),document.addEventListener("scroll",function(){if(!z&&E.original){var e=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;Math.abs(y-e)>b.scrollOffset&&setTimeout(h,150)}}),window.addEventListener("resize",h);var L={open:d,close:h,toggle:r,update:function(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{},t=e;if(e.background&&(w.style.background=e.background),e.container&&e.container instanceof Object&&(t.container=H({},b.container,e.container)),e.template){var o=C(e.template)?e.template:document.querySelector(e.template);t.template=o}return b=H({},b,t),v.forEach(function(e){e.dispatchEvent(x("medium-zoom:update",{detail:{zoom:L}}))}),L},clone:function(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};return t(H({},b,e))},attach:i,detach:function(){for(var e=arguments.length,t=Array(e),o=0;o<e;o++)t[o]=arguments[o];E.zoomed&&h();var n=0<t.length?t.reduce(function(e,t){return[].concat(e,c(t))},[]):v;return n.forEach(function(e){e.classList.remove("medium-zoom-image"),e.dispatchEvent(x("medium-zoom:detach",{detail:{zoom:L}}))}),v=v.filter(function(e){return-1===n.indexOf(e)}),L},on:function(t,o){var n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};return v.forEach(function(e){e.addEventListener("medium-zoom:"+t,o,n)}),m.push({type:"medium-zoom:"+t,listener:o,options:n}),L},off:function(t,o){var n=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};return v.forEach(function(e){e.removeEventListener("medium-zoom:"+t,o,n)}),m=m.filter(function(e){return!(e.type==="medium-zoom:"+t&&e.listener.toString()===o.toString())}),L},getOptions:function(){return b},getImages:function(){return v},getZoomedImage:function(){return E.original}};return L}});
+/* module canvas-nav */
+/*! Pushy - v1.3.0 - 2019-6-25
+* Pushy is a responsive off-canvas navigation menu using CSS transforms & transitions.
+* https://github.com/christophery/pushy/
+* by Christopher Yee */
+
+(function ($) {
+	var pushy = $('.pushy'), //menu css class
+		body = $('body'),
+		container = $('.pushy-container'), //container css class
+		push = $('.push'), //css class to add pushy capability
+		pushyLeft = 'pushy-left', //css class for left menu position
+		pushyOpenLeft = 'pushy-open-left', //css class when menu is open (left position)
+		pushyOpenRight = 'pushy-open-right', //css class when menu is open (right position)
+		siteOverlay = $('.site-overlay'), //site overlay
+		menuLinkFocus = $(pushy.data('focus')), //focus on link when menu is open
+		menuSpeed = 200, //jQuery fallback menu speed
+		menuWidth = pushy.width() + 'px', //jQuery fallback menu width
+		submenuClass = '.pushy-submenu',
+		submenuOpenClass = 'pushy-submenu-open',
+		submenuClosedClass = 'pushy-submenu-closed',
+		submenu = $(submenuClass);
+
+	//check if menu-btn-class data attribute exists
+	if( typeof pushy.data('menu-btn-class') !== 'undefined' ){
+		var menuBtnClass = pushy.data('menu-btn-class'); //take user defined menu button CSS class
+	}else{
+		var menuBtnClass = '.menu-btn'; //set default menu button CSS class
+	}
+
+	//css classes to toggle the menu
+	var menuBtn = $(menuBtnClass + ', .pushy-link');
+
+	//css class to focus when menu is closed w/ esc key
+	var menuBtnFocus = $(menuBtnClass);
+
+	//close menu w/ esc key
+	$(document).keyup(function(e) {
+		//check if esc key is pressed
+		if (e.keyCode == 27) {
+
+			//check if menu is open
+			if( body.hasClass(pushyOpenLeft) || body.hasClass(pushyOpenRight) ){
+				if(cssTransforms3d){
+					closePushy(); //close pushy
+				}else{
+					closePushyFallback();
+					opened = false; //set menu state
+				}
+
+				//focus on menu button after menu is closed
+				if(menuBtnFocus){
+					menuBtnFocus.focus();
+				}
+
+			}
+
+		}
+	});
+
+	function togglePushy(){
+		//add class to body based on menu position
+		if( pushy.hasClass(pushyLeft) ){
+			body.toggleClass(pushyOpenLeft);
+		}else{
+			body.toggleClass(pushyOpenRight);
+		}
+
+		//focus on link in menu after css transition ends
+		if(menuLinkFocus){
+			pushy.one('transitionend', function() {
+				menuLinkFocus.focus();
+			});
+		}
+
+	}
+
+	function closePushy(){
+		if( pushy.hasClass(pushyLeft) ){
+			body.removeClass(pushyOpenLeft);
+		}else{
+			body.removeClass(pushyOpenRight);
+		}
+	}
+
+	function openPushyFallback(){
+		//animate menu position based on CSS class
+		if( pushy.hasClass(pushyLeft) ){
+			body.addClass(pushyOpenLeft);
+			pushy.animate({left: "0px"}, menuSpeed);
+			container.animate({left: menuWidth}, menuSpeed);
+			//css class to add pushy capability
+			push.animate({left: menuWidth}, menuSpeed);
+		}else{
+			body.addClass(pushyOpenRight);
+			pushy.animate({right: '0px'}, menuSpeed);
+			container.animate({right: menuWidth}, menuSpeed);
+			push.animate({right: menuWidth}, menuSpeed);
+		}
+
+		//focus on link in menu
+		if(menuLinkFocus){
+			menuLinkFocus.focus();
+		}
+	}
+
+	function closePushyFallback(){
+		//animate menu position based on CSS class
+		if( pushy.hasClass(pushyLeft) ){
+			body.removeClass(pushyOpenLeft);
+			pushy.animate({left: "-" + menuWidth}, menuSpeed);
+			container.animate({left: "0px"}, menuSpeed);
+			//css class to add pushy capability
+			push.animate({left: "0px"}, menuSpeed);
+		}else{
+			body.removeClass(pushyOpenRight);
+			pushy.animate({right: "-" + menuWidth}, menuSpeed);
+			container.animate({right: "0px"}, menuSpeed);
+			push.animate({right: "0px"}, menuSpeed);
+		}
+	}
+
+	function toggleSubmenu(){
+		//hide submenu by default
+		$(submenuClass).addClass(submenuClosedClass);
+
+		$(submenuClass).on('click', function(e){
+	        var selected = $(this);
+
+	        if( selected.hasClass(submenuClosedClass) ) {
+				//hide same-level opened submenus
+				selected.siblings(submenuClass).addClass(submenuClosedClass).removeClass(submenuOpenClass);
+	            //show submenu
+				selected.removeClass(submenuClosedClass).addClass(submenuOpenClass);
+	        }else{
+	            //hide submenu
+	            selected.addClass(submenuClosedClass).removeClass(submenuOpenClass);
+			}
+			// prevent event to be triggered on parent
+			e.stopPropagation();
+	    });
+	}
+
+	//checks if 3d transforms are supported removing the modernizr dependency
+	var cssTransforms3d = (function csstransforms3d(){
+		var el = document.createElement('p'),
+		supported = false,
+		transforms = {
+		    'webkitTransform':'-webkit-transform',
+		    'OTransform':'-o-transform',
+		    'msTransform':'-ms-transform',
+		    'MozTransform':'-moz-transform',
+		    'transform':'transform'
+		};
+
+		if(document.body !== null) {
+			// Add it to the body to get the computed style
+			document.body.insertBefore(el, null);
+
+			for(var t in transforms){
+			    if( el.style[t] !== undefined ){
+			        el.style[t] = 'translate3d(1px,1px,1px)';
+			        supported = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+			    }
+			}
+
+			document.body.removeChild(el);
+
+			return (supported !== undefined && supported.length > 0 && supported !== "none");
+		}else{
+			return false;
+		}
+	})();
+
+	if(cssTransforms3d){
+		//toggle submenu
+		toggleSubmenu();
+
+		//toggle menu
+		menuBtn.on('click', function(){
+			togglePushy();
+		});
+		//close menu when clicking site overlay
+		siteOverlay.on('click', function(){
+			togglePushy();
+		});
+	}else{
+		//add css class to body
+		body.addClass('no-csstransforms3d');
+
+		//hide menu by default
+		if( pushy.hasClass(pushyLeft) ){
+			pushy.css({left: "-" + menuWidth});
+		}else{
+			pushy.css({right: "-" + menuWidth});
+		}
+
+		//fixes IE scrollbar issue
+		container.css({"overflow-x": "hidden"});
+
+		//keep track of menu state (open/close)
+		var opened = false;
+
+		//toggle submenu
+		toggleSubmenu();
+
+		//toggle menu
+		menuBtn.on('click', function(){
+			if (opened) {
+				closePushyFallback();
+				opened = false;
+			} else {
+				openPushyFallback();
+				opened = true;
+			}
+		});
+
+		//close menu when clicking site overlay
+		siteOverlay.on('click', function(){
+			if (opened) {
+				closePushyFallback();
+				opened = false;
+			} else {
+				openPushyFallback();
+				opened = true;
+			}
+		});
+	}
+}(jQuery));

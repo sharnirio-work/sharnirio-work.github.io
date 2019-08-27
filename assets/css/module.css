@@ -12989,4 +12989,84 @@ table.dataTable td {
   }
 }
 
+.my-circle-wr {
+  display: flex;
+  justify-content: space-around;
+}
+
+.my-circle {
+  position: relative;
+  height: 10rem;
+  width: 10rem;
+  background: linear-gradient(to bottom, red 10%, orange 20%, green 60%, blue 90%, white 100%);
+  border-radius: 50%;
+}
+
+.my-circle:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  height: calc(100% - 3px);
+  width: calc(100% - 3px);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.my-circle-half {
+  position: relative;
+  height: 10rem;
+  width: 10rem;
+  background: linear-gradient(to bottom, red 10%, orange 20%, green 60%, blue 90%, white 100%);
+  border-radius: 50%;
+}
+
+.my-circle-half:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: #fff;
+}
+
+#input-with-stars .input-with-stars {
+  position: relative;
+}
+
+#input-with-stars .input-with-stars input {
+  width: 300px;
+  padding: 5px 15px;
+  border-radius: 0;
+  background: blue;
+}
+
+#input-with-stars .input-with-stars input:placeholder-shown + label {
+  display: flex;
+  align-items: center;
+}
+
+#input-with-stars .input-with-stars label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: block;
+  display: none;
+  pointer-events: none;
+  color: #000;
+  padding: 5px 15px;
+}
+
+#input-with-stars .input-with-stars label:after {
+  content: "*";
+  color: red;
+  margin-left: 15px;
+}
+
 /*# sourceMappingURL=sourcemaps/module.css.map */
