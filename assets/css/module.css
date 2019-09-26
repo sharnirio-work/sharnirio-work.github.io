@@ -13069,4 +13069,27 @@ table.dataTable td {
   margin-left: 15px;
 }
 
+.block-with-circle-wrapper {
+  background: url("http://placehold.it/900x300");
+  background-size: cover;
+  padding: 20px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+
+.block-with-circle {
+  width: 450px;
+  height: 300px;
+  position: relative;
+  background: radial-gradient(circle at 450px 150px, transparent calc(50px - 1px), #fff 50px);
+}
+
+.block-with-circle2 {
+  width: 450px;
+  height: 300px;
+  position: relative;
+  background: radial-gradient(circle at 0px 150px, transparent calc(50px - 1px), #fff 50px);
+}
+
 /*# sourceMappingURL=sourcemaps/module.css.map */
