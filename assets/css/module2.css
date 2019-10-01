@@ -3231,4 +3231,89 @@ ul.sample-nav a {
   width: 100%;
 }
 
+.readmore-block {
+  overflow: hidden;
+}
+
+#simple-chart {
+  background-color: #2f323e;
+  font-family: Consolas, monaco, monospace;
+}
+
+.simple-chart-columns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.simple-chart-columns > div {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+}
+
+.dial {
+  border-color: #22262f;
+  color: #689F38;
+  display: inline-block;
+  text-align: left;
+}
+
+.dial p {
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin: 0;
+}
+
+.dial canvas {
+  position: absolute;
+}
+
+.dial.error {
+  color: #d46d71;
+}
+
+.dial.error p {
+  color: #d46d71;
+}
+
+.dial.success {
+  color: #689F38;
+  border-color: rgba(212, 109, 113, 0.4);
+}
+
+.dial.success p {
+  color: #689F38;
+}
+
+.dial.blue {
+  color: #1390d4;
+}
+
+.elip-text {
+  background-color: tomato;
+  font-size: 32px;
+  position: relative;
+  min-height: 400px;
+}
+
+.elip-text .elip-text-item {
+  position: absolute;
+}
+
+.elip-text .elip-text-1 {
+  left: 22%;
+  top: 23%;
+}
+
+.elip-text .elip-text-2 {
+  right: 22%;
+  bottom: 23%;
+}
+
 /*# sourceMappingURL=sourcemaps/module2.css.map */

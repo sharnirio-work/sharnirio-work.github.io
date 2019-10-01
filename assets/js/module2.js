@@ -2359,3 +2359,236 @@ function simpleTimerInit() {
 		return document.getElementById(id);
 	}
 }
+/* module readmore */
+// function on
+jQuery(document).ready(function() {
+	readmoreInit();
+});
+
+// more option https://jedfoster.com/Readmore.js/
+// function init
+function readmoreInit() {
+	$('.readmore-block').readmore({
+		speed: 75,
+		maxHeight: 500,
+		moreLink: '<a href="#">Подробнее</a>',
+		lessLink: '<a href="#">Скрыть</a>'
+	});
+}
+
+/*!
+ * @preserve
+ *
+ * Readmore.js jQuery plugin
+ * Author: @jed_foster
+ * Project home: http://jedfoster.github.io/Readmore.js
+ * Licensed under the MIT license
+ *
+ * Debounce function from http://davidwalsh.name/javascript-debounce-function
+ */
+!function(t){"function"==typeof define&&define.amd?define(["jquery"],t):"object"==typeof exports?module.exports=t(require("jquery")):t(jQuery)}(function(t){"use strict";function e(t,e,i){var o;return function(){var n=this,a=arguments,s=function(){o=null,i||t.apply(n,a)},r=i&&!o;clearTimeout(o),o=setTimeout(s,e),r&&t.apply(n,a)}}function i(t){var e=++h;return String(null==t?"rmjs-":t)+e}function o(t){var e=t.clone().css({height:"auto",width:t.width(),maxHeight:"none",overflow:"hidden"}).insertAfter(t),i=e.outerHeight(),o=parseInt(e.css({maxHeight:""}).css("max-height").replace(/[^-\d\.]/g,""),10),n=t.data("defaultHeight");e.remove();var a=o||t.data("collapsedHeight")||n;t.data({expandedHeight:i,maxHeight:o,collapsedHeight:a}).css({maxHeight:"none"})}function n(t){if(!d[t.selector]){var e=" ";t.embedCSS&&""!==t.blockCSS&&(e+=t.selector+" + [data-readmore-toggle], "+t.selector+"[data-readmore]{"+t.blockCSS+"}"),e+=t.selector+"[data-readmore]{transition: height "+t.speed+"ms;overflow: hidden;}",function(t,e){var i=t.createElement("style");i.type="text/css",i.styleSheet?i.styleSheet.cssText=e:i.appendChild(t.createTextNode(e)),t.getElementsByTagName("head")[0].appendChild(i)}(document,e),d[t.selector]=!0}}function a(e,i){this.element=e,this.options=t.extend({},r,i),n(this.options),this._defaults=r,this._name=s,this.init(),window.addEventListener?(window.addEventListener("load",c),window.addEventListener("resize",c)):(window.attachEvent("load",c),window.attachEvent("resize",c))}var s="readmore",r={speed:100,collapsedHeight:200,heightMargin:16,moreLink:'<a href="#">Read More</a>',lessLink:'<a href="#">Close</a>',embedCSS:!0,blockCSS:"display: block; width: 100%;",startOpen:!1,blockProcessed:function(){},beforeToggle:function(){},afterToggle:function(){}},d={},h=0,c=e(function(){t("[data-readmore]").each(function(){var e=t(this),i="true"===e.attr("aria-expanded");o(e),e.css({height:e.data(i?"expandedHeight":"collapsedHeight")})})},100);a.prototype={init:function(){var e=t(this.element);e.data({defaultHeight:this.options.collapsedHeight,heightMargin:this.options.heightMargin}),o(e);var n=e.data("collapsedHeight"),a=e.data("heightMargin");if(e.outerHeight(!0)<=n+a)return this.options.blockProcessed&&"function"==typeof this.options.blockProcessed&&this.options.blockProcessed(e,!1),!0;var s=e.attr("id")||i(),r=this.options.startOpen?this.options.lessLink:this.options.moreLink;e.attr({"data-readmore":"","aria-expanded":this.options.startOpen,id:s}),e.after(t(r).on("click",function(t){return function(i){t.toggle(this,e[0],i)}}(this)).attr({"data-readmore-toggle":s,"aria-controls":s})),this.options.startOpen||e.css({height:n}),this.options.blockProcessed&&"function"==typeof this.options.blockProcessed&&this.options.blockProcessed(e,!0)},toggle:function(e,i,o){o&&o.preventDefault(),e||(e=t('[aria-controls="'+this.element.id+'"]')[0]),i||(i=this.element);var n=t(i),a="",s="",r=!1,d=n.data("collapsedHeight");n.height()<=d?(a=n.data("expandedHeight")+"px",s="lessLink",r=!0):(a=d,s="moreLink"),this.options.beforeToggle&&"function"==typeof this.options.beforeToggle&&this.options.beforeToggle(e,n,!r),n.css({height:a}),n.on("transitionend",function(i){return function(){i.options.afterToggle&&"function"==typeof i.options.afterToggle&&i.options.afterToggle(e,n,r),t(this).attr({"aria-expanded":r}).off("transitionend")}}(this)),t(e).replaceWith(t(this.options[s]).on("click",function(t){return function(e){t.toggle(this,i,e)}}(this)).attr({"data-readmore-toggle":n.attr("id"),"aria-controls":n.attr("id")}))},destroy:function(){t(this.element).each(function(){var e=t(this);e.attr({"data-readmore":null,"aria-expanded":null}).css({maxHeight:"",height:""}).next("[data-readmore-toggle]").remove(),e.removeData()})}},t.fn.readmore=function(e){var i=arguments,o=this.selector;return e=e||{},"object"==typeof e?this.each(function(){if(t.data(this,"plugin_"+s)){var i=t.data(this,"plugin_"+s);i.destroy.apply(i)}e.selector=o,t.data(this,"plugin_"+s,new a(this,e))}):"string"==typeof e&&"_"!==e[0]&&"init"!==e?this.each(function(){var o=t.data(this,"plugin_"+s);o instanceof a&&"function"==typeof o[e]&&o[e].apply(o,Array.prototype.slice.call(i,1))}):void 0}});
+
+/* module simple-chart */
+// function on
+jQuery(document).ready(function() {
+	simpleChartInit();
+});
+
+// more info https://habr.com/ru/post/325428/
+// function init
+function simpleChartInit() {
+	// Ищем все элементы с class="dial"
+	var dials = $(".dial");
+	// Перебираем все .dial и пихуем туда canvas с графиком.
+	for (i = 0; i < dials.length; i++) {
+		var width = (typeof $(dials[i]).attr("data-width") != 'undefined') ? Math.round($(dials[i]).attr("data-width")) : 80;
+		var procent = (Number($(dials[i]).html()) > 0 && Number($(dials[i]).html()) < 100) ? Math.round(Number($(dials[i]).html()) * 10) / 10 : 0;
+		var lineWidth = (typeof $(dials[i]).attr("data-lineWidth") != 'undefined') ? Number($(dials[i]).attr("data-lineWidth")) : width / 10;
+		var size = width + lineWidth;
+		var lineRound = (typeof $(dials[i]).attr("data-lineRound") != 'undefined') ? true : false;
+		var borderColor = $(dials[i]).css("border-color");
+		var color = $(dials[i]).css("color");
+		// Меняем размер .dial в зависимости от data-width="80"
+		// Устанавливаем размер шрифта так что бы он вмещался в круг не задевая border
+		$(dials[i]).css({ "width": size + 'px', "height": size + 'px', "font-size": Math.floor((width - lineWidth) / 4) + 'px' });
+		// Вставляем canvas такого же размера что и родитель.
+		$(dials[i]).html('<canvas id="dial' + i + '" width="' + size + '" height="' + size + '"></canvas><p>' + procent + '%</p>');
+		// Выравниваем текст по вертикали
+		$("p", dials[i]).css({ "line-height": size + 'px' });
+		var canvas = document.getElementById("dial" + i);
+		var context = canvas.getContext("2d");
+		// считаем по формуле радианы
+		var radian = 2 * Math.PI * procent / 100;
+		// рисуем круг для фона
+		context.arc(width / 2 + lineWidth / 2, width / 2 + lineWidth / 2, width / 2, 0, 2 * Math.PI, false);
+		context.lineWidth = lineWidth;
+		context.strokeStyle = borderColor;
+		context.stroke();
+		context.beginPath();
+		// рисуем круг с процентами
+		context.arc(width / 2 + lineWidth / 2, width / 2 + lineWidth / 2, width / 2, 1.5 * Math.PI, radian + 1.5 * Math.PI, false);
+		context.strokeStyle = color;
+		// Можно скруглить концы отрезка если передан параметр data-lineRound
+		if (lineRound == true && lineWidth < width) context.lineCap = "round";
+		context.stroke();
+	}
+};
+
+/* module elip-text */
+// function on
+jQuery(document).ready(function() {
+	elipTextinit();
+});
+
+// more info https://pcvector.net/scripts/text_and_link_effects/409-eliptext-raspolozhenie-teksta-po-okruzhnosti.html
+// function init
+function elipTextinit() {
+	$('.elip-text-1').elipText({radius: 220});
+	$('.elip-text-2').elipText({radius: 160, dir:-1});
+}
+
+/*global jQuery */
+/*!
+* Lettering.JS 0.6.1
+*
+* Copyright 2010, Dave Rupert http://daverupert.com
+* Released under the WTFPL license
+* http://sam.zoy.org/wtfpl/
+*
+* Thanks to Paul Irish - http://paulirish.com - for the feedback.
+*
+* Date: Mon Sep 20 17:14:00 2010 -0600
+*/
+(function($){
+	function injector(t, splitter, klass, after) {
+		var a = t.text().split(splitter), inject = '';
+		if (a.length) {
+			$(a).each(function(i, item) {
+				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
+			});
+			t.empty().append(inject);
+		}
+	}
+
+	var methods = {
+		init : function() {
+
+			return this.each(function() {
+				injector($(this), '', 'char', '');
+			});
+
+		},
+
+		words : function() {
+
+			return this.each(function() {
+				injector($(this), ' ', 'word', ' ');
+			});
+
+		},
+
+		lines : function() {
+
+			return this.each(function() {
+				var r = "eefec303079ad17405c889e092e105b0";
+				// Because it's hard to split a <br/> tag consistently across browsers,
+				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash
+				// (of the word "split").  If you're trying to use this plugin on that
+				// md5 hash string, it will fail because you're being ridiculous.
+				injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
+			});
+
+		}
+	};
+
+	$.fn.lettering = function( method ) {
+		// Method calling logic
+		if ( method && methods[method] ) {
+			return methods[ method ].apply( this, [].slice.call( arguments, 1 ));
+		} else if ( method === 'letters' || ! method ) {
+			return methods.init.apply( this, [].slice.call( arguments, 0 ) ); // always pass an array
+		}
+		$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
+		return this;
+	};
+
+})(jQuery);
+
+/*global jQuery */
+/*!
+* ElipText.JS 0.1
+*
+* Copyright 2013, Peter Hrynkow http://peterhrynkow.com
+* Released under the WTFPL license
+* http://sam.zoy.org/wtfpl/
+*
+*
+* Date: Sun Feb 17
+*/
+$.fn.elipText = function(options) {
+
+		var settings = {
+				'radius' : 200,
+				dir: 1
+		};
+
+		if (typeof($.fn.lettering) !== 'function') {
+				console.log('Lettering.js is required');
+				return;
+		}
+
+
+		return this.each(function () {
+
+				if (options) {
+						$.extend(settings, options);
+				}
+
+
+				var elem = $(this),
+						txt = elem.html().replace(/\s/g, '&nbsp;');
+
+				elem.html(txt).lettering();
+
+				var offset = 0,
+						origin = 'center ' + (settings.radius) + 'px',
+						delta = (180 / Math.PI),
+						ch = parseInt(elem.find('span').css('line-height'), 10);
+
+				if (settings.dir===-1) {
+						origin = 'center ' + (-settings.radius + ch) + 'px';
+				}
+
+				elem.find('span').each(function () {
+					var l = $(this);
+					offset += l.outerWidth() / 2 / (settings.radius-ch) * delta;
+					l.data('rot', offset);
+					offset += l.outerWidth() / 2 / (settings.radius-ch) * delta;
+
+				});
+				elem.find('span').each(function () {
+						var l = $(this),
+								r = (-offset * settings.dir / 2) + l.data('rot') * settings.dir,
+								transform = 'rotate(' + r + 'deg)';
+
+						l.css({
+								top: 0,
+								left: '50%',
+								marginLeft: -l.width() / 2,
+								position: "absolute",
+								//
+								webkitTransform: transform,
+								MozTransform: transform,
+								oTransform: transform,
+								msTransform: transform,
+								transform: transform,
+								//
+								webkitTransformOrigin: origin,
+								MozTransformOrigin: origin,
+								oTransformOrigin: origin,
+								msTransformOrigin: origin,
+								transformOrigin: origin
+						});
+				});
+		});
+};

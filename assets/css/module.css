@@ -13092,4 +13092,21 @@ table.dataTable td {
   background: radial-gradient(circle at 0px 150px, transparent calc(50px - 1px), #fff 50px);
 }
 
+.fix-last-child-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.fix-last-child-list li:nth-of-type(n+2):before {
+  content: "|";
+  padding: 0 5px;
+}
+
+.fix-last-child-list li.first-el:before {
+  visibility: hidden;
+}
+
 /*# sourceMappingURL=sourcemaps/module.css.map */
