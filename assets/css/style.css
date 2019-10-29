@@ -1108,11 +1108,22 @@ dl dd {
   }
 }
 
+body {
+  padding-top: 400px;
+}
+
 .module-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  background-color: #ccc;
+  padding: 20px 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
 }
 
 .module-links a {

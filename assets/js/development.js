@@ -12,12 +12,15 @@ jQuery(document).ready(function() {
 	windowResize(breakpointWidth);
 	fastNavigation(fastNavigationPage);
 	buttonAllOff();
+	sortLink();
+	linkScroll();
 });
 
 
 //-------- -------- -------- --------
 //-------- included dev js function start
 //-------- -------- -------- --------
+
 
 //#####function to trigger another function when resizing the browser window
 //function to trigger another function when resizing the browser window
@@ -160,6 +163,54 @@ function checkboxSave() {
 	load();
 }
 //function call --- ;
+
+function linkScroll() {
+	var $body = $("body");
+	var $topHeight = $(".module-links").innerHeight();
+	$body.css({
+		paddingTop: $topHeight
+	});
+	setTimeout(function() {
+		var navLink = jQuery(".module-links [href*='#']");
+		var annimateDone = true;
+		navLink.on('click', function(e) {
+			if (annimateDone) {
+				annimateDone = false;
+				e.preventDefault();
+				var elementClick = jQuery(this).attr("href")
+				var destination = jQuery(elementClick).offset().top - $topHeight;
+				jQuery("html,body").animate({
+					scrollTop: destination
+				}, 500, "linear", function() {
+					annimateDone = true;
+				});
+			}
+		});
+	}, 500);
+}
+function sortLink() {
+	var $cont = $('.module-links');
+	var $link = $('.module-links > a');
+	var arrList = [];
+	var sorted = [];
+
+	function copySorted(arr) {
+		return arr.slice().sort();
+	}
+
+	$link.each(function() {
+		arrList.push($(this).attr('href'));
+	});
+
+	sorted = copySorted(arrList);
+	$link.remove();
+
+	for (var i = 0; i < sorted.length; i++) {
+		var a = document.createElement('a');
+		var $a = $(a).attr("href", sorted[i]).text(sorted[i].substring(1));
+		$cont.append($a);
+	}
+}
 
 //-------- -------- -------- --------
 //-------- included dev js function end

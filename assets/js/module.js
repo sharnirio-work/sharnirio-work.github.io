@@ -4885,7 +4885,7 @@ jQuery(document).ready(function() {
 });
 // function init
 function myScrollLink() {
-	var navLink = jQuery(".module-links [href*='#'], .just-example-block [href*='#']");
+	var navLink = jQuery(".just-example-block [href*='#']");
 	navLink.on('click', function(e) {
 		var elementClick = jQuery(this).attr("href")
 		var destination = jQuery(elementClick).offset().top;
