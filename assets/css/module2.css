@@ -2323,7 +2323,10 @@ button.button-cross:hover span:nth-child(4) {
   margin-top: 30px;
 }
 
-.box1, .box2, .box3, .box4 {
+.box1,
+.box2,
+.box3,
+.box4 {
   background: #ccc;
   height: 200px;
   position: relative;
@@ -2350,6 +2353,31 @@ button.button-cross:hover span:nth-child(4) {
 .box4 {
   background: green;
   z-index: 4;
+}
+
+.wrapper-gsap {
+  width: 450px;
+  height: 50px;
+  position: relative;
+  margin: auto;
+  background: #ccc;
+  overflow: hidden;
+}
+
+.wrapper-gsap .box {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: red;
+  font-size: 25px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.wrapper-gsap .boxes {
+  position: relative;
+  left: -100px;
+  padding: 0 20px;
 }
 
 #content-scrolly {
@@ -3314,6 +3342,66 @@ ul.sample-nav a {
 .elip-text .elip-text-2 {
   right: 22%;
   bottom: 23%;
+}
+
+.split-letters {
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.split-letters > div {
+  white-space: pre-line;
+  margin-right: 0.4em;
+  cursor: default;
+}
+
+.split-words {
+  margin-top: 20px;
+  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.split-words > div {
+  white-space: pre-line;
+  float: left;
+  margin-right: 5px;
+  cursor: default;
+}
+
+.letter-measure {
+  margin-right: 0 !important;
+  cursor: default;
+}
+
+.blank {
+  margin-right: 0px !important;
+  white-space: pre !important;
+}
+
+#sticker-new {
+  background: #bada55;
+  color: white;
+  width: 300px;
+  font-family: Droid Sans;
+  font-size: 40px;
+  line-height: 1.6em;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  margin: 0 auto;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  position: relative;
+  z-index: 999;
+}
+
+.svg-vivus {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 40px;
 }
 
 /*# sourceMappingURL=sourcemaps/module2.css.map */

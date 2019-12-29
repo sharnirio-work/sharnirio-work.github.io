@@ -1,3 +1,11 @@
+// Helper if element exist then call function
+function iee(_el, _cb) {
+	var elem = document.querySelector(_el);
+
+	if(document.body.contains(elem)) {
+		_cb();
+	}
+}
 /* module many-buttons */
 // function on
 jQuery(document).ready(function() {
@@ -39,6 +47,7 @@ var LeaderLine=function(){"use strict";var te,g,y,S,_,o,t,h,f,p,a,i,l,v="leader-
 jQuery(document).ready(function() {
 	greensockInit();
 	greensockInit2();
+	greensockInit3();
 });
 // tutorial https://abraxabra.ru/blog/prochee/greensock-for-beginners-a-tutorial-on-web-animation-part-1/
 // function init
@@ -145,6 +154,29 @@ function greensockInit2() {
 	})
 }
 
+function greensockInit3() {
+	var $overflow = $("#overflow");
+	var colors = ["#f38630", "#6fb936", "#ccc", "#6fb936"];
+	//initially colorize each box and position in a row
+	TweenMax.set(".box", {
+		backgroundColor: function(i) {
+			return colors[i % colors.length];
+		},
+		x: function(i) {
+			return i * 50;
+		}
+	});
+	TweenMax.to(".box", 10, {
+		ease: Linear.easeNone,
+		x: "+=500", //move each box 500px to right
+		modifiers: {
+			x: function(x) {
+				return x % 500; //force x value to be between 0 and 500 using modulus
+			}
+		},
+		repeat: -1
+	});
+}
 /*!
  * VERSION: 2.1.3
  * DATE: 2019-05-17
@@ -2592,3 +2624,491 @@ $.fn.elipText = function(options) {
 				});
 		});
 };
+/* module splitText */
+// function on
+jQuery(document).ready(function() {
+	iee(".split-letters", splitTextInit);
+});
+
+// function init
+function splitTextInit() {
+	$(".split-letters").splitTextGo({'type':'letters'});
+	$(".split-words").splitTextGo({'type':'words'});
+}
+
+
+///////////////////////////////      PLUGIN         //////////////////////////////
+// modify this plugin https://github.com/netgfx/SplitText
+(function($){
+
+	$.fn.splitTextGo = function(options){
+
+
+		// default
+		var opts = {
+			'type'		: 'lines',
+			'useCSS'	: false
+		};
+
+		if(options == null || options == undefined || options == '' || (options.type !== 'words' && options.type !== 'lines' && options.type !== 'letters' && options.type !== 'sentences')){
+			options = opts;
+		}
+
+		if(options.duration == undefined){
+			options.duration = 1.0;
+		}
+
+		// element is the outer container //
+		var element = $(this);
+		//// setup the element ////
+
+		if( element.hasClass('isSplit') ){
+
+			element.empty();
+			element.text( $('#hidden_'+element.attr('id')).text() );
+
+		}
+		else{
+			element.attr('id',String(Math.round(Math.random()*1000+42)));
+			element.addClass('isSplit');
+		}
+
+		var userInput = element.text();
+
+		var initialText = element.text();
+
+		var hiddenId = $('#hidden_'+element.attr('id'));
+
+		var parentID = "hidden_"+element.attr('id');
+
+		if( document.getElementById(parentID) == undefined){
+
+			$('body').append('<p class="hiddenText" id="hidden_'+element.attr('id')+'"></p>');
+			$(".hiddenText").text(userInput).css({'display':'none'});
+
+		}
+
+
+		//// SET ANIMATION TYPE ///
+
+		console.log(options.type);
+		if(options.type=='lines'){
+
+			var result = splitWords(userInput);
+
+			element.html(result);
+
+			var obj = splitLines();
+
+			if(options.justSplit == true){
+				return {'id':element.attr('id'),'value':obj};
+			}
+
+			element.empty();
+
+			$.each(obj,function(index,value){
+
+				var item = "<div class='split-lines'>"+value.text+"</div>";
+
+				element.append(item);
+
+			});
+
+		}
+		else if(options.type=='words'){
+			var result = splitWords(initialText);
+
+			if(options.justSplit == true){
+				return {'id':element.attr('id'),'value':result};
+			}
+
+			element.empty();
+			element.html(result);
+		}
+
+
+
+
+		function splitLetters(userInput){
+
+			var arr = userInput.split("");
+
+			for(var i=0;i<arr.length;i++) {
+
+				if(arr[i] == " "){
+						arr[i] = '<div class="letter-measure blank">' + arr[i] + '</div>';
+				}
+				else{
+
+		      		if(!arr[i].match(/\s\n\t\r/g) && arr[i]!="") arr[i] = '<div class="letter-measure">' + arr[i] + '</div>';
+
+		     	}
+		   }
+
+		   return arr.join(" ");
+		}
+
+		function splitWords(userInput, justSplit){
+			  var a = userInput.replace(/\n/g, " \n<br/> ").split(" ");
+
+   			   if(justSplit == true){
+   			   		$.each(a, function(i, val) {
+			      		if(!val.match(/\n/) && val!="") a[i] = val;
+			   		});
+
+			   		return a;
+   			   }
+
+			   $.each(a, function(i, val) {
+			      if(!val.match(/\n/) && val!="") a[i] = '<div class="word-measure">' + val + '</div>';
+			   });
+
+			   var arr = a.join(" ");
+			   return arr;
+		}
+
+		return this;
+	};
+
+
+})(jQuery); /// end of plugin ///
+/* module sticky-block-new */
+// function on
+jQuery(document).ready(function() {
+	functionStickyNew();
+});
+
+// function init
+function functionStickyNew(argument) {
+
+	// more option see https://github.com/garand/sticky
+	$("#sticker-new").sticky({
+		topSpacing: 100,
+		center:true,
+		zIndex: 100,
+		className:"is-sticky"
+	});
+
+	$(".unstick-block").on('click', function(event) {
+		event.preventDefault();
+		$("#sticker-new").unstick();
+	});
+}
+
+// Sticky Plugin v1.0.4 for jQuery
+// =============
+// Author: Anthony Garand
+// Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
+// Improvements by Leonardo C. Daronco (daronco)
+// Created: 02/14/2011
+// Date: 07/20/2015
+// Website: http://stickyjs.com/
+// Description: Makes an element on the page stick on the screen as you scroll
+//              It will only set the 'top' and 'position' of your element, you
+//              might need to adjust the width in some cases.
+
+(function (factory) {
+		if (typeof define === 'function' && define.amd) {
+				// AMD. Register as an anonymous module.
+				define(['jquery'], factory);
+		} else if (typeof module === 'object' && module.exports) {
+				// Node/CommonJS
+				module.exports = factory(require('jquery'));
+		} else {
+				// Browser globals
+				factory(jQuery);
+		}
+}(function ($) {
+		var slice = Array.prototype.slice; // save ref to original slice()
+		var splice = Array.prototype.splice; // save ref to original slice()
+
+	var defaults = {
+			topSpacing: 0,
+			bottomSpacing: 0,
+			className: 'is-sticky',
+			wrapperClassName: 'sticky-wrapper',
+			center: false,
+			getWidthFrom: '',
+			widthFromWrapper: true, // works only when .getWidthFrom is empty
+			responsiveWidth: false,
+			zIndex: 'inherit'
+		},
+		$window = $(window),
+		$document = $(document),
+		sticked = [],
+		windowHeight = $window.height(),
+		scroller = function() {
+			var scrollTop = $window.scrollTop(),
+				documentHeight = $document.height(),
+				dwh = documentHeight - windowHeight,
+				extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
+
+			for (var i = 0, l = sticked.length; i < l; i++) {
+				var s = sticked[i],
+					elementTop = s.stickyWrapper.offset().top,
+					etse = elementTop - s.topSpacing - extra;
+
+				//update height in case of dynamic content
+				s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+
+				if (scrollTop <= etse) {
+					if (s.currentTop !== null) {
+						s.stickyElement
+							.css({
+								'width': '',
+								'position': '',
+								'top': '',
+								'z-index': ''
+							});
+						s.stickyElement.parent().removeClass(s.className);
+						s.stickyElement.trigger('sticky-end', [s]);
+						s.currentTop = null;
+					}
+				}
+				else {
+					var newTop = documentHeight - s.stickyElement.outerHeight()
+						- s.topSpacing - s.bottomSpacing - scrollTop - extra;
+					if (newTop < 0) {
+						newTop = newTop + s.topSpacing;
+					} else {
+						newTop = s.topSpacing;
+					}
+					if (s.currentTop !== newTop) {
+						var newWidth;
+						if (s.getWidthFrom) {
+								padding =  s.stickyElement.innerWidth() - s.stickyElement.width();
+								newWidth = $(s.getWidthFrom).width() - padding || null;
+						} else if (s.widthFromWrapper) {
+								newWidth = s.stickyWrapper.width();
+						}
+						if (newWidth == null) {
+								newWidth = s.stickyElement.width();
+						}
+						s.stickyElement
+							.css('width', newWidth)
+							.css('position', 'fixed')
+							.css('top', newTop)
+							.css('z-index', s.zIndex);
+
+						s.stickyElement.parent().addClass(s.className);
+
+						if (s.currentTop === null) {
+							s.stickyElement.trigger('sticky-start', [s]);
+						} else {
+							// sticky is started but it have to be repositioned
+							s.stickyElement.trigger('sticky-update', [s]);
+						}
+
+						if (s.currentTop === s.topSpacing && s.currentTop > newTop || s.currentTop === null && newTop < s.topSpacing) {
+							// just reached bottom || just started to stick but bottom is already reached
+							s.stickyElement.trigger('sticky-bottom-reached', [s]);
+						} else if(s.currentTop !== null && newTop === s.topSpacing && s.currentTop < newTop) {
+							// sticky is started && sticked at topSpacing && overflowing from top just finished
+							s.stickyElement.trigger('sticky-bottom-unreached', [s]);
+						}
+
+						s.currentTop = newTop;
+					}
+
+					// Check if sticky has reached end of container and stop sticking
+					var stickyWrapperContainer = s.stickyWrapper.parent();
+					var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
+
+					if( unstick ) {
+						s.stickyElement
+							.css('position', 'absolute')
+							.css('top', '')
+							.css('bottom', 0)
+							.css('z-index', '');
+					} else {
+						s.stickyElement
+							.css('position', 'fixed')
+							.css('top', newTop)
+							.css('bottom', '')
+							.css('z-index', s.zIndex);
+					}
+				}
+			}
+		},
+		resizer = function() {
+			windowHeight = $window.height();
+
+			for (var i = 0, l = sticked.length; i < l; i++) {
+				var s = sticked[i];
+				var newWidth = null;
+				if (s.getWidthFrom) {
+						if (s.responsiveWidth) {
+								newWidth = $(s.getWidthFrom).width();
+						}
+				} else if(s.widthFromWrapper) {
+						newWidth = s.stickyWrapper.width();
+				}
+				if (newWidth != null) {
+						s.stickyElement.css('width', newWidth);
+				}
+			}
+		},
+		methods = {
+			init: function(options) {
+				return this.each(function() {
+					var o = $.extend({}, defaults, options);
+					var stickyElement = $(this);
+
+					var stickyId = stickyElement.attr('id');
+					var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
+					var wrapper = $('<div></div>')
+						.attr('id', wrapperId)
+						.addClass(o.wrapperClassName);
+
+					stickyElement.wrapAll(function() {
+						if ($(this).parent("#" + wrapperId).length == 0) {
+										return wrapper;
+						}
+});
+
+					var stickyWrapper = stickyElement.parent();
+
+					if (o.center) {
+						stickyWrapper.css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
+					}
+
+					if (stickyElement.css("float") === "right") {
+						stickyElement.css({"float":"none"}).parent().css({"float":"right"});
+					}
+
+					o.stickyElement = stickyElement;
+					o.stickyWrapper = stickyWrapper;
+					o.currentTop    = null;
+
+					sticked.push(o);
+
+					methods.setWrapperHeight(this);
+					methods.setupChangeListeners(this);
+				});
+			},
+
+			setWrapperHeight: function(stickyElement) {
+				var element = $(stickyElement);
+				var stickyWrapper = element.parent();
+				if (stickyWrapper) {
+					stickyWrapper.css('height', element.outerHeight());
+				}
+			},
+
+			setupChangeListeners: function(stickyElement) {
+				if (window.MutationObserver) {
+					var mutationObserver = new window.MutationObserver(function(mutations) {
+						if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
+							methods.setWrapperHeight(stickyElement);
+						}
+					});
+					mutationObserver.observe(stickyElement, {subtree: true, childList: true});
+				} else {
+					if (window.addEventListener) {
+						stickyElement.addEventListener('DOMNodeInserted', function() {
+							methods.setWrapperHeight(stickyElement);
+						}, false);
+						stickyElement.addEventListener('DOMNodeRemoved', function() {
+							methods.setWrapperHeight(stickyElement);
+						}, false);
+					} else if (window.attachEvent) {
+						stickyElement.attachEvent('onDOMNodeInserted', function() {
+							methods.setWrapperHeight(stickyElement);
+						});
+						stickyElement.attachEvent('onDOMNodeRemoved', function() {
+							methods.setWrapperHeight(stickyElement);
+						});
+					}
+				}
+			},
+			update: scroller,
+			unstick: function(options) {
+				return this.each(function() {
+					var that = this;
+					var unstickyElement = $(that);
+
+					var removeIdx = -1;
+					var i = sticked.length;
+					while (i-- > 0) {
+						if (sticked[i].stickyElement.get(0) === that) {
+								splice.call(sticked,i,1);
+								removeIdx = i;
+						}
+					}
+					if(removeIdx !== -1) {
+						unstickyElement.unwrap();
+						unstickyElement
+							.css({
+								'width': '',
+								'position': '',
+								'top': '',
+								'float': '',
+								'z-index': ''
+							})
+						;
+					}
+				});
+			}
+		};
+
+	// should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
+	if (window.addEventListener) {
+		window.addEventListener('scroll', scroller, false);
+		window.addEventListener('resize', resizer, false);
+	} else if (window.attachEvent) {
+		window.attachEvent('onscroll', scroller);
+		window.attachEvent('onresize', resizer);
+	}
+
+	$.fn.sticky = function(method) {
+		if (methods[method]) {
+			return methods[method].apply(this, slice.call(arguments, 1));
+		} else if (typeof method === 'object' || !method ) {
+			return methods.init.apply( this, arguments );
+		} else {
+			$.error('Method ' + method + ' does not exist on jQuery.sticky');
+		}
+	};
+
+	$.fn.unstick = function(method) {
+		if (methods[method]) {
+			return methods[method].apply(this, slice.call(arguments, 1));
+		} else if (typeof method === 'object' || !method ) {
+			return methods.unstick.apply( this, arguments );
+		} else {
+			$.error('Method ' + method + ' does not exist on jQuery.sticky');
+		}
+	};
+	$(function() {
+		setTimeout(scroller, 0);
+	});
+}));
+
+/* module svg-vivus */
+// function on
+jQuery(document).ready(function() {
+	svgVivInit();
+});
+
+// function init
+function svgVivInit() {
+	var els= document.getElementsByClassName("svg-vivus-el");
+	var gearIcon  = {};
+	for (var i = els.length - 1; i >= 0; i--) {
+		gearIcon['v'+i] = new Vivus(els[i], {
+			duration: 200,
+			type: "scenario"
+		});
+	}
+	jQuery(".vv-btn").on('click', function(event) {
+		event.preventDefault();
+		gearIcon.v0.stop().reset().play();
+	});
+	jQuery(".vv-btn2").on('click', function(event) {
+		event.preventDefault();
+		gearIcon.v1.stop().reset().play();
+	});
+}
+
+// more info see https://maxwellito.github.io/vivus/
+!function(){"use strict";function r(t){if(void 0===t)throw new Error('Pathformer [constructor]: "element" parameter is required');if(t.constructor===String&&!(t=document.getElementById(t)))throw new Error('Pathformer [constructor]: "element" parameter is not related to an existing ID');if(!(t instanceof window.SVGElement||t instanceof window.SVGGElement||/^svg$/i.test(t.nodeName)))throw new Error('Pathformer [constructor]: "element" parameter must be a string or a SVGelement');this.el=t,this.scan(t)}var n,e,t,h;function i(t,e,r){n(),this.isReady=!1,this.setElement(t,e),this.setOptions(e),this.setCallback(r),this.isReady&&this.init()}r.prototype.TYPES=["line","ellipse","circle","polygon","polyline","rect"],r.prototype.ATTR_WATCH=["cx","cy","points","r","rx","ry","x","x1","x2","y","y1","y2"],r.prototype.scan=function(t){for(var e,r,n,i=t.querySelectorAll(this.TYPES.join(",")),a=0;a<i.length;a++)r=(0,this[(e=i[a]).tagName.toLowerCase()+"ToPath"])(this.parseAttr(e.attributes)),n=this.pathMaker(e,r),e.parentNode.replaceChild(n,e)},r.prototype.lineToPath=function(t){var e={},r=t.x1||0,n=t.y1||0,i=t.x2||0,a=t.y2||0;return e.d="M"+r+","+n+"L"+i+","+a,e},r.prototype.rectToPath=function(t){var e={},r=parseFloat(t.x)||0,n=parseFloat(t.y)||0,i=parseFloat(t.width)||0,a=parseFloat(t.height)||0;if(t.rx||t.ry){var o=parseInt(t.rx,10)||-1,s=parseInt(t.ry,10)||-1;o=Math.min(Math.max(o<0?s:o,0),i/2),s=Math.min(Math.max(s<0?o:s,0),a/2),e.d="M "+(r+o)+","+n+" L "+(r+i-o)+","+n+" A "+o+","+s+",0,0,1,"+(r+i)+","+(n+s)+" L "+(r+i)+","+(n+a-s)+" A "+o+","+s+",0,0,1,"+(r+i-o)+","+(n+a)+" L "+(r+o)+","+(n+a)+" A "+o+","+s+",0,0,1,"+r+","+(n+a-s)+" L "+r+","+(n+s)+" A "+o+","+s+",0,0,1,"+(r+o)+","+n}else e.d="M"+r+" "+n+" L"+(r+i)+" "+n+" L"+(r+i)+" "+(n+a)+" L"+r+" "+(n+a)+" Z";return e},r.prototype.polylineToPath=function(t){var e,r,n={},i=t.points.trim().split(" ");if(-1===t.points.indexOf(",")){var a=[];for(e=0;e<i.length;e+=2)a.push(i[e]+","+i[e+1]);i=a}for(r="M"+i[0],e=1;e<i.length;e++)-1!==i[e].indexOf(",")&&(r+="L"+i[e]);return n.d=r,n},r.prototype.polygonToPath=function(t){var e=r.prototype.polylineToPath(t);return e.d+="Z",e},r.prototype.ellipseToPath=function(t){var e={},r=parseFloat(t.rx)||0,n=parseFloat(t.ry)||0,i=parseFloat(t.cx)||0,a=parseFloat(t.cy)||0,o=i-r,s=a,h=parseFloat(i)+parseFloat(r),l=a;return e.d="M"+o+","+s+"A"+r+","+n+" 0,1,1 "+h+","+l+"A"+r+","+n+" 0,1,1 "+o+","+l,e},r.prototype.circleToPath=function(t){var e={},r=parseFloat(t.r)||0,n=parseFloat(t.cx)||0,i=parseFloat(t.cy)||0,a=n-r,o=i,s=parseFloat(n)+parseFloat(r),h=i;return e.d="M"+a+","+o+"A"+r+","+r+" 0,1,1 "+s+","+h+"A"+r+","+r+" 0,1,1 "+a+","+h,e},r.prototype.pathMaker=function(t,e){var r,n,i=document.createElementNS("http://www.w3.org/2000/svg","path");for(r=0;r<t.attributes.length;r++)n=t.attributes[r],-1===this.ATTR_WATCH.indexOf(n.name)&&i.setAttribute(n.name,n.value);for(r in e)i.setAttribute(r,e[r]);return i},r.prototype.parseAttr=function(t){for(var e,r={},n=0;n<t.length;n++){if(e=t[n],-1!==this.ATTR_WATCH.indexOf(e.name)&&-1!==e.value.indexOf("%"))throw new Error("Pathformer [parseAttr]: a SVG shape got values in percentage. This cannot be transformed into 'path' tags. Please use 'viewBox'.");r[e.name]=e.value}return r},i.LINEAR=function(t){return t},i.EASE=function(t){return-Math.cos(t*Math.PI)/2+.5},i.EASE_OUT=function(t){return 1-Math.pow(1-t,3)},i.EASE_IN=function(t){return Math.pow(t,3)},i.EASE_OUT_BOUNCE=function(t){var e=1-Math.cos(t*(.5*Math.PI)),r=Math.pow(e,1.5),n=Math.pow(1-t,2);return 1-n+(1-Math.abs(Math.cos(r*(2.5*Math.PI))))*n},i.prototype.setElement=function(e,r){var t,n;if(void 0===e)throw new Error('Vivus [constructor]: "element" parameter is required');if(e.constructor===String&&!(e=document.getElementById(e)))throw new Error('Vivus [constructor]: "element" parameter is not related to an existing ID');if(this.parentEl=e,r&&r.file){n=this,t=function(){var t=document.createElement("div");t.innerHTML=this.responseText;var e=t.querySelector("svg");if(!e)throw new Error("Vivus [load]: Cannot find the SVG in the loaded file : "+r.file);n.el=e,n.el.setAttribute("width","100%"),n.el.setAttribute("height","100%"),n.parentEl.appendChild(n.el),n.isReady=!0,n.init(),n=null};var i=new window.XMLHttpRequest;return i.addEventListener("load",t),i.open("GET",r.file),void i.send()}switch(e.constructor){case window.SVGSVGElement:case window.SVGElement:case window.SVGGElement:this.el=e,this.isReady=!0;break;case window.HTMLObjectElement:n=this,(t=function(t){if(!n.isReady){if(n.el=e.contentDocument&&e.contentDocument.querySelector("svg"),!n.el&&t)throw new Error("Vivus [constructor]: object loaded does not contain any SVG");n.el&&(e.getAttribute("built-by-vivus")&&(n.parentEl.insertBefore(n.el,e),n.parentEl.removeChild(e),n.el.setAttribute("width","100%"),n.el.setAttribute("height","100%")),n.isReady=!0,n.init(),n=null)}})()||e.addEventListener("load",t);break;default:throw new Error('Vivus [constructor]: "element" parameter is not valid (or miss the "file" attribute)')}},i.prototype.setOptions=function(t){var e=["delayed","sync","async","nsync","oneByOne","scenario","scenario-sync"],r=["inViewport","manual","autostart"];if(void 0!==t&&t.constructor!==Object)throw new Error('Vivus [constructor]: "options" parameter must be an object');if((t=t||{}).type&&-1===e.indexOf(t.type))throw new Error("Vivus [constructor]: "+t.type+" is not an existing animation `type`");if(this.type=t.type||e[0],t.start&&-1===r.indexOf(t.start))throw new Error("Vivus [constructor]: "+t.start+" is not an existing `start` option");if(this.start=t.start||r[0],this.isIE=-1!==window.navigator.userAgent.indexOf("MSIE")||-1!==window.navigator.userAgent.indexOf("Trident/")||-1!==window.navigator.userAgent.indexOf("Edge/"),this.duration=h(t.duration,120),this.delay=h(t.delay,null),this.dashGap=h(t.dashGap,1),this.forceRender=t.hasOwnProperty("forceRender")?!!t.forceRender:this.isIE,this.reverseStack=!!t.reverseStack,this.selfDestroy=!!t.selfDestroy,this.onReady=t.onReady,this.map=[],this.frameLength=this.currentFrame=this.delayUnit=this.speed=this.handle=null,this.ignoreInvisible=!!t.hasOwnProperty("ignoreInvisible")&&!!t.ignoreInvisible,this.animTimingFunction=t.animTimingFunction||i.LINEAR,this.pathTimingFunction=t.pathTimingFunction||i.LINEAR,this.delay>=this.duration)throw new Error("Vivus [constructor]: delay must be shorter than duration")},i.prototype.setCallback=function(t){if(t&&t.constructor!==Function)throw new Error('Vivus [constructor]: "callback" parameter must be a function');this.callback=t||function(){}},i.prototype.mapping=function(){var t,e,r,n,i,a,o,s;for(s=a=o=0,e=this.el.querySelectorAll("path"),t=0;t<e.length;t++)r=e[t],this.isInvisible(r)||(i={el:r,length:Math.ceil(r.getTotalLength())},isNaN(i.length)?window.console&&console.warn&&console.warn("Vivus [mapping]: cannot retrieve a path element length",r):(this.map.push(i),r.style.strokeDasharray=i.length+" "+(i.length+2*this.dashGap),r.style.strokeDashoffset=i.length+this.dashGap,i.length+=this.dashGap,a+=i.length,this.renderPath(t)));for(a=0===a?1:a,this.delay=null===this.delay?this.duration/3:this.delay,this.delayUnit=this.delay/(1<e.length?e.length-1:1),this.reverseStack&&this.map.reverse(),t=0;t<this.map.length;t++){switch(i=this.map[t],this.type){case"delayed":i.startAt=this.delayUnit*t,i.duration=this.duration-this.delay;break;case"oneByOne":i.startAt=o/a*this.duration,i.duration=i.length/a*this.duration;break;case"sync":case"async":case"nsync":i.startAt=0,i.duration=this.duration;break;case"scenario-sync":r=i.el,n=this.parseAttr(r),i.startAt=s+(h(n["data-delay"],this.delayUnit)||0),i.duration=h(n["data-duration"],this.duration),s=void 0!==n["data-async"]?i.startAt:i.startAt+i.duration,this.frameLength=Math.max(this.frameLength,i.startAt+i.duration);break;case"scenario":r=i.el,n=this.parseAttr(r),i.startAt=h(n["data-start"],this.delayUnit)||0,i.duration=h(n["data-duration"],this.duration),this.frameLength=Math.max(this.frameLength,i.startAt+i.duration)}o+=i.length,this.frameLength=this.frameLength||this.duration}},i.prototype.drawer=function(){var t=this;if(this.currentFrame+=this.speed,this.currentFrame<=0)this.stop(),this.reset();else{if(!(this.currentFrame>=this.frameLength))return this.trace(),void(this.handle=e(function(){t.drawer()}));this.stop(),this.currentFrame=this.frameLength,this.trace(),this.selfDestroy&&this.destroy()}this.callback(this),this.instanceCallback&&(this.instanceCallback(this),this.instanceCallback=null)},i.prototype.trace=function(){var t,e,r,n;for(n=this.animTimingFunction(this.currentFrame/this.frameLength)*this.frameLength,t=0;t<this.map.length;t++)e=(n-(r=this.map[t]).startAt)/r.duration,e=this.pathTimingFunction(Math.max(0,Math.min(1,e))),r.progress!==e&&(r.progress=e,r.el.style.strokeDashoffset=Math.floor(r.length*(1-e)),this.renderPath(t))},i.prototype.renderPath=function(t){if(this.forceRender&&this.map&&this.map[t]){var e=this.map[t],r=e.el.cloneNode(!0);e.el.parentNode.replaceChild(r,e.el),e.el=r}},i.prototype.init=function(){this.frameLength=0,this.currentFrame=0,this.map=[],new r(this.el),this.mapping(),this.starter(),this.onReady&&this.onReady(this)},i.prototype.starter=function(){switch(this.start){case"manual":return;case"autostart":this.play();break;case"inViewport":var t=this,e=function(){t.isInViewport(t.parentEl,1)&&(t.play(),window.removeEventListener("scroll",e))};window.addEventListener("scroll",e),e()}},i.prototype.getStatus=function(){return 0===this.currentFrame?"start":this.currentFrame===this.frameLength?"end":"progress"},i.prototype.reset=function(){return this.setFrameProgress(0)},i.prototype.finish=function(){return this.setFrameProgress(1)},i.prototype.setFrameProgress=function(t){return t=Math.min(1,Math.max(0,t)),this.currentFrame=Math.round(this.frameLength*t),this.trace(),this},i.prototype.play=function(t,e){if(this.instanceCallback=null,t&&"function"==typeof t)this.instanceCallback=t,t=null;else if(t&&"number"!=typeof t)throw new Error("Vivus [play]: invalid speed");return e&&"function"==typeof e&&!this.instanceCallback&&(this.instanceCallback=e),this.speed=t||1,this.handle||this.drawer(),this},i.prototype.stop=function(){return this.handle&&(t(this.handle),this.handle=null),this},i.prototype.destroy=function(){var t,e;for(this.stop(),t=0;t<this.map.length;t++)(e=this.map[t]).el.style.strokeDashoffset=null,e.el.style.strokeDasharray=null,this.renderPath(t)},i.prototype.isInvisible=function(t){var e,r=t.getAttribute("data-ignore");return null!==r?"false"!==r:!!this.ignoreInvisible&&(!(e=t.getBoundingClientRect()).width&&!e.height)},i.prototype.parseAttr=function(t){var e,r={};if(t&&t.attributes)for(var n=0;n<t.attributes.length;n++)r[(e=t.attributes[n]).name]=e.value;return r},i.prototype.isInViewport=function(t,e){var r=this.scrollY(),n=r+this.getViewportH(),i=t.getBoundingClientRect(),a=i.height,o=r+i.top;return o+a*(e=e||0)<=n&&r<=o+a},i.prototype.getViewportH=function(){var t=this.docElem.clientHeight,e=window.innerHeight;return t<e?e:t},i.prototype.scrollY=function(){return window.pageYOffset||this.docElem.scrollTop},n=function(){i.prototype.docElem||(i.prototype.docElem=window.document.documentElement,e=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(t){return window.setTimeout(t,1e3/60)},t=window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.oCancelAnimationFrame||window.msCancelAnimationFrame||function(t){return window.clearTimeout(t)})},h=function(t,e){var r=parseInt(t,10);return 0<=r?r:e},"function"==typeof define&&define.amd?define([],function(){return i}):"object"==typeof exports?module.exports=i:window.Vivus=i}();
