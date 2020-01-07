@@ -32,7 +32,16 @@
 			<a href="#elip-text">elip-text</a>
 			<a href="#splitText">splitText</a>
 			<a href="#sticky-block-new">sticky-block-new</a>
+			<a href="#snap-svg">snap-svg</a>
 			<a href="#svg-vivus">svg-vivus</a>
+			<a href="#svg-animate">svg-animate</a>
+			<a href="#confetti">confetti</a>
+			<a href="#svgPercentageCssChart">svgPercentageCssChart</a>
+			<a href="#svgLazyAnimate">svgLazyAnimate</a>
+			<a href="#typewriterjs">typewriterjs</a>
+			<a href="#airDatepicker">airDatepicker</a>
+			<a href="#momentJs">momentJs</a>
+			<a href="#uploadfile">uploadfile</a>
 		</div>
 	</div>
 	<!-- module many-buttons start -->
@@ -487,25 +496,12 @@
 			<div class="box3">3</div>
 			<div class="box4">4</div>
 		</div>
-		<div class="nav">
-			<label><input type="checkbox" name="overflow" id="overflow" value="1" /> Show overflow</label>
-		</div>
-		<!-- plugin for gsap need to carousel start-->
-		<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ModifiersPlugin-latest-beta.js?v=1234h"></script>
-		<!-- plugin for gsap need to carousel end-->
-		<div class="wrapper-gsap">
-			<div class="boxes">
-				<div class="box">1</div>
-				<div class="box">2</div>
-				<div class="box">3</div>
-				<div class="box">4</div>
-				<div class="box">5</div>
-				<div class="box">6</div>
-				<div class="box">7</div>
-				<div class="box">8</div>
-				<div class="box">9</div>
-				<div class="box">10</div>
-			</div>
+		<div class="gsap-new">
+			<img src="http://placehold.it/50x50" />
+			<img src="http://placehold.it/50x50" />
+			<img src="http://placehold.it/50x50" />
+			<img src="http://placehold.it/50x50" />
+			<img src="http://placehold.it/50x50" />
 		</div>
 	</div>
 	<!-- module greensock -->
@@ -878,8 +874,9 @@
 				<p>This is test this is text this is text at the top.</p>
 				<div id="sticker-new">
 					<p>This is the sticky thingy that is really cool.</p>
+					<a href="#" class="btn unstick-block">unstick block</a>
+					<a href="#" class="btn stick-block">stick block</a>
 				</div>
-				<p><a href="#" class="btn unstick-block">unstick block</a></p>
 			</div>
 			<!-- module sticky-block-new -->
 			<!-- module elip-text start -->
@@ -899,14 +896,37 @@
 				<p class="split-words">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
 			</div>
 			<!-- module splitText -->
+			<!-- module snap-svg start -->
+			<div id="snap-svg" class="container module-block">
+				<div class="description-block">More info see - <a href="http://snapsvg.io/docs/">http://snapsvg.io/docs/</a></div>
+				<h2>Folder ./module/snap-svg</h2>
+				<div class="snap-svg-block1"><svg class="snap-svg"></svg></div>
+				<div class="snap-svg-block2">
+					<svg id="cups" width="300" height="400" viewBox="0 0 75 47" xmlns="http://www.w3.org/2000/svg">
+						<path id="simple-cup" d="M0.385262674,5.94224634 C0.385262674,6.34224634 -0.28516339,17.7539308 4.32901017,31.1532061 C5.32901017,32.3532061 6.09230991,37.8915223 7.49230991,42.9915223 C10.3923099,53.5915223 9.99336758,58.192 9.99336758,58.192 C9.99336758,58.192 9.99336758,59.1351801 9.99336758,62.192 L9.99336758,63.3762725 L14.9773381,65.692 C20.0773381,67.792 34,67.592 38.6,65.692 L44.0054662,63.992 L44.0054662,62.192 C44.0054662,60.3070603 44.0054662,61.2485521 44.0054662,59.5616903 C44.0054662,59.6227531 44.0054662,58.192 44.0054662,58.192 C44.0054662,58.192 44.0054662,56.0357788 44.0054662,56.0368563 C44.0054662,56.1443976 44.1584889,52.1913962 44.1513903,52.2148862 C44.18043,52.2064969 44.4505642,49.3217527 44.4611476,49.3039416 C44.0054662,46.9651447 46.7678097,39.091534 47.5678097,38.791534 C48.3678097,38.591534 52.8,37.6017328 55.4,37.0017328 C62.3288017,36.7364795 68.4691682,30.4573789 68.4691682,26.851942 C68.4691682,25.0527911 68.4691682,20.2992257 66.1171925,17.7539308 C63.4665746,14.8148385 60.3572838,14.0704885 56.6937477,14.2033611 C54.2179046,14.2931572 54.2497766,12.7733674 54.0497766,12.5733674 C53.8497766,12.4733674 54.0497766,12.5733674 54.0497766,10.8407045 L53.3480457,6.66187369 L51.3120843,4.64051206 C49.8120843,3.64051206 47.4776665,2.98869271 44.6776665,2.18869271 C38.2776665,0.488692712 20.1046423,0.0299756608 12.7046423,1.42997566 C7.00464234,2.42997566 0.385262674,4.74224634 0.385262674,5.94224634 Z M64.7915417,22.8695184 C64.7915417,25.8695184 65.5001114,27.9159065 60.6340924,31.7563748 C59.5900982,32.5803392 64.003575,30.2804794 62.903575,30.7804794 C60.903575,31.8804794 53.6,32.676872 52.3920534,31.7563748 C51.5537443,31.1057778 51.0837569,29.8430422 50.9820915,27.9681678 C51.2625331,24.5690682 52.1351692,22.0569251 53.6,20.4317385 C57.4,16.0317385 64.7915417,19.1695184 64.7915417,22.8695184 Z" fill-rule="nonzero" fill="#070707" />
+						<path opacity="0" id="fancy-cup" d="M0,6.792 C0,7.192 0.9,8.492 1.9,9.592 C2.9,10.792 4.9,15.892 6.3,20.992 C9.2,31.592 12.4,36.492 17.5,38.192 C21.6,39.592 21.7,39.792 18.8,42.192 L16.5,43.992 L19.5,45.292 C24.6,47.392 37,47.592 41.6,45.692 L45.5,44.092 L43.1,42.092 C41,40.392 40.9,39.892 42.1,39.092 C42.8,38.592 44.2,38.192 45.1,38.192 C47,38.192 52.4,33.492 53.2,31.192 C53.6,29.892 53.9,29.892 55.3,30.992 C57.5,32.892 59.1,31.592 58.4,28.592 C58,26.992 58.3,26.092 59.1,25.792 C59.9,25.592 62.6,24.792 65.2,24.192 C70.7,22.692 75,18.992 75,15.492 C75,13.692 74.1,12.692 71.3,11.592 C68,10.192 67.3,10.192 63.7,11.592 C61.4,12.492 59.5,12.992 59.3,12.792 C59.1,12.692 59.9,11.292 61,9.892 L63.1,7.292 L60.5,5.592 C59,4.592 55.5,3.192 52.7,2.392 C46.3,0.692 21.5,-0.108 14.1,1.292 C8.4,2.292 0,5.592 0,6.792 Z M70,15.592 C70,18.592 65.7,22.192 62.3,22.192 C61,22.192 59,22.692 57.9,23.192 C55.9,24.292 55.5,23.592 56.6,20.792 C56.9,19.892 57.6,19.492 58.1,19.792 C58.6,20.092 60.5,18.692 62.2,16.792 C66,12.392 70,11.892 70,15.592 Z" fill-rule="nonzero" fill="#070707" />
+					</svg>
+				</div>
+				<div class="snap-svg-bloc3">
+					<svg id="waves" viewBox="0 0 100 100" preserveAspectRatio="none">
+						<path class='waves__01'></path>
+						<path class='waves__02'></path>
+						<path class='waves__03'></path>
+						<path class='waves__1'></path>
+						<path class='waves__2'></path>
+						<path class='waves__3'></path>
+					</svg>
+				</div>
+			</div>
+			<!-- module snap-svg -->
 			<!-- module svg-vivus start -->
 			<div id="svg-vivus" class="container module-block">
 				<h2>Folder ./module/svg-vivus</h2>
-				<div class="description-block">More info see - <a href="https://github.com/maxwellito/vivus">https://github.com/maxwellito/vivus</a>
-					<div class="svg-vivus">
-						<svg class="svg-vivus-el" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
-							<g style="fill: none; stroke: #000000; stroke-width: 3px;">
-								<path data-start="0" data-duration="500" d="M262.785,317.207c-1.913-4.032-6.736-5.752-10.769-3.837c-6.562,3.114-13.442,5.688-20.448,7.648
+				<div class="description-block">More info see - <a href="https://github.com/maxwellito/vivus">https://github.com/maxwellito/vivus</a></div>
+				<div class="svg-vivus">
+					<svg class="svg-vivus-el" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve">
+						<g style="fill: none; stroke: #000000; stroke-width: 3px;">
+							<path data-start="0" data-duration="500" d="M262.785,317.207c-1.913-4.032-6.736-5.752-10.769-3.837c-6.562,3.114-13.442,5.688-20.448,7.648
 			c-2.931,0.82-5.152,3.215-5.748,6.2l-8.552,42.758c-0.844,4.222-4.582,7.287-8.888,7.287h-23.329
 			c-4.306,0-8.043-3.064-8.888-7.287l-8.552-42.758c-0.597-2.985-2.819-5.38-5.748-6.2c-9.898-2.77-19.45-6.728-28.391-11.764
 			c-2.653-1.494-5.92-1.371-8.452,0.317l-36.286,24.19c-3.582,2.388-8.392,1.911-11.438-1.133L60.8,316.131
@@ -933,15 +953,15 @@
 			c7.299,3.783,14.924,6.942,22.769,9.434l7.598,37.992c2.35,11.75,12.756,20.281,24.742,20.281h23.329
 			c11.986,0,22.391-8.53,24.743-20.284l7.598-37.99c6.229-1.979,12.343-4.386,18.228-7.18
 			C262.983,326.063,264.701,321.241,262.785,317.207z" />
-								<path data-start="500" data-duration="100" d="M266.739,241.636c1.18,0.606,2.44,0.893,3.682,0.893c2.936,0,5.769-1.605,7.2-4.397
+							<path data-start="500" data-duration="100" d="M266.739,241.636c1.18,0.606,2.44,0.893,3.682,0.893c2.936,0,5.769-1.605,7.2-4.397
 			c6.52-12.715,9.967-27.036,9.967-41.415c0-50.107-40.765-90.873-90.873-90.873c-23.838,0-46.364,9.162-63.43,25.801
 			c-3.197,3.116-3.262,8.235-0.146,11.431c3.116,3.196,8.234,3.263,11.431,0.146c14.029-13.676,32.547-21.209,52.143-21.209
 			c41.192,0,74.705,33.512,74.705,74.705c0,11.994-2.754,23.446-8.185,34.038C261.197,234.726,262.766,239.598,266.739,241.636z" />
-								<path data-start="500" data-duration="100" d="M121.043,162.125c-4.223-1.453-8.821,0.792-10.274,5.014c-3.267,9.498-4.924,19.45-4.924,29.577
+							<path data-start="500" data-duration="100" d="M121.043,162.125c-4.223-1.453-8.821,0.792-10.274,5.014c-3.267,9.498-4.924,19.45-4.924,29.577
 			c0,50.108,40.766,90.873,90.873,90.873c19.271,0,37.683-5.956,53.247-17.227c3.616-2.619,4.425-7.674,1.807-11.29
 			c-2.618-3.616-7.674-4.425-11.29-1.807c-12.788,9.259-27.921,14.154-43.765,14.154c-41.193,0-74.705-33.513-74.705-74.705
 			c0-8.334,1.36-16.517,4.044-24.318C127.508,168.175,125.264,163.576,121.043,162.125z" />
-								<path data-start="0" data-duration="500" d="M496.442,353.316l-23.377-4.675c-1.424-4.237-3.139-8.374-5.127-12.373l13.226-19.838
+							<path data-start="0" data-duration="500" d="M496.442,353.316l-23.377-4.675c-1.424-4.237-3.139-8.374-5.127-12.373l13.226-19.838
 			c5.099-7.65,4.083-17.92-2.418-24.42l-10.84-10.84c-6.501-6.5-16.771-7.517-24.42-2.418l-19.838,13.226
 			c-3.999-1.988-8.136-3.703-12.373-5.126l-4.675-23.377c-1.803-9.015-9.784-15.558-18.977-15.558h-15.331
 			c-9.192,0-17.174,6.543-18.977,15.558l-4.675,23.377c-4.237,1.424-8.374,3.139-12.373,5.126l-19.838-13.226
@@ -970,66 +990,199 @@
 			c7.65,5.099,17.92,4.083,24.42-2.418l10.84-10.84c6.501-6.501,7.517-16.771,2.418-24.42l-13.226-19.838
 			c1.988-3.999,3.703-8.136,5.126-12.373l23.377-4.675c9.014-1.803,15.557-9.784,15.557-18.977v-15.331
 			C512,363.1,505.457,355.119,496.442,353.316z" />
-								<path data-start="500" data-duration="100" d="M379.958,350.855c16.048,0,29.103,13.055,29.103,29.103c0,4.465,3.62,8.084,8.084,8.084s8.084-3.62,8.084-8.084
+							<path data-start="500" data-duration="100" d="M379.958,350.855c16.048,0,29.103,13.055,29.103,29.103c0,4.465,3.62,8.084,8.084,8.084s8.084-3.62,8.084-8.084
 			c0-24.963-20.309-45.272-45.272-45.272s-45.272,20.309-45.272,45.272s20.309,45.272,45.272,45.272
 			c10.111,0,19.675-3.261,27.659-9.429c3.533-2.73,4.184-7.807,1.455-11.341c-2.73-3.533-7.808-4.185-11.341-1.455
 			c-5.128,3.961-11.274,6.056-17.773,6.056c-16.048,0-29.103-13.055-29.103-29.103C350.855,363.909,363.91,350.855,379.958,350.855
 			z" />
-								<path data-start="600" data-duration="100" d="M245.969,196.716c0-27.158-22.096-49.253-49.253-49.253c-27.158,0-49.253,22.096-49.253,49.253
+							<path data-start="600" data-duration="100" d="M245.969,196.716c0-27.158-22.096-49.253-49.253-49.253c-27.158,0-49.253,22.096-49.253,49.253
 			c0,27.158,22.095,49.253,49.253,49.253S245.969,223.873,245.969,196.716z M163.631,196.716c0-18.242,14.843-33.085,33.085-33.085
 			c18.242,0,33.085,14.843,33.085,33.085c0,18.242-14.842,33.085-33.085,33.085C178.472,229.801,163.631,214.958,163.631,196.716z" />
-							</g>
-						</svg>
-						<svg version="1.1" class="svg-vivus-el" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="517.6px" height="375.4px" viewBox="0 0 517.6 375.4" enable-background="new 0 0 517.6 375.4" xml:space="preserve">
-							<path fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" d="M175.4,76.1l53.5,213.3l30.9-209.4
+						</g>
+					</svg>
+					<svg version="1.1" class="svg-vivus-el" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="517.6px" height="375.4px" viewBox="0 0 517.6 375.4" enable-background="new 0 0 517.6 375.4" xml:space="preserve">
+						<path fill="none" stroke="#000000" stroke-width="5" stroke-miterlimit="10" d="M175.4,76.1l53.5,213.3l30.9-209.4
 		c0,0,111.5,42.3,91.9,141.7s20.3,124,48.2,112.4c27.9-11.5,149.2-170.2,43.7-225.6s-85.1-80.8-223-63.1S14.2-12.5,33,95.3
 		s45.2,257.9,244.1,225.6" />
+					</svg>
+					<button class="vv-btn">Click me</button>
+					<button class="vv-btn2">Click me</button>
+				</div>
+			</div>
+			<!-- module svg-vivus -->
+			<!-- module svg-animate start -->
+			<div id="svg-animate" class="container module-block">
+				<h2>Folder ./module/svg-animate</h2>
+				<div class="svg-an-css">
+					<h2>Svg animate with css - see <a href="https://css-tricks.com/svg-line-animation-works/">https://css-tricks.com/svg-line-animation-works/</a></h2>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" with="300" height="200">
+						<rect id="strokedrect1" x="0" y="0" width="300" height="200" />
+					</svg>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" with="300" height="200">
+						<rect id="strokedrect2" x="0" y="0" width="300" height="200" />
+					</svg>
+				</div>
+				<div class="svg-an-js">
+					<h2>Svg animate with js - see <a href="https://jakearchibald.com/2013/animated-line-drawing-svg/">https://jakearchibald.com/2013/animated-line-drawing-svg/</a></h2>
+					<div class="squiggle-animated">
+						<svg xmlns="http://www.w3.org/2000/svg" height="98" width="581" viewBox="0 0 581 98">
+							<path d="M62.9 14.9c-25-7.74-56.6 4.8-60.4 24.3-3.73 19.6 21.6 35 39.6 37.6 42.8 6.2 72.9-53.4 116-58.9 65-18.2 191 101 215 28.8 5-16.7-7-49.1-34-44-34 11.5-31 46.5-14 69.3 9.38 12.6 24.2 20.6 39.8 22.9 91.4 9.05 102-98.9 176-86.7 18.8 3.81 33 17.3 36.7 34.6 2.01 10.2.124 21.1-5.18 30.1" stroke="#000" stroke-width="4.3" fill="none" style="transition: stroke-dashoffset 2s ease-in-out 0s; stroke-dasharray: 988.004, 988.004; stroke-dashoffset: 0;"></path>
+						</svg></div>
+					<input type="button" class="btn-svg" value="reload" />
+				</div>
+			</div>
+			<!-- module svg-animate -->
+			<!-- module svgLazyAnimate start -->
+			<div id="svgLazyAnimate" class="container module-block">
+				<h2>Folder ./module/svgLazyAnimate</h2>
+				<div class="description-block">Fast and simple svg animate. More info see - <a href="http://lazylinepainter.info/">http://lazylinepainter.info/</a></div>
+				<div class="llp-face-wrap">
+					<svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 230">
+						<style>
+							.a {
+				fill: none;
+			}
+			</style>
+						<path d="M64 38.3c0 0 18-21.3 4-28.7S41.8 18 38.7 51c-3.7 39-27 56.6-33 43.7 -0.9-7.8 8.3-11.3 22.7 1.7 19 16 37.3-13.3 42-19C75 71.7 93.7 60.7 89 57S60.7 82.2 75.3 90.7c6.1 2.9 22-10.7 27-32 0 0-14.7 29.7-7 29.7 11.7 0 27.3-37.7 37.7-36.3 10.3 1.3 15.3 22-10 26.7 9 16.7-7 37.3-14.7 30.3 -7.5-6.8 40-17 57.7-61.7 0 0-15 28.7-4.7 31.7 10.3 3 29.7-30.3 27-34 -2.7-3.7-6.3 1.9-9 16 -2.9 15.1-5 43-23.7 43 -5.3 0 1-7.5 7.2-11.6 7.5-4.9 16.5-8.7 28.2-23.1" class="a" />
+						<path d="M242 67.3c0 0 14.7-15.7 6.7-25.3 -8-9.7-27.3-7.7-29.3 17.1 -2 24.9-7.7 67.6-32.3 66.9 -11.3-0.3-4.6-16.1 16.7-1 23 16.3 46.3-18 51.3-36.3 0 0-10.3 33 0 32.7 10.3-0.3 26-38.9 26-38.9s-2.3 27.2-7.3 35.9c8-17 19.3-39.1 27-35.9 7.7 3.2-17.7 28.2-5.7 32.2 0 0 11.7 0.7 21.7-18.3" class="a" />
+						<path d="M319.7 96.7c0 0 21.3-5.2 19-17 -2.3-12-34.3 17.9-17 30.7 7 5.2 21.7-3.4 23-10.4" class="a" />
+						<path d="M260.2 75.3c-1 0-1.8-0.8-1.8-1.8 0-1 0.8-2.8 1.8-2.8s1.8 0.8 1.8 1.8c0 1-0.8 1.8-1.8 1.8" class="a" />
+						<path d="M77.7 134.7c0 0 5 19.7 1.5 48.4 -2.3 20.6-9.9 40.9-15.5 40.9 -12 0 25.3-102 63.7-92 13.3 3.7 14 49.7-29.7 56.7 -8.3 1.3-7.4-6 0-5.7 0 0 13.7-1.3 28.7 7" class="a" />
+						<path d="M126.7 204.3c0 0 16.3-18.7 27.7-24.7s0.3-6-3.7-2.5c-1.7 1.5-7.1 6.2-10.4 11.6 -4.3 7.2-5.6 15.8 2.7 20.5 14.7 8.3 24.3-27.4 25-32.2 -7.3 21.2-9 38.8 7.7 18.5l15.3-27.3c0 0-11.7 34-1 34 8.7 0 22.7-24 26.3-36" class="a" />
+						<path d="M215.9 167.6c0 0-2.9 21-5.9 31 7-15.7 22.3-37 25-32.3 2.7 4.7-15.7 27.7-2.3 30.3 13.3 2.7 32.7-49 34-59.3 -5.3 23.7-17.4 54.1-4.5 55.7 6.9 0.8 18.7-12.7 21-19.2" class="a" />
+						<path d="M191 154.3c0 0 4 2 6-2.3 2-4.3-3-6.7-6-4.7C188 149.3 191 154.3 191 154.3z" class="a" />
+						<path d="M249.1 162c0 0 13.2-0.7 18.2-2 5-1.3 6.7-1 6.7-1" class="a" />
+						<path d="M283.7 175.7c0 0 16.3-4 20.7-13.7 4.3-9.7-8-7.1-13.3-1 -5.3 6-16 24-2 27.5 15.7 5.5 33-23.1 33-36.9 0-5.6-6.4-4.9-6.4 0.8 0 5.5 3.1 4.3 9.8 4.3 6.7 0 11.3 5.3 6.3 10.7s-10.8 12.5-3.3 16.7c8 4.5 12-9 12-9" class="a" />
+					</svg>
+				</div>
+			</div>
+			<!-- module svgLazyAnimate -->
+			<!-- module svgPercentageCssChart start -->
+			<div id="svgPercentageCssChart" class="container module-block">
+				<h2>Folder ./module/svgPercentageCssChart</h2>
+				<div class="description-block">More info see - <a href="https://medium.com/@pppped/how-to-code-a-responsive-circular-percentage-chart-with-svg-and-css-3632f8cd7705">https://medium.com</a></div>
+				<div class="flex-wrapper">
+					<div class="single-chart">
+						<svg viewBox="0 0 36 36" class="circular-chart orange">
+							<path class="circle-bg" d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831" />
+							<path class="circle" stroke-dasharray="30, 100" d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831" />
+							<text x="18" y="20.35" class="percentage">30%</text>
 						</svg>
-						<button class="vv-btn">Click me</button>
-						<button class="vv-btn2">Click me</button>
+					</div>
+					<div class="single-chart">
+						<svg viewBox="0 0 36 36" class="circular-chart green">
+							<path class="circle-bg" d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831" />
+							<path class="circle" stroke-dasharray="60, 100" d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831" />
+							<text x="18" y="20.35" class="percentage">60%</text>
+						</svg>
+					</div>
+					<div class="single-chart">
+						<svg viewBox="0 0 36 36" class="circular-chart blue">
+							<path class="circle-bg" d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831" />
+							<path class="circle" stroke-dasharray="90, 100" d="M18 2.0845
+						a 15.9155 15.9155 0 0 1 0 31.831
+						a 15.9155 15.9155 0 0 1 0 -31.831" />
+							<text x="18" y="20.35" class="percentage">90%</text>
+						</svg>
 					</div>
 				</div>
-				<!-- module svg-vivus -->
-				<!-- loading JS Start -->
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-				<script>
-					window.jQuery || document.write('<script src="assets/js/jquery-3.2.1.min.js" defer><\/script>')
+			</div>
+			<!-- module svgPercentageCssChart -->
+			<!-- module confetti start -->
+			<div id="confetti" class="container module-block">
+				<h2>Folder ./module/confetti</h2>
+				<h2>library to compose and visualize points in spaces - <a href="https://ptsjs.org/">https://ptsjs.org/</a></h2>
+				<div id="pt" style="width: 800px; height: 150px; margin: 10px auto;"></div>
+				<div id="pt2" style="width: 800px; height: 150px; margin: 10px auto;"></div>
+			</div>
+			<!-- module confetti -->
+			<!-- module typewriterjs start -->
+			<div id="typewriterjs" class="container module-block">
+				<h2>Folder ./module/typewriterjs</h2>
+				<div class="description-block">More info see - <a href="https://www.cssscript.com/simple-typewriter-effect-pure-javascript-typewriterjs/">https://www.cssscript.com/simple-typewriter-effect-pure-javascript-typewriterjs/</a></div>
+				<div id="type-write-app"></div>
+			</div>
+			<!-- module typewriterjs -->
+			<!-- module airDatepicker start -->
+			<div id="airDatepicker" class="container module-block">
+				<h2>Folder ./module/airDatepicker</h2>
+				<div class="description-block">More info see - <a href="https://github.com/t1m0n/air-datepicker">https://github.com/t1m0n/air-datepicker</a></div>
+				<div class="my-datepicker-block">
+					<input type='text' class='my-datepicker-element' />
+				</div>
+			</div>
+			<!-- module airDatepicker -->
+			<!-- module momentJs start -->
+			<div id="momentJs" class="container module-block">
+				<h2>Folder ./module/momentJs</h2>
+				<div class="description-block">Parse, validate, manipulate, and display dates and times in JavaScript. More info see - <a href="https://momentjs.com/">https://momentjs.com/</a></div>
+				<div class="moment-js">
+					<h3>Format Dates</h3>
+					<div class="moment-js-now"></div>
+					<h3>Relative Time</h3>
+					<div class="moment-js-Relative"></div>
+					<h3>Calendar Time</h3>
+					<div class="moment-js-Calendar"></div>
+				</div>
+			</div>
+			<!-- module momentJs -->
+			<!-- module uploadfile start -->
+			<div id="uploadfile" class="container module-block">
+				<h2>Folder ./module/uploadfile</h2>
+				<div class="description-block">More info see - <a href="http://hayageek.com/docs/jquery-upload-file.php">http://hayageek.com/docs/jquery-upload-file.php</a> PS. Work only on real server</div>
+				<div id="fileuploader">Upload</div>
+			</div>
+			<!-- module uploadfile -->
+			<!-- loading JS Start -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script>
+				window.jQuery || document.write('<script src="assets/js/jquery-3.2.1.min.js" defer><\/script>')
 </script>
-				<script src="assets/js/module2.js" defer></script>
-				<!-- <script src="assets/js/module.js" defer></script> -->
-				<!-- loading JS End -->
-				<!--<Deject>-->
-				<!--Removing zone start -->
-				<link rel="stylesheet" href="assets/css/development.css">
-				<div class="dev-scripts-block">
-					<div class="responsive-breakpoint">
-						<div class="responsive-breakpoint-checkbox">
-							<input class="responsive-breakpoint-checkbox__checkbox" type="checkbox" id="responsive-breakpoint-checkbox__checkbox" />
-							<label class="responsive-breakpoint-checkbox__label" for="responsive-breakpoint-checkbox__checkbox"></label>
-						</div>
-						<!-- <div class="responsive-breakpoint__min">MOBILE FIRST</div> -->
-						<div class="responsive-breakpoint__max">breakpoint</div>
-						<div class="responsive-breakpoint__strictly"></div>
-						<div class="responsive-breakpoint__pixel-ratio"></div>
+			<script src="assets/js/module2.js" defer></script>
+			<!-- <script src="assets/js/module.js" defer></script> -->
+			<!-- loading JS End -->
+			<!--<Deject>-->
+			<!--Removing zone start -->
+			<link rel="stylesheet" href="assets/css/development.css">
+			<div class="dev-scripts-block">
+				<div class="responsive-breakpoint">
+					<div class="responsive-breakpoint-checkbox">
+						<input class="responsive-breakpoint-checkbox__checkbox" type="checkbox" id="responsive-breakpoint-checkbox__checkbox" />
+						<label class="responsive-breakpoint-checkbox__label" for="responsive-breakpoint-checkbox__checkbox"></label>
 					</div>
-					<div class="scroll-up-plugins">
-						<div class="scroll-up-plugins__button scroll-up-plugins__button--25"></div>
-						<div class="scroll-up-plugins__button scroll-up-plugins__button--50"></div>
-						<div class="scroll-up-plugins__button scroll-up-plugins__button--75"></div>
-					</div>
-					<div class="widget_wrap">
-						<div class="widget_list"></div>
-					</div>
+					<!-- <div class="responsive-breakpoint__min">MOBILE FIRST</div> -->
+					<div class="responsive-breakpoint__max">breakpoint</div>
+					<div class="responsive-breakpoint__strictly"></div>
+					<div class="responsive-breakpoint__pixel-ratio"></div>
 				</div>
-				<div class="button-all-off">
-					<div class="button-all-off button-all-off--aava">
-						<input id="button-all-off" type="checkbox" checked="checked">
-						<label for="button-all-off" data-on-text="On" data-off-text="Off"></label>
-					</div>
+				<div class="scroll-up-plugins">
+					<div class="scroll-up-plugins__button scroll-up-plugins__button--25"></div>
+					<div class="scroll-up-plugins__button scroll-up-plugins__button--50"></div>
+					<div class="scroll-up-plugins__button scroll-up-plugins__button--75"></div>
 				</div>
-				<script src="assets/js/development.js"></script>
-				<!--Removing zone end -->
-				<!--</Deject>-->
+				<div class="widget_wrap">
+					<div class="widget_list"></div>
+				</div>
+			</div>
+			<div class="button-all-off">
+				<div class="button-all-off button-all-off--aava">
+					<input id="button-all-off" type="checkbox" checked="checked">
+					<label for="button-all-off" data-on-text="On" data-off-text="Off"></label>
+				</div>
+			</div>
+			<script src="assets/js/development.js"></script>
+			<!--Removing zone end -->
+			<!--</Deject>-->
 </body>
 
 </html>
