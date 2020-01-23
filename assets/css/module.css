@@ -12879,4 +12879,27 @@ table.dataTable td {
   padding: 20px 0;
 }
 
+.clipPath-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clipPath-block img {
+  -webkit-clip-path: circle(50% at 50% 50%);
+}
+
+.clipPath-block1 img {
+  -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+  transition: -webkit-clip-path 0.5s;
+}
+
+.clipPath-block1 img:hover {
+  transition: -webkit-clip-path 0.5s;
+  -webkit-clip-path: polygon(20% 0%, 0% 0%, 0% 50%, 0% 80%, 0% 100%, 50% 100%, 80% 100%, 100% 100%, 100% 50%, 100% 0%, 80% 0%, 50% 0%);
+}
+
+.clipPath-block2 img {
+  clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 37% 38%);
+}
+
 /*# sourceMappingURL=sourcemaps/module.css.map */

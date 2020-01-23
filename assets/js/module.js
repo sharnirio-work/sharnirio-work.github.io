@@ -34511,3 +34511,5 @@ function midDotIt() {
 
 
 /* module flex-center */
+
+/* module clipPath */

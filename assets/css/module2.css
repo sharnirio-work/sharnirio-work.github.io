@@ -4652,4 +4652,14 @@ html body .colorpicker input {
   font-weight: 700;
 }
 
+.throttle-ex .box {
+  width: 450px;
+  height: 250px;
+  background-color: tomato;
+}
+
+.debounce-ex input {
+  background-color: tomato !important;
+}
+
 /*# sourceMappingURL=sourcemaps/module2.css.map */
