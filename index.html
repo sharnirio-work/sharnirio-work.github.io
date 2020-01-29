@@ -24,6 +24,7 @@
 			<a href="#slider-run">slider-run</a>
 			<a href="#multi-menu">multi-menu</a>
 			<a href="#js-custom-forms">js-custom-forms</a>
+			<a href="#jcf-select2">jc-select2</a>
 			<a href="#smooth-scroll">smooth-scroll</a>
 			<a href="#countdown">countdown</a>
 			<a href="#sticky-box">sticky-box</a>
@@ -519,14 +520,24 @@
 				<input type="number" step="7" value="5" min="-20" max="45">
 				<input type="number" disabled value="7">
 			</section>
-			<section class="demo-selects">
-				<h2>&lt;select&gt;</h2>
+			<section class="demo-selects" style="padding: 20px 0">
+				<h2>Select</h2>
 				<p>Select module provides an ability to customize not only select area but also its dropdown. Multiple selects, keyboard navigation and custom scrollbars are supported in the option list.</p>
 				<div>
 					<div>
 						<select>
-							<option class="circle red" value="v2">Option 1</option>
-							<option class="circle grenn" value="v3">Option 2</option>
+							<option value="v1">Native dropdown</option>
+							<option value="v2">Option 1</option>
+							<option value="v3">Option 2</option>
+							<option value="v4">Option 3</option>
+							<option value="v5">Option 4</option>
+							<option value="v6">Option 5</option>
+						</select>
+					</div>
+					<div>
+						<select multiple placeholder="Multiple select" data-jcf="{&quot;multipleCompactStyle&quot;: true}">
+							<option value="v2">Option 1</option>
+							<option value="v3">Option 2</option>
 							<option value="v4">Option 3</option>
 							<option value="v5">Option 4</option>
 							<option value="v6">Option 5</option>
@@ -534,9 +545,8 @@
 					</div>
 					<div>
 						<select>
-							<option value="v1">Native dropdown</option>
-							<option value="v2">Option 1</option>
-							<option value="v3">Option 2</option>
+							<option class="circle red" value="v2">Option 1</option>
+							<option class="circle grenn" value="v3">Option 2</option>
 							<option value="v4">Option 3</option>
 							<option value="v5">Option 4</option>
 							<option value="v6">Option 5</option>
@@ -651,6 +661,26 @@
 		</div>
 	</div>
 	<!-- module js-custom-forms end -->
+	<!-- module jcf-select2 start -->
+	<div id="jcf-select2" class="container module-block">
+		<h2>Folder ./module/jcf-select2</h2>
+		<div class="description-block">More info see - <a href="https://github.com/select2/select2">https://github.com/select2/select2</a></div>
+		<div class="js-select2-wrapper">
+			<select class="js-example-basic">
+				<option value="AL">Option for 1</option>
+				<option value="WY">Option 2</option>
+				<option value="v-1">Option 3</option>
+				<option value="v-2">Option 4</option>
+				<option value="v-3">Option 5</option>
+				<option value="v-4">Option 6</option>
+				<option value="v-5">Option 7</option>
+				<option value="v-6">Option 8</option>
+				<option value="v-7">Option 9</option>
+				<option value="v-8">Option 10</option>
+			</select>
+		</div>
+	</div>
+	<!-- module jcf-select2 -->
 	<!-- module smooth-scroll start -->
 	<div id="smooth-scroll" class="container module-block">
 		<h2>Folder ./module/smooth-scroll</h2>

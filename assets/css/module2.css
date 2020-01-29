@@ -4662,4 +4662,46 @@ html body .colorpicker input {
   background-color: tomato !important;
 }
 
+.hero-bg-video {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-bg-video:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(27, 32, 36, 0.68) 0%, rgba(22, 26, 29, 0.23) 100%);
+}
+
+.hero-bg-video .container {
+  position: relative;
+  z-index: 1;
+  padding: 50px;
+}
+
+.hero-bg-video h2 {
+  color: white;
+  line-height: 1;
+  margin: 0 0 0.27em;
+}
+
+.hero-bg-video p {
+  margin: 0 0 2.6rem;
+}
+
+.hero-bg-video .text-area {
+  color: white;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
 /*# sourceMappingURL=sourcemaps/module2.css.map */
