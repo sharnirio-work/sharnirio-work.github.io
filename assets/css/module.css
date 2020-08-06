@@ -8870,6 +8870,51 @@ yx-axis
   background: #ff0099;
 }
 
+.isotop-v2 {
+  padding-top: 30px;
+}
+
+.isotop-g-select-block {
+  margin-bottom: 20px;
+}
+
+.isotop-g {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+@media (max-width: 1024px) {
+  .isotop-g {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+
+.isotop-g-item {
+  width: calc(33% - 40px);
+  margin: 0 20px 40px;
+}
+
+@media (max-width: 1024px) {
+  .isotop-g-item {
+    width: calc(33% - 20px);
+    margin: 0 10px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .isotop-g-item {
+    width: calc(50% - 20px);
+    margin: 0 10px 40px;
+  }
+}
+
+@media (max-width: 667px) {
+  .isotop-g-item {
+    width: calc(100% - 20px);
+  }
+}
+
 .grid-masonry {
   background: #EEE;
   max-width: 1200px;
@@ -12735,7 +12780,6 @@ table.dataTable td {
   top: 0;
   bottom: 0;
   margin: auto;
-  display: block;
   display: none;
   pointer-events: none;
   color: #000;

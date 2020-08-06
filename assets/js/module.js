@@ -3571,7 +3571,7 @@ function myScrollLink() {
 	navLink.on('click', function(e) {
 		var elementClick = jQuery(this).attr("href")
 		var destination = jQuery(elementClick).offset().top;
-		jQuery("html,body").animate({
+		jQuery("html,body").stop().animate({
 			scrollTop: destination
 		}, 1000);
 		return false;
@@ -4150,7 +4150,7 @@ function toggleClassParents(clickClass, ToggleClass, howToggleClassArg) {
 		howToggleClassVar = howToggleClassArg;
 	clickClassVar.on('click', function() {
 		jQuery(this).parent().toggleClass(howToggleClassVar);
-		return jQuery(this).parent().find(ToggleClassVar).slideToggle();
+		return jQuery(this).parent().find(ToggleClassVar).stop().slideToggle();
 	});
 }
 
@@ -14580,6 +14580,7 @@ function loadMoreInnit() {
 // function on
 jQuery(document).ready(function() {
 	isotopInit('.grid-isotop');
+	isotopeInit2();
 });
 
 // more options https://isotope.metafizzy.co/
@@ -14638,6 +14639,21 @@ function isotopInit(arg) {
 			jQuery(this).addClass('is-checked');
 		});
 	});
+}
+
+function isotopeInit2() {
+// init Isotope
+var $grid = $('.isotop-g').isotope({
+	itemSelector: '.isotop-g-item',
+	layoutMode: 'fitRows'
+});
+// bind filter on select change
+$('.isotop-g-select').on( 'change', function() {
+	// get filter value from option value
+	var filterValue = this.value;
+	$grid.isotope({ filter: filterValue });
+});
+
 }
 
 /*!
