@@ -1,0 +1,107 @@
+@charset "UTF-8";
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  /* 1 */
+  text-overflow: ellipsis;
+  /* 2 */
+  overflow: hidden;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+#wrapper {
+  display: table-cell;
+}
+
+#footer {
+  overflow: hidden;
+  /*for FF on Windows 7*/
+  display: table-footer-group;
+  height: 1%;
+}
+
+:root {
+  --width-dl: 100vw;
+  --full-width-dl: 100vw;
+  --angle-dl: -11deg;
+  /*-----------------
+  Magic Number Alert:
+
+  the 0.09719 is calculated by this formula:
+  tan(11°) / 2
+  11° is the current skewY value.
+  ------------------*/
+  --magic-number-dl: 0.09719;
+  --skew-padding-dl: calc(var(--width-dl) * var(--magic-number-dl));
+  --clip-padding-dl: calc(var(--full-width-dl) * var(--magic-number-dl));
+}
+
+@media (min-width: 42em) {
+  :root {
+    --width-dl: 42rem;
+  }
+}
+
+.diagonal-box {
+  position: relative;
+  padding: var(--skew-padding-dl) 0;
+  margin: calc(var(--skew-padding-dl)*2) 0;
+}
+
+.diagonal-box:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: skewy(var(--angle-dl));
+  transform-origin: 50% 0;
+  outline: 1px solid transparent;
+  backface-visibility: hidden;
+  background-image: linear-gradient(45deg, #654ea3, #eaafc8);
+}
+
+.content {
+  max-width: var(--width-dl);
+  margin: 0 auto;
+  padding: 1.5em;
+  position: relative;
+  /* -----------
+  enable the border to see, that the content
+  perfectly fits into the section withou
+  bleeding into the adjecting areas:
+  ------------ */
+  border: 2px dashed #fff8;
+}
+
+.snow {
+  left: 0;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.canvas-snow-container {
+  position: relative;
+  height: 500px;
+  background: tomato;
+}
+
+/*# sourceMappingURL=sourcemaps/module3.css.map */

@@ -55,6 +55,8 @@
 			<a href="#smoothScrollbar">smoothScrollbar</a>
 			<a href="#keyboardShortcuts">keyboardShortcuts</a>
 			<a href="#odometer">odometer</a>
+			<a href="#jcf-select">jcf-select</a>
+			<a href="#tippyjs">tippyjs</a>
 		</div>
 	</div>
 	<!-- module many-buttons start -->
@@ -1327,6 +1329,117 @@
 			<div class="odometer">0</div>
 		</div>
 		<!-- module odometer -->
+		<!-- module jcf-select start -->
+		<div id="jcf-select" class="container module-block">
+			<h2>Folder ./module/jcf-select</h2>
+			<div class="description-block">This only select module. More info see - https://github.com/w3co/jcf<a href="https://github.com/w3co/jcf"></a></div>
+			<div class="jcf">
+				<section class="demo-selects" style="padding: 20px 0">
+					<h2>Select</h2>
+					<p>Select module provides an ability to customize not only select area but also its dropdown. Multiple selects, keyboard navigation and custom scrollbars are supported in the option list.</p>
+					<div>
+						<div style="margin-bottom: 10px">
+							<select>
+								<option value="v1">Native dropdown</option>
+								<option value="v2">Option 1</option>
+								<option value="v3">Option 2</option>
+								<option value="v4">Option 3</option>
+								<option value="v5">Option 4</option>
+								<option value="v6">Option 5</option>
+							</select>
+						</div>
+						<div style="margin-bottom: 10px" class="_jcf100">
+							<select multiple placeholder="Multiple select" data-jcf="{&quot;multipleCompactStyle&quot;: true}">
+								<option value="v2">Option 1</option>
+								<option value="v3">Option 2</option>
+								<option value="v4">Option 3</option>
+								<option value="v5">Option 4</option>
+								<option value="v6">Option 5</option>
+							</select>
+						</div>
+						<div style="margin-bottom: 10px">
+							<select>
+								<option class="circle red" value="v2">Option 1</option>
+								<option class="circle grenn" value="v3">Option 2</option>
+								<option value="v4">Option 3</option>
+								<option value="v5">Option 4</option>
+								<option value="v6">Option 5</option>
+							</select>
+						</div>
+						<div style="margin-bottom: 10px">
+							<select disabled="disabled">
+								<option value="v4">Option 1</option>
+								<option value="v5" selected>Disabled select</option>
+							</select>
+						</div>
+					</div>
+					<div>
+						<div style="margin-bottom: 10px">
+							<select size="6">
+								<optgroup label="Test group1">
+									<option value="v1">Option 1</option>
+									<option value="v2">Option 2</option>
+									<option value="v3" selected>Option 3</option>
+								</optgroup>
+								<option value="v4">Option 4</option>
+								<option value="v5">Option 5</option>
+								<optgroup label="Test group2">
+									<option value="v6">Option 6</option>
+									<option value="v7" disabled>Option 7 (disabled)</option>
+									<option value="v8">Option 8</option>
+									<option value="v9">Option 9</option>
+								</optgroup>
+								<option value="v10">Option 10</option>
+								<option value="v11">Option 11</option>
+							</select>
+							<select class="multitest" size="7" multiple>
+								<optgroup label="Multiple select test">
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+									<option>Option 5</option>
+								</optgroup>
+								<optgroup label="Test group3">
+									<option>Option 6</option>
+									<option selected>Option 7</option>
+									<option selected>Option 8</option>
+									<option>Option 9</option>
+								</optgroup>
+								<option>Option 10</option>
+								<option>Option 11</option>
+								<option>Option 12</option>
+								<option>Option 13</option>
+								<option>Option 14</option>
+								<option>Option 15</option>
+								<option>Option 16</option>
+								<option>Option 17</option>
+								<option>Option 18</option>
+								<option>Option 19</option>
+								<option>Option 20</option>
+								<option>Option 21</option>
+								<option>Option 22</option>
+								<option>Option 23</option>
+							</select>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<!-- module jcf-select -->
+		<!-- module tippyjs start -->
+		<div id="tippyjs" class="container module-block">
+			<h2>Folder ./module/tippyjs</h2>
+			<div class="description-block">More info see - <a href="https://atomiks.github.io/tippyjs/">https://atomiks.github.io/tippyjs/</a></div>
+			<button id="singleElement">My button</button>
+			<button data-tippy-content="Tooltip">Text</button>
+			<button data-tippy-content="Another Tooltip">Text</button>
+			<span data-tippy-content="Tooltip" tabindex="0">
+				<button disabled>Text</button>
+			</span>
+			<button class="tippyjs-custom">Text</button>
+		</div>
+		<!-- module tippyjs -->
 		<!-- loading JS Start -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script>
