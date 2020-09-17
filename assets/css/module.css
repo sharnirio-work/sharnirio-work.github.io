@@ -13339,4 +13339,213 @@ table.dataTable td {
   padding: 6px;
 }
 
+.curvedText {
+  background-color: #333;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 40px;
+}
+
+.curvedText path {
+  fill: transparent;
+}
+
+.curvedText text {
+  fill: #FF9800;
+}
+
+.curvedText svg {
+  width: 100%;
+  height: 300px;
+}
+
+.HSL-Base-Color-Control {
+  /* base color 1 */
+  --base-color1: 60;
+  --color1-light: hsla(var(--base-color1), 50%, 75%, 100%);
+  --color1-normal: hsla(var(--base-color1), 50%, 50%, 100%);
+  --color1-darker: hsla(var(--base-color1), 50%, 35%, 100%);
+  /* base color 2 */
+  --base-color2: 120;
+  --color2-light: hsla(var(--base-color2), 50%, 75%, 100%);
+  --color2-normal: hsla(var(--base-color2), 50%, 50%, 100%);
+  --color2-darker: hsla(var(--base-color2), 50%, 35%, 100%);
+  /*base color 3*/
+  --base-color3: 200;
+  --color3-light: hsla(var(--base-color3), 50%, 75%, 100%);
+  --color3-normal: hsla(var(--base-color3), 50%, 50%, 100%);
+  --color3-darker: hsla(var(--base-color3), 50%, 35%, 100%);
+}
+
+.HSL-Base-Color-Control ul {
+  display: flex;
+  margin: 0 auto;
+  width: 240px;
+  margin-bottom: 10px;
+}
+
+.HSL-Base-Color-Control li {
+  margin: 10px;
+}
+
+.HSL-Base-Color-Control [class*="box"] {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.HSL-Base-Color-Control .box1:nth-child(1) {
+  background: var(--color1-light);
+}
+
+.HSL-Base-Color-Control .box1:nth-child(2) {
+  background: var(--color1-normal);
+}
+
+.HSL-Base-Color-Control .box1:nth-child(3) {
+  background: var(--color1-darker);
+}
+
+.HSL-Base-Color-Control .box2:nth-child(1) {
+  background: var(--color2-light);
+}
+
+.HSL-Base-Color-Control .box2:nth-child(2) {
+  background: var(--color2-normal);
+}
+
+.HSL-Base-Color-Control .box2:nth-child(3) {
+  background: var(--color2-darker);
+}
+
+.HSL-Base-Color-Control .box3:nth-child(1) {
+  background: var(--color3-light);
+}
+
+.HSL-Base-Color-Control .box3:nth-child(2) {
+  background: var(--color3-normal);
+}
+
+.HSL-Base-Color-Control .box3:nth-child(3) {
+  background: var(--color3-darker);
+}
+
+.linkCoolHover .v1 a {
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 800;
+  color: royalblue;
+  overflow: hidden;
+  background: linear-gradient(to right, midnightblue, midnightblue 50%, royalblue 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 275ms ease;
+  text-decoration: none;
+}
+
+.linkCoolHover .v1 a:hover {
+  background-position: 0 100%;
+}
+
+.linkCoolHover .v2 a {
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  color: royalblue;
+  font-weight: 800;
+  text-decoration: underline;
+  overflow: hidden;
+}
+
+.linkCoolHover .v2 a::before {
+  position: absolute;
+  content: attr(data-content);
+  top: 0;
+  left: 0;
+  width: 0;
+  color: midnightblue;
+  text-decoration: underline;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 275ms ease;
+}
+
+.linkCoolHover .v2 a.v2-height::before {
+  width: auto;
+  transition: height 275ms ease;
+  height: 0;
+}
+
+.linkCoolHover .v2 a.v2-height:hover::before {
+  height: 100%;
+}
+
+.linkCoolHover .v2 a:hover::before {
+  width: 100%;
+}
+
+.linkCoolHover .v3 a {
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  color: royalblue;
+  font-weight: 800;
+  text-decoration: underline;
+  overflow: hidden;
+  transition: clip-path 275ms ease;
+}
+
+.linkCoolHover .v3 a:hover::before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.linkCoolHover .v3 a::before {
+  position: absolute;
+  content: attr(data-content);
+  color: midnightblue;
+  text-decoration: underline;
+  clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+  transition: clip-path 275ms ease;
+}
+
+.linkCoolHover .v4 a {
+  position: relative;
+  display: inline-block;
+  font-size: 2em;
+  color: royalblue;
+  font-weight: 800;
+  text-decoration: underline;
+  overflow: hidden;
+}
+
+.linkCoolHover .v4 a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 275ms ease;
+}
+
+.linkCoolHover .v4 a span::before {
+  display: inline-block;
+  content: attr(data-content);
+  color: midnightblue;
+  transform: translateX(100%);
+  transition: transform 275ms ease;
+  text-decoration: underline;
+}
+
+.linkCoolHover .v4 a:hover span {
+  transform: translateX(0);
+}
+
+.linkCoolHover .v4 a:hover span::before {
+  transform: translateX(0);
+}
+
 /*# sourceMappingURL=sourcemaps/module.css.map */

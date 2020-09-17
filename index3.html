@@ -14,6 +14,8 @@
 		<div class="module-links">
 			<a href="#diagonalLayouts">diagonalLayouts</a>
 			<a href="#snowCanvas">snowCanvas</a>
+			<a href="#selectChoices">selectChoices</a>
+			<a href="#gradientAnimate">gradientAnimate</a>
 		</div>
 	</div>
 	<!-- module diagonalLayouts start -->
@@ -37,6 +39,54 @@
 		</div>
 	</div>
 	<!-- module snowCanvas -->
+	<!-- module selectChoices start -->
+	<div id="selectChoices" class="container module-block">
+		<h2>Folder ./module/selectChoices</h2>
+		<div class="description-block">More info see - <a href="https://github.com/jshjohnson/Choices">https://github.com/jshjohnson/Choices</a></div>
+		<div class="choice-container">
+			<select class="js-choice-all">
+				<option value="Choice 1" selected>Choice 1</option>
+				<option value="Choice 2">Choice 2</option>
+				<option value="Choice 3">Choice 3</option>
+				<option value="Choice 4" disabled>Choice 4</option>
+			</select>
+			<select class="js-choice-all">
+				<option value="Choice 1" selected>Choice 1</option>
+				<option value="Choice 2">Choice 2</option>
+				<option value="Choice 3">Choice 3</option>
+				<option value="Choice 4" disabled>Choice 4</option>
+			</select>
+		</div>
+	</div>
+	<!-- module selectChoices -->
+	<!-- module gradientAnimate start -->
+	<div id="gradientAnimate" class="container module-block">
+		<h2>Folder ./module/gradientAnimate</h2>
+		<div class="description-block">More info see - <a href="https://sarcadass.github.io/granim.js/examples.html">https://sarcadass.github.io/granim.js/examples.html</a></div>
+		<div class="gradientAnimateBlock">
+			<h3>Basic gradients animation with 3 gradients in queue composed of 2 colors.</h3>
+			<canvas id="canvas-basic"></canvas>
+			<h3>Complex gradient animation with 2 gradients in queue with different positions composed of 3 colors.</h3>
+			<canvas id="canvas-complex"></canvas>
+			<h3>Gradient animation with 2 colors, a background image and a blending mode set. More parameters for options.image are available in the API page.</h3>
+			<canvas id="canvas-image-blending"></canvas>
+			<h3>Gradient animation with an image mask to create a gradient animation under a shape. Look at the logo on the left of the header.</h3>
+			<div class="bloc-logo">
+				<canvas id="logo-canvas"></canvas>
+				<a href="index.html" class="logo-mask">Granim.js</a>
+			</div>
+			<h3>Create a gradient animation that responds to events. Click on the different states in the gradient animation to see the gradients change.</h3>
+			<div class="canvas-interactive-wrapper">
+				<canvas id="canvas-interactive"></canvas>
+				<div class="cta-wrapper">
+					<a href="#default-state" id="default-state-cta" class="active">Default state</a>
+					<a href="#violet-state" id="violet-state-cta">Violet state</a>
+					<a href="#orange-state" id="orange-state-cta">Orange state</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- module gradientAnimate -->
 	<!-- loading JS Start -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>

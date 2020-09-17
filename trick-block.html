@@ -25,6 +25,8 @@
 			<a href="#underline-hack">underline-hack</a>
 			<a href="#flex-center">flex-center</a>
 			<a href="#clipPath">clipPath</a>
+			<a href="#curvedText">curvedText</a>
+			<a href="#HSLbaseColorControl">HSLbaseColorControl</a>
 		</div>
 	</div>
 	<!-- module half-container start -->
@@ -239,6 +241,67 @@
 		</div>
 	</div>
 	<!-- module clipPath -->
+	<!-- module curvedText start -->
+	<div id="curvedText" class="container module-block">
+		<h2>Folder ./module/curvedText</h2>
+		<div class="description-block">More info see - <a href="https://css-tricks.com/snippets/svg/curved-text-along-path/">https://css-tricks.com/snippets/svg/curved-text-along-path/</a></div>
+		<div class="curvedText">
+			<svg viewBox="0 0 425 300">
+				<path id="curve" d="M6,150C49.63,93,105.79,36.65,156.2,47.55,207.89,58.74,213,131.91,264,150c40.67,14.43,108.57-6.91,229-145" />
+				<text x="25">
+			<textPath xlink:href="#curve">
+				Dangerous Curves Ahead
+			</textPath>
+		</text>
+			</svg>
+		</div>
+	</div>
+	<!-- module curvedText -->
+	<!-- module HSLbaseColorControl start -->
+	<div id="HSLbaseColorControl" class="container module-block">
+		<h2>Folder ./module/HSLbaseColorControl</h2>
+		<div class="description-block">Css variable and hsl color</div>
+		<div class="HSL-Base-Color-Control">
+			<ul>
+				<li class="box1"></li>
+				<li class="box1"></li>
+				<li class="box1"></li>
+			</ul>
+			<ul>
+				<li class="box2"></li>
+				<li class="box2"></li>
+				<li class="box2"></li>
+			</ul>
+			<ul>
+				<li class="box3"></li>
+				<li class="box3"></li>
+				<li class="box3"></li>
+			</ul>
+		</div>
+	</div>
+	<!-- module HSLbaseColorControl -->
+	<!-- module linkCoolHover start -->
+	<a href="#linkCoolHover">linkCoolHover</a>
+	<div id="linkCoolHover" class="container module-block">
+		<div class="description-block">More info see - <a href="https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/">https://css-tricks.com/4-ways-to-animate-the-color-of-a-text-link-on-hover/</a></div>
+		<h2>Folder ./module/linkCoolHover</h2>
+		<div class="linkCoolHover">
+			<div class="v1">
+				<a href="#">Link Hover</a>
+			</div>
+			<div class="v2">
+				<a href="#" data-content="Link Hover">Link Hover</a>
+				<a href="#" data-content="Link Hover" class="v2-height">Link Hover</a>
+			</div>
+			<div class="v3">
+				<a href="#" data-content="Link Hover">Link Hover</a>
+			</div>
+			<div class="v4">
+				<a href="#"><span data-content="Link Hover" aria-hidden="true"></span>Link Hover</a>
+			</div>
+		</div>
+	</div>
+	<!-- module linkCoolHover -->
 	<!-- loading JS Start -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
