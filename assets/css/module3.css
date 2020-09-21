@@ -2168,5 +2168,18 @@ A VERTICAL event
   background: linear-gradient(to bottom, #cc3f6e 0%, #93004e 100%); }
 
 /* custom scrollbar end */
+.mySpriteSpin-container {
+  display: flex;
+  justify-content: center; }
+
+.turntable {
+  margin-bottom: 20px; }
+  .turntable ul li {
+    list-style-type: none;
+    display: none; }
+    .turntable ul li img {
+      width: 100%; }
+    .turntable ul li.active {
+      display: block; }
 
 /*# sourceMappingURL=sourcemaps/module3.css.map */
