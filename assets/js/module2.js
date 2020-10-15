@@ -61,6 +61,7 @@ jQuery(document).ready(function() {
 	greensockInit();
 	greensockInit2();
 	greensockInit3();
+	greensockInit4();
 });
 
 // tutorial https://abraxabra.ru/blog/prochee/greensock-for-beginners-a-tutorial-on-web-animation-part-1/
@@ -175,6 +176,14 @@ function greensockInit3() {
 	gsap.set(el, {x: "-100%"});
 	gsap.to(el, {repeat: -1, ease: "none",duration: anDuration, stagger: anDuration/3, css: {x: "100vw"}});
 	gsap.to(el, {repeat: -1, ease: "none",duration: 2, yoyo:true, y: gsap.utils.wrap(["100%","-100%","50%","-50%"]) });
+}
+
+function greensockInit4() {
+	var el = $('.gsap-new2 > .gsap-new2-img');
+	console.log(el);
+	var anDuration = 6;
+	gsap.set(el, {x: "-100%"});
+	gsap.to(el, {delay: 0,repeat: -1, ease: "linear",duration: anDuration, stagger: anDuration/5, css: {x: "100vw"}});
 }
 
 /*!

@@ -1969,6 +1969,15 @@ button.button-cross:hover span:nth-child(4) {
     left: 0;
     top: 50%; }
 
+.gsap-new2 {
+  margin-top: 30px;
+  position: relative;
+  overflow-x: hidden;
+  height: 300px; }
+  .gsap-new2 .gsap-new2-img {
+    position: absolute;
+    left: 0%; }
+
 #content-scrolly {
   margin: 0 0 10px;
   overflow: hidden;
