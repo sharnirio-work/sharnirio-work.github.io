@@ -32551,12 +32551,12 @@ function swiperInit() {
 		},
 	})
 	// fix slide height
-	var wrapper = mySwiper2.wrapperEl;
-	setTimeout(() => {
-		for (let index = 0; index < mySwiper2.slides.length; index++) {
-			var element = mySwiper2.slides[index].style.height = wrapper.clientHeight + "px";
-		}
-	}, 100);
+	// var wrapper = mySwiper2.wrapperEl;
+	// setTimeout(() => {
+	// 	for (let index = 0; index < mySwiper2.slides.length; index++) {
+	// 		var element = mySwiper2.slides[index].style.height = wrapper.clientHeight + "px";
+	// 	}
+	// }, 100);
 
 	// Swiper 3
 	var mySwiper3 = new Swiper('.swiper-v3', {

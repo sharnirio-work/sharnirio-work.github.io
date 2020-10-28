@@ -2182,4 +2182,7 @@ A VERTICAL event
     .turntable ul li.active {
       display: block; }
 
+.infiniteslide li {
+  padding: 0 10px; }
+
 /*# sourceMappingURL=sourcemaps/module3.css.map */
