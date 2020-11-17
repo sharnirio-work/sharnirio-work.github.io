@@ -3567,13 +3567,18 @@ jQuery(document).ready(function() {
 });
 // function init
 function myScrollLink() {
-	var navLink = jQuery(".just-example-block [href*='#']");
+	var navLink = jQuery(".scroll-link");
 	navLink.on('click', function(e) {
-		var elementClick = jQuery(this).attr("href")
+		var elementClick = jQuery(this).attr("href");
 		var destination = jQuery(elementClick).offset().top;
+		var scrollTime = (jQuery(this).attr("data-scrollTime") != undefined) ? +(jQuery(this).attr("data-scrollTime")) : 1000;
+		var scrollTopVar = (jQuery(this).attr("data-scrollTop") != undefined) ? +(jQuery(this).attr("data-scrollTop")) : 0;
+		var scrollBottomVar = (jQuery(this).attr("data-scrollBottom") != undefined) ? +(jQuery(this).attr("data-scrollBottom")) : 0;
+		var destinationFull = destination - scrollTopVar + scrollBottomVar;
+
 		jQuery("html,body").stop().animate({
-			scrollTop: destination
-		}, 1000);
+			scrollTop: destinationFull
+		}, scrollTime);
 		return false;
 	});
 }
@@ -34726,3 +34731,29 @@ jQuery(document).ready(function() {
 // function init
 function linkCoolHoverInit() {}
 /* module img-aspect-ratio */
+
+
+/* module rippleButton */
+// function on
+jQuery(document).ready(function() {
+	rippleButtonInit();
+});
+// function init
+function rippleButtonInit() {
+	var $ripple = $('.js-ripple');
+	$ripple.on('click.ui.ripple', function(e) {
+		var $this = $(this);
+		var $offset = $this.parent().offset();
+		var $circle = $this.find('.c-ripple__circle');
+		var x = e.pageX - $offset.left;
+		var y = e.pageY - $offset.top;
+		$circle.css({
+			top: y + 'px',
+			left: x + 'px'
+		});
+		$this.addClass('is-active');
+	});
+	$ripple.on('animationend webkitAnimationEnd oanimationend MSAnimationEnd', function(e) {
+		$(this).removeClass('is-active');
+	});
+}

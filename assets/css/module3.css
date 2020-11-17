@@ -2185,4 +2185,22 @@ A VERTICAL event
 .infiniteslide li {
   padding: 0 10px; }
 
+.css-selector-demo1, .css-selector-demo2, .css-selector-demo3, .css-selector-demo4, .css-selector-demo5, .css-selector-demo6, .css-selector-demo7, .css-selector-demo8 {
+  padding: 20px 0;
+  font-size: 30px; }
+
+.svg-wrapper {
+  position: relative; }
+  .svg-wrapper .el {
+    transform-origin: 50% 50%;
+    position: absolute;
+    top: -25px;
+    left: -25px; }
+
+.el {
+  width: 50px;
+  height: 50px;
+  background-color: tomato;
+  margin-bottom: 20px; }
+
 /*# sourceMappingURL=sourcemaps/module3.css.map */
