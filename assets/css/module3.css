@@ -2203,4 +2203,39 @@ A VERTICAL event
   background-color: tomato;
   margin-bottom: 20px; }
 
+.filter-list {
+  display: flex;
+  justify-content: center; }
+  .filter-list li {
+    margin: 0 15px;
+    cursor: pointer; }
+
+.filter-container {
+  padding: 20px 0 0 !important; }
+
+.filtr-item {
+  width: 33%; }
+
+.lottiefile-svgContainer,
+#lottiefile-svgContainer2 {
+  max-width: 200px;
+  width: 100%;
+  max-height: 200;
+  margin: 10px auto; }
+
+.winwheel-canvas-container {
+  position: relative;
+  display: inline-block; }
+  .winwheel-canvas-container:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid blue; }
+
 /*# sourceMappingURL=sourcemaps/module3.css.map */
