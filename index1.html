@@ -12,24 +12,18 @@
 <div class="container">
 	<div class="module-links">
 		<a href="#preloader">preloader</a>
-		<a href="#first-full-height">first-full-height</a>
 		<a href="#block-in-viewport">block-in-viewport</a>
 		<a href="#grid-flex-css">grid-flex-css</a>
 		<a href="#scroll-text">scroll-text</a>
-		<a href="#slider-comparison">slider-comparison</a>
 		<a href="#scaled-proportional">scaled-proportional</a>
-		<a href="#nav-to-select">nav-to-select</a>
 		<a href="#open-close">open-close</a>
 		<a href="#count-up">count-up</a>
 		<a href="#simple-count">simple-count</a>
 		<a href="#circlebars">circlebars</a>
 		<a href="#loadingbars">loadingbars</a>
-		<a href="#tooltip-ui">tooltip-ui</a>
 		<a href="#dropdown-menu">dropdown-menu</a>
 		<a href="#video-back">video-back</a>
-		<a href="#video-back-of">video-back-of</a>
 		<a href="#parallax">parallax</a>
-		<a href="#parallax-simple">parallax-simple</a>
 		<a href="#c-scroll-bars">c-scroll-bars</a>
 		<a href="#Isotope-filter">Isotope-filter</a>
 		<a href="#masonry">masonry</a>
@@ -57,46 +51,10 @@
 <!-- module preloader start -->
 <div id="preloader" class="container module-block">
 	<h2>Folder ./module/preloader</h2>
-	<div class="description-block">preloader для сайта - <strong>ОТКЛЮЧИЛ</strong></div>
+	<div class="description-block">preloader you can see when the page loads</div>
 	// ../../../module/preloader/preloader.html
 </div>
 <!-- module preloader -->
-<!-- module first-full-height start -->
-<div id="first-full-height" class="container module-block">
-	<h2>Folder ./module/first-full-height</h2>
-	<div class="description-block">задает блоку минимальную высоту 100% высоту страницы</div>
-		<!-- Внутренняя обертка обязательна -->
-		<div class="full-height"><div class="some-class">Lorem ipsum dolor sit amet</div></div>
-</div>
-<!-- module first-full-height -->
-<!-- module block-in-viewport start -->
-<div id="block-in-viewport" class="container module-block">
-	<h2>Folder ./module/block-in-viewport</h2>
-	<div class="description-block">
-		<p>не забудь подключить jquery-migrate-3.0.0.js так как ошибка с новой версией jquery возникает </p>
-		<p>Доступны следующие опции:</p>
-		<ul>
-			<li>activeClass – класс, который добавляется, когда блок появляется по вьюпорте (по умолчанию – “in-viewport”s)</li>
-			<li>once – флаг, который определяет добавлять активный класс единожды или при каждом появлении блока во вьюпорте (по умолчанию – true)</li>
-			<li>holder – родительский блок, который скроллит виджеты. Можно не задавать – тогда скрипт привяжет виджет к скроллу окна (по умолчанию – окно)</li>
-			<li>visibleMode – опция, которая позволяет точно настроить момент, в который активный класс будет добавлен. Существует 4 настройки (По умолчанию – 1) <ul>
-					<li>1 – класс добавляется, когда блок полностью показывается по вьюпорте</li>
-					<li>2 – когда хотя бы половина блока во вьюпорте</li>
-					<li>3 – хотя бы пиксель блока во вьюпорте</li>
-					<li>NUMBER – любое другое число. Кастомная настройка в пикселях. Если поставить 20 – то как только блок показывается на 20 пикселей на экране – активный класс добавится</li>
-				</ul>
-			</li>
-			<li>Независимо от опции visibleMode активный класс будет добавлен, если блок своим низом или верхом достиг середины окна</li>
-		</ul>
-	</div>
-	<div class="section default">
-		<h1>Trig every time</h1>
-	</div>
-	<div class="section once">
-		<h1>Trig just once</h1>
-	</div>
-</div>
-<!-- module block-in-viewport -->
 <!-- module grid-flex-css start -->
 <div id="grid-flex-css" class="container module-block">
 	<h2>Folder ./module/grid-flex-css</h2>
@@ -174,52 +132,6 @@
 	</div>
 </div>
 <!-- module scroll-text -->
-<!-- module slider-comparison start -->
-<div id="slider-comparison" class="container module-block">
-	<h2>Folder ./module/slider-comparison</h2>
-	<div class="container">
-		<h2> Image Comparison Slider </h2>
-		<p><a target="_blank" href="https://github.com/zurb/twentytwenty">https://github.com/zurb/twentytwenty</a>
-		</p>
-		<h3>Basic Usage</h3>
-		<p>Demonstrates basic usage of the plugin.</p>
-		<div class="row-twentytwenty">
-			<div class="columns-twentytwenty">
-				<div class="twentytwenty-container">
-					<img src="http://placehold.it/400x200&amp;text=1" />
-					<img src="http://placehold.it/400x200&amp;text=2" />
-				</div>
-			</div>
-		</div>
-		<h3>Vertical Orientation</h3>
-		<p>Demonstrates sliding up and down.</p>
-		<div class="row-twentytwenty">
-			<div class="columns-twentytwenty">
-				<div class="twentytwenty-container" data-orientation="vertical">
-					<img src="http://placehold.it/400x200&amp;text=1" />
-					<img src="http://placehold.it/400x200&amp;text=2" />
-				</div>
-			</div>
-		</div>
-		<h3>Side by side</h3>
-		<p>Using multiple comparisons at once.</p>
-		<div class="row-twentytwenty">
-			<div class="columns-twentytwenty">
-				<div class="twentytwenty-container">
-					<img src="http://placehold.it/400x200&amp;text=1" />
-					<img src="http://placehold.it/400x200&amp;text=2" />
-				</div>
-			</div>
-			<div class="columns-twentytwenty">
-				<div class="twentytwenty-container">
-					<img src="http://placehold.it/400x200&amp;text=1" />
-					<img src="http://placehold.it/400x200&amp;text=2" />
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- module slider-comparison -->
 <!-- module scaled-proportional start -->
 <div id="scaled-proportional" class="container module-block">
 	<h2>Folder ./module/scaled-proportional</h2>
@@ -235,33 +147,6 @@
 	<p>Some other blocks</p>
 </div>
 <!-- module scaled-proportional -->
-<!-- module nav-to-select start -->
-<div id="nav-to-select" class="container module-block">
-	<h2>Folder ./module/nav-to-select</h2>
-	<ul id="nav-to-select" title="Main navigation">
-		<li><a href="index.html">Home</a></li>
-		<li>
-			<a href="#">Products</a>
-			<ul>
-				<li><a href="#">Product1</a></li>
-				<li>
-					<a href="#">Product2</a>
-					<ul>
-						<li><a href="#">Deep1</a></li>
-						<li><a class="nav-active" href="#">Deep2</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">Product4</a>
-					<ul>
-						<li><a href="#">Deep1</a></li>
-					</ul>
-				</li>
-			</ul>
-		</li>
-	</ul>
-</div>
-<!-- module nav-to-select -->
 <!-- module open-close start -->
 <div id="open-close" class="container module-block">
 	<h2>Folder ./module/open-close</h2>
@@ -367,12 +252,6 @@
 	<div class="ldBar label-center" style="width:10%;height:10%;margin:auto" data-value="10"  data-min="0" data-max="100" data-preset="circle"></div>
 </div>
 <!-- module loadingbars -->
-<!-- module tooltip-ui start -->
-<div id="tooltip-ui" class="container module-block">
-	<h2>Folder ./module/tooltip-ui</h2>
-	<div class="tooltip-ui" ><img src="http://placehold.it/200x200" data-title="Example tooltip"/></div>
-</div>
-<!-- module tooltip-ui -->
 <!-- module dropdown-menu start -->
 <div id="dropdown-menu" class="container module-block">
 	<h2>Folder ./module/dropdown-menu</h2>
@@ -460,22 +339,6 @@
 	</div>
 </div>
 <!-- module video-back -->
-<!-- module video-back-of start -->
-<div id="video-back-of" class="container module-block">
-	<h2>Folder ./module/video-back-of</h2>
-	<section class="video-container">
-		<video src="https://player.vimeo.com/external/181445574.hd.mp4?s=d24f32d879305e931468d55e4d7ce6efb5a95c39&amp;profile_id=119" autoplay loop playsinline muted></video>
-		<div class="callout">
-			<h1>Object-Fit 👍</h1>
-			<div>The CSS Background-Size: Cover for Inline Images &amp; Videos</div>
-		</div>
-		<div class="support">
-			<a href="http://caniuse.com/#search=object-fit">Browser Support</a><br>
-			<a href="https://github.com/jonathantneal/fitie">Need to support IE &amp; Edge?</a>
-		</div>
-	</section>
-</div>
-<!-- module video-back-of -->
 <!-- module parallax start -->
 <div id="parallax" class="module-block">
 	<h2>Folder ./module/parallax</h2>
@@ -536,14 +399,6 @@
 	</div>
 </div>
 <!-- module parallax -->
-<!-- module parallax-simple start -->
-<div id="parallax-simple" class="module-block">
-	<h2>Folder ./module/parallax-simple</h2>
-	<div class="description-block">Used this plugin <a href="http://pixelcog.github.io/parallax.js/">http://pixelcog.github.io/parallax.js/</a></div>
-	<div class="parallax-window" data-parallax="scroll" data-image-src="https://www.gstatic.com/webp/gallery/4.jpg"></div>
-	<div class="parallax-window-not-js-innit" data-parallax="scroll" data-image-src="http://placehold.it/1920x900"></div>
-</div>
-<!-- module parallax-simple -->
 <!-- module c-scroll-bars start -->
 <div id="c-scroll-bars" class="container module-block">
 	<h2>Folder ./module/c-scroll-bars</h2>
@@ -1730,6 +1585,7 @@
 <!-- module load-more -->
 <!-- loading JS Start -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 <script>
 	window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js" defer><\/script>')
 </script>

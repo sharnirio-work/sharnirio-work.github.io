@@ -11,7 +11,6 @@
 <body id="body-module" class="body-module">
 	<div class="container">
 		<div class="module-links">
-			<a href="#grid-css">grid-css</a>
 			<a href="#tabs">tabs</a>
 			<a href="#tabs-to-accordion">tabs-to-accordion</a>
 			<a href="#tab-to-accordion-vert">tab-to-accordion-vert</a>
@@ -40,54 +39,6 @@
 			<a href="#input-mask">input-mask</a>
 		</div>
 	</div>
-<!-- module grid-css start -->
-<div id="grid-css" class="container module-block">
-	<h2>Folder ./module/grid-css</h2>
-	<div class="grid-css-wrapper1">
-		<div class="grid-css-col grid-css-col1">1</div>
-		<div class="grid-css-col grid-css-col2">2</div>
-		<div class="grid-css-col grid-css-col3">3</div>
-		<div class="grid-css-col grid-css-col4">4</div>
-		<div class="grid-css-col grid-css-col5">5</div>
-		<div class="grid-css-col grid-css-col6">6</div>
-		<div class="grid-css-col grid-css-col7">7</div>
-		<div class="grid-css-col grid-css-col8">8</div>
-		<div class="grid-css-col grid-css-col9">9</div>
-	</div>
-	<div class="grid-css-style">
-		<span>display: grid; | </span>
-		<span>grid-gap: 20px 10px; | </span>
-		<br>
-		<span>grid-template-rows: repeat(4, 50px); | </span>
-		<span>grid-template-columns: 200px 1fr 25% auto; | </span>
-		<span>grid-template-columns: 200px 1fr 25% auto; | </span>
-		<br>
-		<span>grid-template-rows: minmax(200px, 1fr) minmax(auto, 1fr) minmax(min-content, 30%) min-content max-content;</span>
-		<br>
-		<span>grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); (столбцы всегда будут иметь размер не менее 100 пикселей, однако, если доступного пространства будет больше, то сетка просто распределит его поровну между каждым из столбцов.)</span>
-		<br>
-		<span>grid-template-areas: "col2 col1" "col3 col4"; | </span>
-		<span>grid-area: col1; | </span>
-		<br>
-		<span>grid-row: 1/2; | </span>
-		<span>grid-column: 1/2; | </span>
-		<br>
-		<span>grid-column-start: span 3; (Ключевое слово span позволит растянуть элемент на несколько полос, отсчитывая их от фактического положения его начала.Где бы мы ни разместили этот класс в гриде, он заставит этот элемент растянуться на три полосы от его текущего положения.)</span>
-		<br>
-		<span>justify-items: start / end / center / stretch; | </span>
-		<span>justify-self: start / end / center / stretch; | </span>
-		<br>
-		<span>align-items: start / end / center / stretch; | </span>
-		<span>align-self: start / end / center / stretch; | </span>
-		<br>
-		<span>justify-content: start / end / center / stretch / space-around / space-between / space-evenly (одинаковое расстояние); | </span>
-		<br>
-		<span>align-content: start / end / center / stretch / space-around / space-between / space-evenly;  | </span>
-		<br>
-		<span>grid-auto-flow: row / column / row dense / column dense | </span>
-	</div>
-</div>
-<!-- module grid-css -->
 <!-- module tabs start -->
 <div id="tabs" class="container module-block">
 	<h2>Folder ./module/tabs</h2>
@@ -772,6 +723,7 @@
 <!-- module input-mask -->
 <!-- loading JS Start -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 <script>
 	window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js" defer><\/script>')
 </script>
