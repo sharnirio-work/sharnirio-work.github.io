@@ -825,67 +825,6 @@ button.button-cross:hover span:nth-child(4) {
     transform-origin: bottom left;
     transform: scaleX(1); }
 
-.switches-1 {
-  transition: .25s ease-in-out; }
-  .switches-1 *,
-  .switches-1 *:before,
-  .switches-1 *:after {
-    transition: inherit; }
-  .switches-1 .checkbox-label {
-    display: block;
-    background: #fff;
-    height: 30px;
-    width: 60px;
-    border-radius: 30px;
-    margin: 50px auto;
-    position: relative;
-    box-shadow: 0 0 0 2px #ccc; }
-    .switches-1 .checkbox-label .on {
-      display: block;
-      position: absolute;
-      z-index: 0;
-      left: 0;
-      opacity: 1;
-      min-width: 300px;
-      line-height: 30px;
-      opacity: 0;
-      color: #13bf11; }
-    .switches-1 .checkbox-label .off {
-      display: block;
-      position: absolute;
-      z-index: 0;
-      right: 75px;
-      text-align: right;
-      opacity: 1;
-      min-width: 300px;
-      line-height: 30px;
-      opacity: 1;
-      color: tomato; }
-    .switches-1 .checkbox-label:before {
-      content: '';
-      display: block;
-      position: absolute;
-      z-index: 1;
-      top: 50%;
-      left: 2px;
-      transform: translateY(-50%);
-      border-radius: 28px;
-      height: 28px;
-      width: 30px;
-      background: tomato; }
-  .switches-1 .checkbox {
-    position: absolute;
-    left: -5000px; }
-    .switches-1 .checkbox:checked + .checkbox-label .on {
-      left: 75px;
-      opacity: 1; }
-    .switches-1 .checkbox:checked + .checkbox-label .off {
-      right: 0px;
-      opacity: 0; }
-    .switches-1 .checkbox:checked + .checkbox-label:before {
-      left: 30px;
-      background: #13bf11; }
-
 .switches-grad {
   display: none; }
   .switches-grad + label {
@@ -1906,6 +1845,9 @@ button.button-cross:hover span:nth-child(4) {
   height: 50px;
   float: right; }
 
+#greensock {
+  overflow: hidden; }
+
 .box-socks-wraper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1916,6 +1858,7 @@ button.button-cross:hover span:nth-child(4) {
 .box2,
 .box3,
 .box4 {
+  overflow: hidden;
   background: #ccc;
   height: 200px;
   position: relative;
@@ -1962,8 +1905,8 @@ button.button-cross:hover span:nth-child(4) {
 .gsap-new {
   margin-top: 30px;
   position: relative;
-  overflow-x: hidden;
-  height: 300px; }
+  overflow: hidden;
+  height: 500px; }
   .gsap-new img {
     position: absolute;
     left: 0;
@@ -2288,156 +2231,6 @@ ul.sample-nav a {
 .left, .right {
   transform: translateY(-50%);
   cursor: pointer; }
-
-/*! Pushy - v1.3.0 - 2019-6-25
-* Pushy is a responsive off-canvas navigation menu using CSS transforms & transitions.
-* https://github.com/christophery/pushy/
-* by Christopher Yee */
-/* Menu Appearance */
-.pushy {
-  position: fixed;
-  width: 200px;
-  height: 100%;
-  top: 0;
-  z-index: 9999;
-  background: #191918;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  /* enables momentum scrolling in iOS overflow elements */ }
-  .pushy a {
-    display: block;
-    color: #b3b3b1;
-    padding: 15px 30px;
-    text-decoration: none; }
-  .pushy a:hover {
-    color: #FFF; }
-  .pushy ul:first-child {
-    margin-top: 10px; }
-  .pushy.pushy-left {
-    left: 0; }
-  .pushy.pushy-right {
-    right: 0; }
-
-.pushy-content {
-  visibility: hidden; }
-
-/* Menu Movement */
-.pushy-left {
-  transform: translate3d(-200px, 0, 0); }
-
-.pushy-open-left .pushy-container,
-.pushy-open-left .push {
-  transform: translate3d(200px, 0, 0); }
-
-.pushy-right {
-  transform: translate3d(200px, 0, 0); }
-
-.pushy-open-right .pushy-container,
-.pushy-open-right .push {
-  transform: translate3d(-200px, 0, 0); }
-
-.pushy-open-left .pushy,
-.pushy-open-right .pushy {
-  transform: translate3d(0, 0, 0); }
-
-.pushy-open-left .pushy-content,
-.pushy-open-right .pushy-content {
-  visibility: visible; }
-
-/* Menu Transitions */
-.pushy-container,
-.pushy,
-.push {
-  transition: transform 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99); }
-
-.pushy-content {
-  transition: visibility 0.2s cubic-bezier(0.16, 0.68, 0.43, 0.99); }
-
-/* Site Overlay */
-.site-overlay {
-  display: none; }
-
-.pushy-open-left .site-overlay,
-.pushy-open-right .site-overlay {
-  display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9998;
-  background-color: rgba(0, 0, 0, 0.5);
-  animation: fade 500ms; }
-
-@keyframes fade {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@-webkit-keyframes fade {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-/* Submenu Appearance */
-.pushy-submenu {
-  /* Submenu Buttons */
-  /* Submenu Icon */ }
-  .pushy-submenu > ul {
-    padding-left: 15px;
-    transition: max-height 0.2s ease-in-out, visibility 0.2s ease-in-out; }
-    .pushy-submenu > ul .pushy-link {
-      transition: opacity 0.2s ease-in-out; }
-  .pushy-submenu button {
-    width: 100%;
-    color: #b3b3b1;
-    padding: 15px 30px;
-    text-align: left;
-    background: transparent;
-    border: 0; }
-    .pushy-submenu button:hover {
-      color: #FFF; }
-  .pushy-submenu > a,
-  .pushy-submenu > button {
-    position: relative; }
-  .pushy-submenu > a::after,
-  .pushy-submenu > button::after {
-    content: '';
-    display: block;
-    height: 11px;
-    width: 8px;
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    border-style: solid;
-    height: 0;
-    width: 0;
-    border-color: #fff transparent transparent;
-    border-width: 6px 6px 0;
-    transform: translateY(-50%);
-    transition: transform 0.2s; }
-
-/* Submenu Movement */
-.pushy-submenu-closed > ul {
-  max-height: 0;
-  overflow: hidden;
-  visibility: hidden; }
-
-.pushy-submenu-closed .pushy-link {
-  opacity: 0; }
-
-.pushy-submenu-open {
-  /* Submenu Icon */ }
-  .pushy-submenu-open > ul {
-    max-height: 1000px;
-    visibility: visible; }
-  .pushy-submenu-open .pushy-link {
-    opacity: 1; }
-  .pushy-submenu-open > a::after,
-  .pushy-submenu-open > button::after {
-    transform: translateY(-50%) rotate(90deg); }
 
 .dl-container {
   overflow: hidden; }

@@ -3210,6 +3210,7 @@ a.ui-button:active,
 
 .preloader {
   position: fixed;
+  z-index: 9999999;
   top: 0;
   left: 0;
   width: 100%;
@@ -8341,15 +8342,6 @@ button.swiper-pagination-bullet {
 .zoom .zoom-list .zoom-reset:hover,
 .zoom .zoom-list .zoom-reset-active {
   background-position: -33px -288px; }
-
-.js .imagemap__item {
-  display: none; }
-
-@media screen and (min-width: 48em) {
-  .imagemap__item:target {
-    display: block; }
-  .imagemap__item:target > .imagemap__text {
-    display: block; } }
 
 table.dataTable {
   width: 100%;
