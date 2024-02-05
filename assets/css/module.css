@@ -4275,21 +4275,19 @@ html.fp-enabled,
   z-index: 2;
   min-height: 400px; }
 
-.bac-tr-b {
+.bac-tr {
   position: absolute;
   bottom: -1px;
   width: 100%;
   height: 150px;
   z-index: -1;
-  fill: #fff; }
+  fill: whitesmoke; }
+
+.bac-tr-b {
+  bottom: -1px; }
 
 .bac-tr-t {
-  position: absolute;
-  top: -1px;
-  width: 100%;
-  height: 150px;
-  z-index: -1;
-  fill: #fff; }
+  top: -1px; }
 
 .scroll-content {
   max-height: 100px; }
@@ -8785,7 +8783,7 @@ table.dataTable td {
     left: 0;
     height: 100%;
     width: 50%;
-    background: #fff; }
+    background: whitesmoke; }
 
 #input-with-stars .input-with-stars {
   position: relative; }
@@ -9268,53 +9266,6 @@ table.dataTable td {
     width: 100%;
     height: 300px; }
 
-.HSL-Base-Color-Control {
-  /* base color 1 */
-  --base-color1: 60;
-  --color1-light: hsla(var(--base-color1), 50%, 75%, 100%);
-  --color1-normal: hsla(var(--base-color1), 50%, 50%, 100%);
-  --color1-darker: hsla(var(--base-color1), 50%, 35%, 100%);
-  /* base color 2 */
-  --base-color2: 120;
-  --color2-light: hsla(var(--base-color2), 50%, 75%, 100%);
-  --color2-normal: hsla(var(--base-color2), 50%, 50%, 100%);
-  --color2-darker: hsla(var(--base-color2), 50%, 35%, 100%);
-  /*base color 3*/
-  --base-color3: 200;
-  --color3-light: hsla(var(--base-color3), 50%, 75%, 100%);
-  --color3-normal: hsla(var(--base-color3), 50%, 50%, 100%);
-  --color3-darker: hsla(var(--base-color3), 50%, 35%, 100%); }
-  .HSL-Base-Color-Control ul {
-    display: flex;
-    margin: 0 auto;
-    width: 240px;
-    margin-bottom: 10px; }
-  .HSL-Base-Color-Control li {
-    margin: 10px; }
-  .HSL-Base-Color-Control [class*="box"] {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto;
-    border-radius: 8px; }
-  .HSL-Base-Color-Control .box1:nth-child(1) {
-    background: var(--color1-light); }
-  .HSL-Base-Color-Control .box1:nth-child(2) {
-    background: var(--color1-normal); }
-  .HSL-Base-Color-Control .box1:nth-child(3) {
-    background: var(--color1-darker); }
-  .HSL-Base-Color-Control .box2:nth-child(1) {
-    background: var(--color2-light); }
-  .HSL-Base-Color-Control .box2:nth-child(2) {
-    background: var(--color2-normal); }
-  .HSL-Base-Color-Control .box2:nth-child(3) {
-    background: var(--color2-darker); }
-  .HSL-Base-Color-Control .box3:nth-child(1) {
-    background: var(--color3-light); }
-  .HSL-Base-Color-Control .box3:nth-child(2) {
-    background: var(--color3-normal); }
-  .HSL-Base-Color-Control .box3:nth-child(3) {
-    background: var(--color3-darker); }
-
 .linkCoolHover .v1 a {
   position: relative;
   display: inline-block;
@@ -9510,61 +9461,5 @@ table.dataTable td {
     width: 200%;
     padding-bottom: 200%;
     opacity: 0; } }
-
-.container-backdropFilterInit {
-  background-color: black;
-  background-image: url("https://placeimg.com/1300/400/any");
-  background-size: cover;
-  height: 400px;
-  padding: 10px;
-  width: 100%;
-  position: relative; }
-  .container-backdropFilterInit .boxes-backdropFilterInit {
-    display: flex;
-    margin-right: 10px;
-    overflow: scroll;
-    min-height: 400px;
-    width: 100%;
-    align-items: center; }
-    .container-backdropFilterInit .boxes-backdropFilterInit p {
-      display: block;
-      font-weight: 600;
-      min-width: 200px;
-      color: white;
-      font-size: 40px; }
-  .container-backdropFilterInit .box-backdropFilterInit {
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    min-width: 300px;
-    min-height: 350px;
-    line-height: 1;
-    padding: 15px 15px;
-    transition: all .3s ease; }
-    .container-backdropFilterInit .box-backdropFilterInit:nth-child(1n + 1) {
-      border-right: none; }
-    .container-backdropFilterInit .box-backdropFilterInit h2 {
-      color: tomato;
-      font-size: 18px; }
-  .container-backdropFilterInit .none {
-    backdrop-filter: none; }
-  .container-backdropFilterInit .grayscale {
-    backdrop-filter: grayscale(1); }
-  .container-backdropFilterInit .brightness {
-    backdrop-filter: brightness(1.5); }
-  .container-backdropFilterInit .blur {
-    backdrop-filter: blur(5px); }
-  .container-backdropFilterInit .contrast {
-    backdrop-filter: contrast(0.8); }
-  .container-backdropFilterInit .drop-shadow {
-    backdrop-filter: drop-shadow(4px 4px 10px blue); }
-  .container-backdropFilterInit .invert {
-    backdrop-filter: invert(0.7); }
-  .container-backdropFilterInit .opacity {
-    backdrop-filter: opacity(0.4); }
-  .container-backdropFilterInit .sepia {
-    backdrop-filter: sepia(0.4); }
-  .container-backdropFilterInit .saturate {
-    backdrop-filter: saturate(1.8); }
-  .container-backdropFilterInit .hue-rotate {
-    backdrop-filter: hue-rotate(120deg); }
 
 /*# sourceMappingURL=sourcemaps/module.css.map */

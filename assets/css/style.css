@@ -942,5 +942,7 @@ body {
   margin-bottom: 25px; }
   .description-block pre {
     margin-bottom: 0; }
+  .description-block > p:last-child {
+    margin-bottom: 0; }
 
 /*# sourceMappingURL=sourcemaps/style.css.map */

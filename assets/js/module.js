@@ -29612,14 +29612,6 @@ jQuery(document).ready(function() {
 // function init
 function curvedTextInit() {}
 
-/* module HSLbaseColorControl */
-// function on
-jQuery(document).ready(function() {
-	HSLbaseColorControlInit();
-});
-// function init
-function HSLbaseColorControlInit() {}
-
 /* module linkCoolHover */
 // function on
 jQuery(document).ready(function() {
@@ -29654,5 +29646,3 @@ function rippleButtonInit() {
 		$(this).removeClass('is-active');
 	});
 }
-
-/* module backdropFilter */
